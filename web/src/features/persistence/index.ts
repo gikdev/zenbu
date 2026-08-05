@@ -1,0 +1,5 @@
+export type { IStorageAdapter } from './IStorageAdapter'
+export { LocalStorageAdapter } from './LocalStorageAdapter'
+export { storage, useStorage } from './storage'
+export { keys } from './keys'
+export { StorageEntry } from './StorageEntry'

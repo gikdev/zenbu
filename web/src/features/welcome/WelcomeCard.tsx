@@ -1,0 +1,32 @@
+import { Link } from '@tanstack/react-router'
+
+import { version } from '#/App/configs/version.json'
+import { styleBtn } from '#/common/atoms/btn'
+
+import { useI18nContext } from '../i18n/i18n-react'
+
+export function WelcomeCard() {
+  const { LL } = useI18nContext()
+
+  return (
+    <div className='flex w-full max-w-60 min-w-20 flex-col items-center gap-4'>
+      <div className='flex w-full items-end justify-center overflow-x-clip'>
+        <img className='size-16 -rotate-12 -hue-rotate-75' src='/isshin.svg' alt='' />
+        <img className='size-24 rotate-0 hue-rotate-0' src='/isshin.svg' alt='' />
+        <img className='size-16 rotate-12 hue-rotate-90' src='/isshin.svg' alt='' />
+      </div>
+
+      <p className='text-5xl font-bold text-mist-100'>{LL.welcome.title()}</p>
+
+      <p className='text-mist-100'>{LL.welcome.slogan()}</p>
+
+      <p className='text-center'>{LL.welcome.description()}</p>
+
+      <Link to='/app' className={styleBtn({ variant: 'primary', size: 'lg', class: 'w-full' })}>
+        <span>{LL.welcome.start()}</span>
+      </Link>
+
+      <p className='text-center font-mono text-xs'>v{version}</p>
+    </div>
+  )
+}
