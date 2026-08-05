@@ -1,0 +1,55 @@
+# Custom
+.containers/
+publish/
+output/
+output*.zip
+*.db*
+wwwroot/
+!wwwroot/.gitkeep
+
+# Environment
+.env*
+!.env*.example
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+*-debug.log*
+*-error.log*
+
+# Node / npm
+node_modules/
+npm-debug.log*
+package-lock.json.*
+
+# .NET
+bin/
+obj/
+TestResults/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Editors
+.vs/
+!.vscode/
+.idea/
+*.DotSettings.user
+.zed/
+*.swp
+*.swo
+*~
+Session.vim
+.nvimlog
+
+# Build / Coverage
+dist/
+out/
+build/
+coverage/

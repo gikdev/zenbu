@@ -1,0 +1,16 @@
+# https://taskfile.dev
+version: '3'
+
+tasks:
+  meta:list:
+    aliases: [default, list, l]
+    desc: List all tasks
+    cmds:
+      - task --list-all
+
+  repo:setup:
+    aliases: [setup]
+    desc: Setup
+    cmds:
+      - cd web && task setup
+      - cd api && task setup
