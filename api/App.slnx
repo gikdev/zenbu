@@ -1,0 +1,28 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="App.slnx" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="Nuget.config" />
+    <File Path="README.md" />
+  </Folder>
+
+  <Folder Name="/Src/">
+    <Project Path="src/Domain/App.Domain.csproj" />
+    <Project Path="src/Application/App.Application.csproj" />
+    <Project Path="src/Infrastructure/App.Infrastructure.csproj" />
+    <Project Path="src/Api/App.Api.csproj" />
+  </Folder>
+
+  <Folder Name="/Aspire/">
+    <Project Path="src/AppHost/App.AppHost.csproj" />
+    <Project Path="src/ServiceDefaults/App.ServiceDefaults.csproj" />
+  </Folder>
+
+  <Folder Name="/Tests/">
+    <Project Path="tests/Architecture.Tests/App.Architecture.Tests.csproj" />
+    <Project Path="tests/Application.UnitTests/App.Application.UnitTests.csproj" />
+  </Folder>
+</Solution>
