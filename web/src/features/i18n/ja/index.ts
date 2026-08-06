@@ -9,7 +9,7 @@ const ja = {
   },
 
   writingArea: {
-    title: "入力エリア",
+    title: '入力エリア',
   },
 
   settings: {

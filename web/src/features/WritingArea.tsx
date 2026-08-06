@@ -2,20 +2,17 @@ import { DownloadSimpleIcon, MoonIcon, SunIcon, TrashSimpleIcon } from '@phospho
 import { useEffect, useState } from 'react'
 
 import { styleBtn } from '#/common/atoms/btn'
+import { unwrapOr } from '#/common/helpers/Result'
 import { useI18nContext } from '#/features/i18n'
 import { useCurrentTheme, themeStore } from '#/features/theming'
+
 import { keys, storage, StorageEntry } from './persistence'
-import { unwrapOr } from '#/common/helpers/Result'
 
 const writingAreaStorage = new StorageEntry<{ content: string }>(storage, keys.Apps.WritingArea, {
   content: '',
 })
 
-const loadContent = () => unwrapOr(
-  writingAreaStorage.load(),
-  data => data.content,
-  "",
-)
+const loadContent = () => unwrapOr(writingAreaStorage.load(), data => data.content, '')
 
 export function WritingArea() {
   const { LL, locale, setLocale } = useI18nContext()
@@ -91,11 +88,7 @@ export function WritingArea() {
             {theme === 'light' && <SunIcon size={20} />}
           </button>
 
-          <button
-            type='button'
-            onClick={handleDownload}
-            className={styleBtn({ size: 'icon' })}
-          >
+          <button type='button' onClick={handleDownload} className={styleBtn({ size: 'icon' })}>
             <DownloadSimpleIcon size={18} />
           </button>
 

@@ -9,7 +9,7 @@ const en = {
   },
 
   writingArea: {
-    title: "Writing Area",
+    title: 'Writing Area',
   },
 
   settings: {

@@ -9,7 +9,7 @@ const fa = {
   },
 
   writingArea: {
-    title: "محل نوشتن"
+    title: 'محل نوشتن',
   },
 
   settings: {
