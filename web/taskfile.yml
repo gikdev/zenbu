@@ -85,3 +85,8 @@ tasks:
   test: vp test
 
   test:watch: vp test --watch
+
+  deploy:
+    desc: Deploy app with chabokan
+    cmds:
+      - cd dist/ && bun run chabok -- deploy
