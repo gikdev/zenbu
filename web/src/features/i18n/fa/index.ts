@@ -23,8 +23,10 @@ const fa = {
     title: 'ثبت زمان',
     description: 'یک تایمر ساده برای تمرکز روی کار',
     clearSessionsConfirm: 'جلسات پاک بشن؟',
-    totalDurationLabel: 'طول کل جلسات',
-    totalSessionsLabel: 'تعداد کل جلسات',
+    totalDuration: 'طول کل جلسات',
+    totalSessions: 'تعداد کل جلسات',
+    goHome: 'برو خونه',
+    reset: 'ریست',
   },
 
   phrasePlayer: {

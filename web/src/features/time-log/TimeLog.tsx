@@ -2,6 +2,7 @@ import { HouseIcon, PauseIcon, PlayIcon, TrashIcon } from '@phosphor-icons/react
 import { Link } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 
+import { styleBtn } from '#/common/atoms/btn'
 import { unwrapOr } from '#/common/helpers/Result'
 
 import { useI18nContext } from '../i18n'
@@ -21,6 +22,8 @@ export function TimeLog() {
   const activeSession = sessions.find(s => s.endedAt === null)
   const isRunning = !!activeSession
   const BtnIcon = isRunning ? PauseIcon : PlayIcon
+
+  const { count, formatted } = computeSessionStats(sessions)
 
   useEffect(() => {
     const result = timeLogStorage.save({ sessions })
@@ -49,62 +52,62 @@ export function TimeLog() {
     setSessions([])
   }
 
-  const [count, formatted] = (() => {
-    const completed = sessions.filter(s => s.endedAt !== null)
-    const count = completed.length
-
-    const totalSeconds = completed.reduce((sum, s) => sum + Math.floor(((s.endedAt as number) - s.startedAt) / 1000), 0)
-    const hrs = Math.floor(totalSeconds / 3600)
-    const mins = Math.floor((totalSeconds % 3600) / 60)
-    const secs = totalSeconds % 60
-    const formatted = [hrs, mins, secs].map(v => String(v).padStart(2, '0')).join(':')
-
-    return [count, formatted] as const
-  })()
-
   return (
-    <div className='flex h-dvh flex-col bg-mist-950 text-mist-400'>
-      <button
-        className='flex h-3/4 flex-1 cursor-pointer items-center justify-center hover:bg-sky-950/50'
-        type='button'
-        onClick={toggle}
-      >
-        <BtnIcon size={64} weight='fill' className='text-sky-400' />
-      </button>
+    <div className='flex h-dvh flex-col items-center justify-center'>
+      <title>{LL.timeLog.title()}</title>
 
-      {/* Lower 1/4 – three action buttons */}
-      <div className='flex h-1/4 items-stretch'>
-        <Link
-          to='/apps'
-          className='flex flex-1 cursor-pointer items-center justify-center gap-2 transition-colors hover:bg-mist-900 hover:text-mist-100'
-        >
-          <HouseIcon size={36} weight='bold' />
-        </Link>
-
+      <div className='sm:bg-bg-2/50 sm:border-border-muted/50 flex w-full max-w-80 flex-col items-center justify-center gap-8 rounded-lg p-8 sm:border'>
         <button
+          onClick={toggle}
           type='button'
-          onClick={() => {}}
-          className='flex flex-1 cursor-pointer flex-col items-center justify-center gap-2 transition-colors hover:bg-emerald-950/50 hover:text-emerald-400'
+          className={styleBtn({
+            variant: 'primary',
+            size: 'icon-lg',
+            class: 'h-48 w-48 rounded-full',
+          })}
         >
-          <p>
-            <span>{LL.timeLog.totalSessionsLabel()}: </span>
-            <span>{count}</span>
-          </p>
-
-          <p>
-            <span>{LL.timeLog.totalDurationLabel()}: </span>
-            <span>{formatted}</span>
-          </p>
+          <BtnIcon size={64} weight='fill' />
         </button>
 
-        <button
-          type='button'
-          onClick={deleteAll}
-          className='flex flex-1 cursor-pointer items-center justify-center gap-2 transition-colors hover:bg-red-950/50 hover:text-red-400'
-        >
-          <TrashIcon size={36} weight='bold' />
-        </button>
+        <div className='flex w-full flex-col items-center justify-between gap-4 sm:flex-row'>
+          <p className='flex flex-col items-center sm:items-start'>
+            <span className='text-text-important text-3xl font-bold'>{count}</span>
+            <span className=''>{LL.timeLog.totalSessions()}</span>
+          </p>
+
+          <p className='flex flex-col items-center sm:items-end'>
+            <span className='text-text-important text-3xl font-bold'>{formatted}</span>
+            <span className=''>{LL.timeLog.totalDuration()}</span>
+          </p>
+        </div>
+
+        <div className='flex w-full flex-col items-center gap-2 *:w-full sm:flex-row sm:*:w-auto sm:*:flex-1'>
+          <Link to='/apps' className={styleBtn({ variant: 'outline', size: 'lg' })}>
+            <HouseIcon size={20} />
+            <span>{LL.timeLog.goHome()}</span>
+          </Link>
+
+          <button type='button' onClick={deleteAll} className={styleBtn({ variant: 'destructive', size: 'lg' })}>
+            <TrashIcon size={20} weight='bold' />
+            <span>{LL.timeLog.reset()}</span>
+          </button>
+        </div>
       </div>
     </div>
   )
+}
+
+function computeSessionStats(sessions: Session[]) {
+  const completed = sessions.filter((s): s is Session & { endedAt: number } => s.endedAt !== null)
+  const count = completed.length
+
+  const totalSeconds = completed.reduce((sum, s) => sum + Math.floor((s.endedAt - s.startedAt) / 1000), 0)
+
+  const hrs = Math.floor(totalSeconds / 3600)
+  const mins = Math.floor((totalSeconds % 3600) / 60)
+  const secs = totalSeconds % 60
+
+  const formatted = [hrs, mins, secs].map(v => String(v).padStart(2, '0')).join(':')
+
+  return { count, formatted }
 }

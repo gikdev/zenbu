@@ -23,8 +23,10 @@ const ja = {
     title: 'タイムログ',
     description: 'シンプルな作業集中タイマー',
     clearSessionsConfirm: 'すべてのセッションをクリアしますか？',
-    totalDurationLabel: '合計時間',
-    totalSessionsLabel: 'セッション数',
+    totalDuration: '合計時間',
+    totalSessions: 'セッション数',
+    goHome: 'ホームへ戻る',
+    reset: 'リセット',
   },
 
   phrasePlayer: {

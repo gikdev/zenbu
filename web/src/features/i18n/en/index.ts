@@ -23,8 +23,10 @@ const en = {
     title: 'Time Log',
     description: 'A dead-simple work focus timer',
     clearSessionsConfirm: 'Clear all sessions?',
-    totalSessionsLabel: 'Total Sessions',
-    totalDurationLabel: 'Total Duration',
+    totalSessions: 'Total Sessions',
+    totalDuration: 'Total Duration',
+    goHome: 'Go Home',
+    reset: 'Reset',
   },
 
   phrasePlayer: {
