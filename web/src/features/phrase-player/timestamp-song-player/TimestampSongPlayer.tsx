@@ -274,7 +274,12 @@ export function TimestampSongPlayer() {
         onClose={() => changeShowMoreControls(false)}
       >
         <div className='flex flex-col gap-2'>
-          <button type='button' disabled={songUrl == null} className={styleBtn({ variant: 'outline' })} onClick={handleJumpToTime}>
+          <button
+            type='button'
+            disabled={songUrl == null}
+            className={styleBtn({ variant: 'outline' })}
+            onClick={handleJumpToTime}
+          >
             <ArrowArcRightIcon size={20} />
             <span>{LL.phrasePlayer.timestampSongPlayer.jumpToButton()}</span>
           </button>

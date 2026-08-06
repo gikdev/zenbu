@@ -14,6 +14,7 @@ import { styleBtn } from '#/common/atoms/btn'
 import { styleInput } from '#/common/atoms/input'
 import { unwrapOr } from '#/common/helpers/Result'
 import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
+import { PageShell } from '#/common/molecules/PageShell'
 import { useI18nContext, useIsRtl, type Locales } from '#/features/i18n'
 import { useCurrentTheme, themeStore } from '#/features/theming'
 
@@ -64,7 +65,7 @@ export function WritingArea() {
   }
 
   return (
-    <div className='flex h-dvh flex-col'>
+    <PageShell variants={{ heightFull: 'max' }}>
       <title>{LL.writingArea.title()}</title>
 
       <div className='flex items-center justify-between px-4 py-2'>
@@ -181,6 +182,6 @@ export function WritingArea() {
         wrap={wrapEnabled ? 'soft' : 'off'}
         className='w-full flex-1 resize-none px-4 py-4 outline-none'
       />
-    </div>
+    </PageShell>
   )
 }

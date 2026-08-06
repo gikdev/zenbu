@@ -33,21 +33,18 @@ const en = {
     title: 'Phrase Player',
     description: 'A music with phrases player',
 
-    launchSection: {
-      player: {
-        title: 'Player',
-        description: 'Play an existing configured song.',
-      },
-      editor: {
-        title: 'Editor',
-        description: 'Configure a song (new / edit).',
-      },
-      home: {
-        title: 'Home',
-        description: 'Go home.',
-      },
+    player: {
+      title: 'Player',
+      description: 'Play an existing configured song.',
     },
-
+    editor: {
+      title: 'Editor',
+      description: 'Configure a song (new / edit).',
+    },
+    home: {
+      title: 'Home',
+      description: 'Go home.',
+    },
     timestampSongPlayer: {
       toastSuccess: 'Successfully set.',
       toastError: 'An error related to audio has occurred.',

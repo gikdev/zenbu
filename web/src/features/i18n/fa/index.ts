@@ -32,19 +32,17 @@ const fa = {
   phrasePlayer: {
     title: 'فریز پلیر',
     description: 'یک پخش‌کنندهٔ موسیقی با عبارات',
-    launchSection: {
-      player: {
-        title: 'پخش‌کننده',
-        description: 'یک آهنگ پیکربندی‌شده را پخش کن.',
-      },
-      editor: {
-        title: 'ویرایشگر',
-        description: 'یک آهنگ را پیکربندی کن (جدید / ویرایش).',
-      },
-      home: {
-        title: 'خانه',
-        description: 'برو به صفحهٔ اصلی.',
-      },
+    player: {
+      title: 'پخش‌کننده',
+      description: 'یک آهنگ پیکربندی‌شده را پخش کن.',
+    },
+    editor: {
+      title: 'ویرایشگر',
+      description: 'یک آهنگ را پیکربندی کن (جدید / ویرایش).',
+    },
+    home: {
+      title: 'خانه',
+      description: 'برو به صفحهٔ اصلی.',
     },
     timestampSongPlayer: {
       toastSuccess: 'با موفقیت تنظیم شد.',

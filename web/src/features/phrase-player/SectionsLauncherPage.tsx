@@ -1,34 +1,35 @@
 import { HouseIcon, MusicNotesPlusIcon, PlayCircleIcon, type Icon } from '@phosphor-icons/react'
 import { Link, linkOptions } from '@tanstack/react-router'
 
+import { PageShell } from '#/common/molecules/PageShell'
 import { useI18nContext } from '#/features/i18n'
 
 export function SectionsLauncherPage() {
   const { LL } = useI18nContext()
 
   return (
-    <div className='bg-bg-1 text-text-muted flex h-dvh flex-col overflow-hidden md:flex-row'>
+    <PageShell variants={{ heightFull: 'max', class: 'md:flex-row' }}>
       <Section
         url={linkOptions({ to: '/apps/phrase-player/player' }).to}
         icon={PlayCircleIcon}
-        title={LL.phrasePlayer.launchSection.player.title()}
-        description={LL.phrasePlayer.launchSection.player.description()}
+        title={LL.phrasePlayer.player.title()}
+        description={LL.phrasePlayer.player.description()}
       />
 
       <Section
         url={linkOptions({ to: '/apps/phrase-player/editor' }).to}
         icon={MusicNotesPlusIcon}
-        title={LL.phrasePlayer.launchSection.editor.title()}
-        description={LL.phrasePlayer.launchSection.editor.description()}
+        title={LL.phrasePlayer.editor.title()}
+        description={LL.phrasePlayer.editor.description()}
       />
 
       <Section
         url={linkOptions({ to: '/apps' }).to}
         icon={HouseIcon}
-        title={LL.phrasePlayer.launchSection.home.title()}
-        description={LL.phrasePlayer.launchSection.home.description()}
+        title={LL.phrasePlayer.home.title()}
+        description={LL.phrasePlayer.home.description()}
       />
-    </div>
+    </PageShell>
   )
 }
 

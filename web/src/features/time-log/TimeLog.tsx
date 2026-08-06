@@ -53,45 +53,41 @@ export function TimeLog() {
   }
 
   return (
-    <div className='flex h-dvh flex-col items-center justify-center'>
-      <title>{LL.timeLog.title()}</title>
+    <div className='sm:bg-bg-2/50 sm:border-border-muted/50 flex w-full max-w-80 flex-col items-center justify-center gap-8 rounded-lg p-8 sm:border'>
+      <button
+        onClick={toggle}
+        type='button'
+        className={styleBtn({
+          variant: 'primary',
+          size: 'icon-lg',
+          class: 'h-48 w-48 rounded-full',
+        })}
+      >
+        <BtnIcon size={64} weight='fill' />
+      </button>
 
-      <div className='sm:bg-bg-2/50 sm:border-border-muted/50 flex w-full max-w-80 flex-col items-center justify-center gap-8 rounded-lg p-8 sm:border'>
-        <button
-          onClick={toggle}
-          type='button'
-          className={styleBtn({
-            variant: 'primary',
-            size: 'icon-lg',
-            class: 'h-48 w-48 rounded-full',
-          })}
-        >
-          <BtnIcon size={64} weight='fill' />
+      <div className='flex w-full flex-col items-center justify-between gap-4 sm:flex-row'>
+        <p className='flex flex-col items-center sm:items-start'>
+          <span className='text-text-important text-3xl font-bold'>{count}</span>
+          <span className=''>{LL.timeLog.totalSessions()}</span>
+        </p>
+
+        <p className='flex flex-col items-center sm:items-end'>
+          <span className='text-text-important text-3xl font-bold'>{formatted}</span>
+          <span className=''>{LL.timeLog.totalDuration()}</span>
+        </p>
+      </div>
+
+      <div className='flex w-full flex-col items-center gap-2 *:w-full sm:flex-row sm:*:w-auto sm:*:flex-1'>
+        <Link to='/apps' className={styleBtn({ variant: 'outline', size: 'lg' })}>
+          <HouseIcon size={20} />
+          <span>{LL.timeLog.goHome()}</span>
+        </Link>
+
+        <button type='button' onClick={deleteAll} className={styleBtn({ variant: 'destructive', size: 'lg' })}>
+          <TrashIcon size={20} weight='bold' />
+          <span>{LL.timeLog.reset()}</span>
         </button>
-
-        <div className='flex w-full flex-col items-center justify-between gap-4 sm:flex-row'>
-          <p className='flex flex-col items-center sm:items-start'>
-            <span className='text-text-important text-3xl font-bold'>{count}</span>
-            <span className=''>{LL.timeLog.totalSessions()}</span>
-          </p>
-
-          <p className='flex flex-col items-center sm:items-end'>
-            <span className='text-text-important text-3xl font-bold'>{formatted}</span>
-            <span className=''>{LL.timeLog.totalDuration()}</span>
-          </p>
-        </div>
-
-        <div className='flex w-full flex-col items-center gap-2 *:w-full sm:flex-row sm:*:w-auto sm:*:flex-1'>
-          <Link to='/apps' className={styleBtn({ variant: 'outline', size: 'lg' })}>
-            <HouseIcon size={20} />
-            <span>{LL.timeLog.goHome()}</span>
-          </Link>
-
-          <button type='button' onClick={deleteAll} className={styleBtn({ variant: 'destructive', size: 'lg' })}>
-            <TrashIcon size={20} weight='bold' />
-            <span>{LL.timeLog.reset()}</span>
-          </button>
-        </div>
       </div>
     </div>
   )
