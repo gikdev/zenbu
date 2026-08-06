@@ -1,6 +1,6 @@
 import { Outlet, createRootRoute } from '@tanstack/react-router'
 
-import { useHandleLanguageChange } from '#/features/i18n/useHandleLanguageChange'
+import { useHandleLanguageChange } from '#/features/i18n'
 import { SettingsBtn, SettingsDialog } from '#/features/settings'
 import { useCurrentTheme, useHandleThemeChange } from '#/features/theming'
 

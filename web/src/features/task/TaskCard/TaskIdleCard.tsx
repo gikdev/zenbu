@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { styleInput } from '#/common/atoms/input'
-import { useI18nContext } from '#/features/i18n/i18n-react'
+import { useI18nContext } from '#/features/i18n'
 
 import { taskStore } from '../store'
 import { CONTAINER_CLN, FADING_BTN_LABEL_CLN } from './common'

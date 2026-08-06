@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
-import { useI18nContext } from '#/features/i18n/i18n-react'
+import { useI18nContext } from '#/features/i18n'
 
 export const TaskHelp = () => {
   const { LL } = useI18nContext()

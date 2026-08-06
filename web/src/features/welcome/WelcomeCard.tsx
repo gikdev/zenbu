@@ -2,8 +2,7 @@ import { Link } from '@tanstack/react-router'
 
 import { version } from '#/App/configs/version.json'
 import { styleBtn } from '#/common/atoms/btn'
-
-import { useI18nContext } from '../i18n/i18n-react'
+import { useI18nContext } from '#/features/i18n'
 
 export function WelcomeCard() {
   const { LL } = useI18nContext()

@@ -1,8 +1,8 @@
 import { GearIcon } from '@phosphor-icons/react'
 
 import { styleBtn } from '#/common/atoms/btn'
+import { useI18nContext } from '#/features/i18n'
 
-import { useI18nContext } from '../i18n/i18n-react'
 import { settingsStore } from './store'
 
 export const SettingsBtn = () => {

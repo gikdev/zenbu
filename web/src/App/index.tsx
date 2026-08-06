@@ -1,7 +1,7 @@
 import { RouterProvider } from '@tanstack/react-router'
 import { StrictMode } from 'react'
 
-import { I18nProvider } from '#/features/i18n/I18nProvider'
+import { I18nProvider } from '#/features/i18n'
 
 import './configs/styles.css'
 import { router } from './configs/router'

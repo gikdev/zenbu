@@ -4,7 +4,7 @@ import confetti from 'canvas-confetti'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { onError } from '#/common/helpers/onError'
-import { useI18nContext } from '#/features/i18n/i18n-react'
+import { useI18nContext } from '#/features/i18n'
 import { taskStore } from '#/features/task/store'
 
 import { CONTAINER_CLN, FADING_BTN_LABEL_CLN } from './common'

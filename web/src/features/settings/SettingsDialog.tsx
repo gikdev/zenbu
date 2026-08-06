@@ -11,7 +11,7 @@ import { useSelector } from '@tanstack/react-store'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
-import { useI18nContext } from '#/features/i18n/i18n-react'
+import { useI18nContext } from '#/features/i18n'
 import { themeStore, useCurrentTheme } from '#/features/theming'
 
 import { settingsStore } from './store'
