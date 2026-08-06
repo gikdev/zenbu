@@ -29,9 +29,9 @@ const ja = {
     reset: 'リセット',
   },
 
-  phrasePlayer: {
-    title: 'フレーズプレーヤー',
-    description: 'フレーズ付き音楽プレーヤー',
+  lyricsPlayer: {
+    title: '歌詞プレイヤー',
+    description: '音楽付き歌詞プレイヤー',
     player: {
       title: 'プレーヤー',
       description: '設定済みの曲を再生します。',

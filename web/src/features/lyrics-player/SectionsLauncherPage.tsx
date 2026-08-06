@@ -10,24 +10,24 @@ export function SectionsLauncherPage() {
   return (
     <PageShell variants={{ heightFull: 'max', class: 'md:flex-row' }}>
       <Section
-        url={linkOptions({ to: '/apps/phrase-player/player' }).to}
+        url={linkOptions({ to: '/apps/lyrics-player/player' }).to}
         icon={PlayCircleIcon}
-        title={LL.phrasePlayer.player.title()}
-        description={LL.phrasePlayer.player.description()}
+        title={LL.lyricsPlayer.player.title()}
+        description={LL.lyricsPlayer.player.description()}
       />
 
       <Section
-        url={linkOptions({ to: '/apps/phrase-player/editor' }).to}
+        url={linkOptions({ to: '/apps/lyrics-player/editor' }).to}
         icon={MusicNotesPlusIcon}
-        title={LL.phrasePlayer.editor.title()}
-        description={LL.phrasePlayer.editor.description()}
+        title={LL.lyricsPlayer.editor.title()}
+        description={LL.lyricsPlayer.editor.description()}
       />
 
       <Section
         url={linkOptions({ to: '/apps' }).to}
         icon={HouseIcon}
-        title={LL.phrasePlayer.home.title()}
-        description={LL.phrasePlayer.home.description()}
+        title={LL.lyricsPlayer.home.title()}
+        description={LL.lyricsPlayer.home.description()}
       />
     </PageShell>
   )

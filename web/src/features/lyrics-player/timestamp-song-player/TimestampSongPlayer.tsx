@@ -65,7 +65,7 @@ export function TimestampSongPlayer() {
       return TimeFormatter.formatSeconds(totalTime)
     }
 
-    return LL.phrasePlayer.timestampSongPlayer.notAvailable()
+    return LL.lyricsPlayer.timestampSongPlayer.notAvailable()
   })()
 
   const handlePlayPause = () => {
@@ -74,7 +74,7 @@ export function TimestampSongPlayer() {
     if (isPlaying) {
       audioRef.current.pause()
     } else {
-      audioRef.current.play()
+      void audioRef.current.play()
     }
   }
 
@@ -98,7 +98,7 @@ export function TimestampSongPlayer() {
     audioRef.current.src = blobRef.current
     e.target.value = ''
 
-    toast.success(LL.phrasePlayer.timestampSongPlayer.toastSuccess())
+    toast.success(LL.lyricsPlayer.timestampSongPlayer.toastSuccess())
   }
 
   const handleDelete = () => {
@@ -142,7 +142,7 @@ export function TimestampSongPlayer() {
 
   const handleJumpToTime = () => {
     if (!audioRef.current) return
-    const answer = window.prompt(LL.phrasePlayer.timestampSongPlayer.jumpToPrompt(), currentTime.toString())
+    const answer = window.prompt(LL.lyricsPlayer.timestampSongPlayer.jumpToPrompt(), currentTime.toString())
     if (!answer) return
     const converted = Number.parseFloat(answer)
     const isNan = Number.isNaN(converted)
@@ -212,7 +212,7 @@ export function TimestampSongPlayer() {
       <div className='flex items-center justify-center gap-1'>
         {songUrl ? (
           <button
-            title={LL.phrasePlayer.timestampSongPlayer.removeAudio()}
+            title={LL.lyricsPlayer.timestampSongPlayer.removeAudio()}
             className={styleBtn({ variant: 'destructive', size: 'icon-lg' })}
             type='button'
             onClick={handleDelete}
@@ -269,7 +269,7 @@ export function TimestampSongPlayer() {
       </div>
 
       <AdaptiveDialog
-        title={LL.phrasePlayer.timestampSongPlayer.moreOptions()}
+        title={LL.lyricsPlayer.timestampSongPlayer.moreOptions()}
         isOpen={showMoreControls}
         onClose={() => changeShowMoreControls(false)}
       >
@@ -281,7 +281,7 @@ export function TimestampSongPlayer() {
             onClick={handleJumpToTime}
           >
             <ArrowArcRightIcon size={20} />
-            <span>{LL.phrasePlayer.timestampSongPlayer.jumpToButton()}</span>
+            <span>{LL.lyricsPlayer.timestampSongPlayer.jumpToButton()}</span>
           </button>
 
           <select
@@ -292,7 +292,7 @@ export function TimestampSongPlayer() {
           >
             {volumeLevelValues.map(vlv => (
               <option key={vlv} value={vlv} className='bg-mist-900 text-mist-400 capitalize'>
-                🔊 {LL.phrasePlayer.timestampSongPlayer.volume[vlv]()}
+                🔊 {LL.lyricsPlayer.timestampSongPlayer.volume[vlv]()}
               </option>
             ))}
           </select>
@@ -325,22 +325,21 @@ export function TimestampSongPlayer() {
         </div>
       </AdaptiveDialog>
 
-      {/** biome-ignore lint/a11y/useMediaCaption: いいんだよ！ */}
       <audio
         controls
         ref={audioRef}
         className='hidden w-full'
-        // biome-ignore lint/correctness/noChildrenProp: いいんだよ！
-        children={LL.phrasePlayer.timestampSongPlayer.audioNotSupported()}
         onLoadedMetadata={e => setTotalTime(e.currentTarget.duration)}
         onPause={() => pause()}
         onPlay={() => play()}
         onTimeUpdate={handleTimeUpdate}
         onError={e => {
-          toast.error(LL.phrasePlayer.timestampSongPlayer.toastError())
+          toast.error(LL.lyricsPlayer.timestampSongPlayer.toastError())
           console.log(e)
         }}
-      />
+      >
+        {LL.lyricsPlayer.timestampSongPlayer.audioNotSupported()}
+      </audio>
     </div>
   )
 }

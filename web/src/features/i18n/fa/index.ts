@@ -29,9 +29,9 @@ const fa = {
     reset: 'ریست',
   },
 
-  phrasePlayer: {
-    title: 'فریز پلیر',
-    description: 'یک پخش‌کنندهٔ موسیقی با عبارات',
+  lyricsPlayer: {
+    title: 'پخش‌کننده متن آهنگ',
+    description: 'پلیر متن آهنگ با موسیقی',
     player: {
       title: 'پخش‌کننده',
       description: 'یک آهنگ پیکربندی‌شده را پخش کن.',

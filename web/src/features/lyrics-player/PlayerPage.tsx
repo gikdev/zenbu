@@ -13,15 +13,15 @@ export const PlayerPage = () => {
 
   return (
     <PageShell variants={{ heightFull: 'max' }}>
-      <title>{LL.phrasePlayer.player.title()}</title>
+      <title>{LL.lyricsPlayer.player.title()}</title>
 
       <div className='flex items-center justify-between px-4 py-2'>
         <div className='flex items-center gap-1'>
-          <Link to='/apps/phrase-player' className={styleBtn({ size: 'icon' })}>
+          <Link to='/apps/lyrics-player' className={styleBtn({ size: 'icon' })}>
             <ArrowLeftIcon mirrored={isRtl} size={20} />
           </Link>
 
-          <h1 className='text-text-important text-lg font-bold tracking-wide'>{LL.phrasePlayer.player.title()}</h1>
+          <h1 className='text-text-important text-lg font-bold tracking-wide'>{LL.lyricsPlayer.player.title()}</h1>
         </div>
       </div>
 

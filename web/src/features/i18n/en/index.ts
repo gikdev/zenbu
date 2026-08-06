@@ -29,9 +29,9 @@ const en = {
     reset: 'Reset',
   },
 
-  phrasePlayer: {
-    title: 'Phrase Player',
-    description: 'A music with phrases player',
+  lyricsPlayer: {
+    title: 'Lyrics Player',
+    description: 'A lyrics player with music.',
 
     player: {
       title: 'Player',

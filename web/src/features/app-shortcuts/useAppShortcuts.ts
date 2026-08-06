@@ -27,12 +27,12 @@ export const useAppShortcuts = (): IAppShortcut[] => {
         description: LL.writingArea.description(),
       },
       {
-        id: 'phrase-player',
-        name: LL.phrasePlayer.title(),
+        id: 'lyrics-player',
+        name: LL.lyricsPlayer.title(),
         icon: MusicNoteIcon,
-        url: linkOptions({ to: '/apps/phrase-player' }).to,
+        url: linkOptions({ to: '/apps/lyrics-player' }).to,
         disabled: false,
-        description: LL.phrasePlayer.description(),
+        description: LL.lyricsPlayer.description(),
       },
       {
         id: 'account-manager',
@@ -51,6 +51,7 @@ export const useAppShortcuts = (): IAppShortcut[] => {
         description: LL.settings.description(),
       },
     ],
+    // oxlint-disable-next-line react-hooks/exhaustive-deps
     [locale],
   )
 }

@@ -14,7 +14,8 @@ export function useHandleLanguageChange() {
   }, [locale])
 
   useEffect(() => {
-    queryClient.invalidateQueries()
+    void queryClient.invalidateQueries()
+    // oxlint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
   useEffect(() => {
