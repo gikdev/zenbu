@@ -13,14 +13,13 @@ export const LyricsPlayerPage = () => {
 
   return (
     <PageShell variants={{ heightFull: 'max' }}>
-      <title>{LL.lyricsPlayer.player.title()}</title>
-
       <div className='flex items-center justify-between px-4 py-2'>
         <div className='flex items-center gap-1'>
           <Link to='/apps' className={styleBtn({ size: 'icon' })}>
             <HouseIcon mirrored={isRtl} size={20} />
           </Link>
 
+          <title>{LL.lyricsPlayer.player.title()}</title>
           <h1 className='text-text-important text-lg font-bold tracking-wide'>{LL.lyricsPlayer.player.title()}</h1>
         </div>
       </div>
