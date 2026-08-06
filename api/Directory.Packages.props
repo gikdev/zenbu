@@ -28,6 +28,10 @@
     <PackageVersion Include="Serilog.AspNetCore" Version="10.0.0" />
   </ItemGroup>
 
+  <ItemGroup Label="Internationalization">
+    <PackageVersion Include="Microsoft.Extensions.Localization" Version="10.0.10" />
+  </ItemGroup>
+
   <ItemGroup Label="API Docs">
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.10" />
     <PackageVersion Include="Scalar.AspNetCore" Version="2.16.17" />

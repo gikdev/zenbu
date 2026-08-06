@@ -4,7 +4,6 @@ using App.Application;
 using App.Infrastructure;
 using App.Infrastructure.Persistence;
 using App.ServiceDefaults;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using Scalar.AspNetCore;
 using Serilog;
@@ -23,6 +22,19 @@ try {
     builder.Host.UseSerilog(
         (ctx, loggerConfig) => loggerConfig.ReadFrom.Configuration(ctx.Configuration)
     );
+
+    builder.Services.AddLocalization(
+        // options => options.ResourcesPath = "Resources"    
+    );
+
+    builder.Services.Configure<RequestLocalizationOptions>(options => {
+        string[] cultures = ["en", "fa", "ja"];
+
+        options
+            .SetDefaultCulture(cultures[0])
+            .AddSupportedCultures(cultures)
+            .AddSupportedUICultures(cultures);
+    });
 
     // Aspire-managed SQLite
     builder.AddSqliteConnection("sqlite");
@@ -77,6 +89,8 @@ try {
     app.UseExceptionHandler();
     app.UseStatusCodePages();
 
+    app.UseRequestLocalization();
+
     app.MapOpenApi();
     app.MapScalarApiReference(options => {
         options.WithTitle("App API");
@@ -91,6 +105,7 @@ try {
     // Map endpoints
     app.MapIdentityEndpoints();
     app.MapTodoEndpoints();
+    app.MapWelcomeEndpoints();
 
     // Aspire default endpoints (health, alive)
     app.MapDefaultEndpoints();
