@@ -1,4 +1,12 @@
-import { GearIcon, MusicNoteIcon, PencilIcon, TimerIcon, UserCircleIcon } from '@phosphor-icons/react'
+import {
+  ClockCounterClockwiseIcon,
+  GearIcon,
+  MusicNoteIcon,
+  PencilIcon,
+  PenNibStraightIcon,
+  TimerIcon,
+  UserCircleIcon,
+} from '@phosphor-icons/react'
 import { linkOptions } from '@tanstack/react-router'
 import { useMemo } from 'react'
 
@@ -25,6 +33,22 @@ export const useAppShortcuts = (): IAppShortcut[] => {
         disabled: false,
         url: linkOptions({ to: '/apps/writing-area' }).to,
         description: LL.writingArea.description(),
+      },
+      {
+        id: 'lyrics-editor',
+        name: LL.lyricsEditor.title(),
+        icon: PenNibStraightIcon,
+        url: linkOptions({ to: '/apps/lyrics-editor' }).to,
+        disabled: false,
+        description: LL.lyricsEditor.description(),
+      },
+      {
+        id: 'lyrics-syncer',
+        name: LL.lyricsSyncer.title(),
+        icon: ClockCounterClockwiseIcon,
+        url: linkOptions({ to: '/apps/lyrics-syncer' }).to,
+        disabled: false,
+        description: LL.lyricsSyncer.description(),
       },
       {
         id: 'lyrics-player',

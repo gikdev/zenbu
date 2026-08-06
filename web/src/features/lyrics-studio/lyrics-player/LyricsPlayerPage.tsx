@@ -3,11 +3,11 @@ import { Link } from '@tanstack/react-router'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { PageShell } from '#/common/molecules/PageShell'
+import { useI18nContext, useIsRtl } from '#/features/i18n'
 
-import { useI18nContext, useIsRtl } from '../i18n'
-import { TimestampSongPlayer } from './timestamp-song-player'
+import { TimestampSongPlayer } from '../timestamp-song-player'
 
-export const PlayerPage = () => {
+export const LyricsPlayerPage = () => {
   const { LL } = useI18nContext()
   const isRtl = useIsRtl()
 

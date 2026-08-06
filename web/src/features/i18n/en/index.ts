@@ -29,6 +29,16 @@ const en = {
     reset: 'Reset',
   },
 
+  lyricsEditor: {
+    title: 'Lyrics Editor',
+    description: 'Write, edit, and view your lyrics.',
+  },
+
+  lyricsSyncer: {
+    title: 'Lyrics Syncer',
+    description: `Sync the lyric's blocks with the music`,
+  },
+
   lyricsPlayer: {
     title: 'Lyrics Player',
     description: 'A lyrics player with music.',

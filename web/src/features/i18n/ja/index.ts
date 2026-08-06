@@ -29,6 +29,16 @@ const ja = {
     reset: 'リセット',
   },
 
+  lyricsEditor: {
+    title: '歌詞エディター',
+    description: '歌詞の作成、編集、表示ができます。',
+  },
+
+  lyricsSyncer: {
+    title: '歌詞シンクロナイザー',
+    description: '歌詞ブロックを音楽に同期させます。',
+  },
+
   lyricsPlayer: {
     title: '歌詞プレイヤー',
     description: '音楽付き歌詞プレイヤー',

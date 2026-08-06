@@ -29,6 +29,16 @@ const fa = {
     reset: 'ریست',
   },
 
+  lyricsEditor: {
+    title: 'ویرایشگر متن آهنگ',
+    description: 'نوشتن، ویرایش و مشاهدهٔ متن آهنگ.',
+  },
+
+  lyricsSyncer: {
+    title: 'همگام‌ساز متن آهنگ',
+    description: 'همگام‌سازی بلاک‌های متن با موسیقی.',
+  },
+
   lyricsPlayer: {
     title: 'پخش‌کننده متن آهنگ',
     description: 'پلیر متن آهنگ با موسیقی',
