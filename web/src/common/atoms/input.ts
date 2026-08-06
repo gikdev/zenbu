@@ -2,7 +2,7 @@ import { tv } from 'tailwind-variants'
 
 export const styleInput = tv({
   base: `
-    min-h-8 w-full min-w-0
+    min-h-10 w-full min-w-0
     rounded-md border border-border-muted
     bg-transparent px-3 py-1
     transition-colors outline-none

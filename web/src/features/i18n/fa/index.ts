@@ -46,6 +46,22 @@ const fa = {
         description: 'برو به صفحهٔ اصلی.',
       },
     },
+    timestampSongPlayer: {
+      toastSuccess: 'با موفقیت تنظیم شد.',
+      toastError: 'خطایی در رابطه با صدا رخ داده است.',
+      removeAudio: 'حذف صدا',
+      moreOptions: 'گزینه‌های بیشتر',
+      jumpToButton: 'پرش به',
+      jumpToPrompt: 'پرش به:',
+      audioNotSupported: 'صدا پشتیبانی نمی‌شود.',
+      notAvailable: 'ناموجود',
+      volume: {
+        muted: 'بی‌صدا',
+        low: 'کم',
+        medium: 'متوسط',
+        high: 'بلند',
+      },
+    },
   },
 
   accountManager: {

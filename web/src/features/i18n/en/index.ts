@@ -47,6 +47,23 @@ const en = {
         description: 'Go home.',
       },
     },
+
+    timestampSongPlayer: {
+      toastSuccess: 'Successfully set.',
+      toastError: 'An error related to audio has occurred.',
+      removeAudio: 'Remove audio',
+      moreOptions: 'More Options',
+      jumpToButton: 'Jump To',
+      jumpToPrompt: 'Jump To:',
+      audioNotSupported: 'Audio not supported.',
+      notAvailable: 'N/A',
+      volume: {
+        muted: 'Muted',
+        low: 'Low',
+        medium: 'Medium',
+        high: 'High',
+      },
+    },
   },
 
   accountManager: {

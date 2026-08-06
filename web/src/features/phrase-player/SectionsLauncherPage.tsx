@@ -3,7 +3,7 @@ import { Link, linkOptions } from '@tanstack/react-router'
 
 import { useI18nContext } from '#/features/i18n'
 
-export function SectionsLauncher() {
+export function SectionsLauncherPage() {
   const { LL } = useI18nContext()
 
   return (

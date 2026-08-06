@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { SectionsLauncher } from '#/features/phrase-player/SectionsLauncher'
+import { SectionsLauncherPage } from '#/features/phrase-player/SectionsLauncherPage'
 
 export const Route = createFileRoute('/apps/phrase-player/')({
-  component: SectionsLauncher,
+  component: SectionsLauncherPage,
 })
