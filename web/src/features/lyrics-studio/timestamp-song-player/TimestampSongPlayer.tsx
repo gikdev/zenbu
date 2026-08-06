@@ -247,7 +247,11 @@ export function TimestampSongPlayer() {
             class: 'rounded-full',
           })}
         >
-          {isPlaying ? <PauseIcon mirrored={isRtl} size={24} weight='fill' /> : <PlayIcon mirrored={isRtl} size={24} weight='fill' />}
+          {isPlaying ? (
+            <PauseIcon mirrored={isRtl} size={24} weight='fill' />
+          ) : (
+            <PlayIcon mirrored={isRtl} size={24} weight='fill' />
+          )}
         </button>
 
         <button
