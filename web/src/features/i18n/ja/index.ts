@@ -25,6 +25,20 @@ const ja = {
   phrasePlayer: {
     title: 'フレーズプレーヤー',
     description: 'フレーズ付き音楽プレーヤー',
+    launchSection: {
+      player: {
+        title: 'プレーヤー',
+        description: '設定済みの曲を再生します。',
+      },
+      editor: {
+        title: 'エディター',
+        description: '曲を設定します（新規／編集）。',
+      },
+      home: {
+        title: 'ホーム',
+        description: 'ホームに戻ります。',
+      },
+    },
   },
 
   accountManager: {

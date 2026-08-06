@@ -15,6 +15,9 @@ import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
 import { Route as AppsTimeLogRouteImport } from './../../routes/apps/time-log'
 import { Route as AppsWritingAreaRouteImport } from './../../routes/apps/writing-area'
+import { Route as AppsPhrasePlayerIndexRouteImport } from './../../routes/apps/phrase-player/index'
+import { Route as AppsPhrasePlayerEditorRouteImport } from './../../routes/apps/phrase-player/editor'
+import { Route as AppsPhrasePlayerPlayerRouteImport } from './../../routes/apps/phrase-player/player'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +49,21 @@ const AppsWritingAreaRoute = AppsWritingAreaRouteImport.update({
   path: '/apps/writing-area',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppsPhrasePlayerIndexRoute = AppsPhrasePlayerIndexRouteImport.update({
+  id: '/apps/phrase-player/',
+  path: '/apps/phrase-player/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsPhrasePlayerEditorRoute = AppsPhrasePlayerEditorRouteImport.update({
+  id: '/apps/phrase-player/editor',
+  path: '/apps/phrase-player/editor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsPhrasePlayerPlayerRoute = AppsPhrasePlayerPlayerRouteImport.update({
+  id: '/apps/phrase-player/player',
+  path: '/apps/phrase-player/player',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +72,9 @@ export interface FileRoutesByFullPath {
   '/apps/time-log': typeof AppsTimeLogRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
   '/apps/': typeof AppsIndexRoute
+  '/apps/phrase-player/editor': typeof AppsPhrasePlayerEditorRoute
+  '/apps/phrase-player/player': typeof AppsPhrasePlayerPlayerRoute
+  '/apps/phrase-player/': typeof AppsPhrasePlayerIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +83,9 @@ export interface FileRoutesByTo {
   '/apps/time-log': typeof AppsTimeLogRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
   '/apps': typeof AppsIndexRoute
+  '/apps/phrase-player/editor': typeof AppsPhrasePlayerEditorRoute
+  '/apps/phrase-player/player': typeof AppsPhrasePlayerPlayerRoute
+  '/apps/phrase-player': typeof AppsPhrasePlayerIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +95,9 @@ export interface FileRoutesById {
   '/apps/time-log': typeof AppsTimeLogRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
   '/apps/': typeof AppsIndexRoute
+  '/apps/phrase-player/editor': typeof AppsPhrasePlayerEditorRoute
+  '/apps/phrase-player/player': typeof AppsPhrasePlayerPlayerRoute
+  '/apps/phrase-player/': typeof AppsPhrasePlayerIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +108,9 @@ export interface FileRouteTypes {
     | '/apps/time-log'
     | '/apps/writing-area'
     | '/apps/'
+    | '/apps/phrase-player/editor'
+    | '/apps/phrase-player/player'
+    | '/apps/phrase-player/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +119,9 @@ export interface FileRouteTypes {
     | '/apps/time-log'
     | '/apps/writing-area'
     | '/apps'
+    | '/apps/phrase-player/editor'
+    | '/apps/phrase-player/player'
+    | '/apps/phrase-player'
   id:
     | '__root__'
     | '/'
@@ -97,6 +130,9 @@ export interface FileRouteTypes {
     | '/apps/time-log'
     | '/apps/writing-area'
     | '/apps/'
+    | '/apps/phrase-player/editor'
+    | '/apps/phrase-player/player'
+    | '/apps/phrase-player/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +142,9 @@ export interface RootRouteChildren {
   AppsTimeLogRoute: typeof AppsTimeLogRoute
   AppsWritingAreaRoute: typeof AppsWritingAreaRoute
   AppsIndexRoute: typeof AppsIndexRoute
+  AppsPhrasePlayerEditorRoute: typeof AppsPhrasePlayerEditorRoute
+  AppsPhrasePlayerPlayerRoute: typeof AppsPhrasePlayerPlayerRoute
+  AppsPhrasePlayerIndexRoute: typeof AppsPhrasePlayerIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -152,6 +191,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppsWritingAreaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/apps/phrase-player/': {
+      id: '/apps/phrase-player/'
+      path: '/apps/phrase-player'
+      fullPath: '/apps/phrase-player/'
+      preLoaderRoute: typeof AppsPhrasePlayerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/phrase-player/editor': {
+      id: '/apps/phrase-player/editor'
+      path: '/apps/phrase-player/editor'
+      fullPath: '/apps/phrase-player/editor'
+      preLoaderRoute: typeof AppsPhrasePlayerEditorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/phrase-player/player': {
+      id: '/apps/phrase-player/player'
+      path: '/apps/phrase-player/player'
+      fullPath: '/apps/phrase-player/player'
+      preLoaderRoute: typeof AppsPhrasePlayerPlayerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -162,6 +222,9 @@ const rootRouteChildren: RootRouteChildren = {
   AppsTimeLogRoute: AppsTimeLogRoute,
   AppsWritingAreaRoute: AppsWritingAreaRoute,
   AppsIndexRoute: AppsIndexRoute,
+  AppsPhrasePlayerEditorRoute: AppsPhrasePlayerEditorRoute,
+  AppsPhrasePlayerPlayerRoute: AppsPhrasePlayerPlayerRoute,
+  AppsPhrasePlayerIndexRoute: AppsPhrasePlayerIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

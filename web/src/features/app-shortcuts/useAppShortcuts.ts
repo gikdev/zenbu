@@ -30,8 +30,8 @@ export const useAppShortcuts = (): IAppShortcut[] => {
         id: 'phrase-player',
         name: LL.phrasePlayer.title(),
         icon: MusicNoteIcon,
-        url: linkOptions({ to: '.' }).to,
-        disabled: true,
+        url: linkOptions({ to: '/apps/phrase-player' }).to,
+        disabled: false,
         description: LL.phrasePlayer.description(),
       },
       {
