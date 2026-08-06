@@ -1,26 +1,22 @@
 import axios from 'axios'
-// TODO: Fix it.
-// import { getAuthToken } from '#/features/auth/auth-store'
 
 import { client } from './client'
+import { useEffect } from 'react'
+import { useI18nContext } from '../i18n'
 
-const axiosInstance = axios.create({
-  baseURL: 'https://offapi.chipyab.com',
-  withCredentials: true,
-})
+export function useConfigApiClient() {
+  const { locale } = useI18nContext()
 
-axiosInstance.interceptors.request.use((config: any) => {
-  // const token = getAuthToken()
+  useEffect(() => {
+    const newInstance = axios.create({
+      withCredentials: true,
+      headers: {
+        "Accept-Language": locale,
+      },
+    })
 
-  // if (token) {
-  //   config.headers.Authorization = `Bearer ${token}`
-  // }
-
-  return config
-})
-
-export function configApiClient() {
-  client.setConfig({
-    axios: axiosInstance,
-  })
+    client.setConfig({
+      axios: newInstance,
+    })
+  }, [locale])
 }

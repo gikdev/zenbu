@@ -45,7 +45,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://localhost:7200',
+        target: 'http://localhost:5200',
         changeOrigin: true,
         secure: false,
       },
@@ -68,7 +68,7 @@ export default defineConfig({
         plugins: [
           {
             name: '@hey-api/client-axios',
-            baseUrl: '/',
+            baseUrl: "",
             includeInEntry: true,
           },
           {
@@ -76,7 +76,6 @@ export default defineConfig({
             enums: 'javascript',
             includeInEntry: true,
           },
-          { name: 'valibot', includeInEntry: true },
           { name: 'zod', includeInEntry: true },
           {
             name: '@hey-api/sdk',
