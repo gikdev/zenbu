@@ -34,7 +34,7 @@ export function WelcomeCard() {
 
       <p className='text-center'>{LL.welcome.description()}</p>
 
-      <Link to='/app' className={styleBtn({ variant: 'primary', size: 'lg', class: 'w-full' })}>
+      <Link to='/' className={styleBtn({ variant: 'primary', size: 'lg', class: 'w-full' })}>
         <span>{LL.welcome.start()}</span>
       </Link>
 

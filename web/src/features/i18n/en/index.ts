@@ -8,23 +8,6 @@ const en = {
     start: "Let's Go!",
   },
 
-  task: {
-    prompt: 'What do you want to do?',
-    start: 'Start',
-    edit: 'Edit',
-    finish: 'Finish',
-    cancel: 'Cancel',
-
-    helpTitle: 'How does it work?',
-    helpDescription:
-      'Choose one clear task with a visible finish line. Focus on one task until it is done. If it feels too big, split it into smaller tasks first.',
-
-    doingTip: 'Focus on this task until it is complete. If you discover another task, write it down and continue.',
-
-    toastDone: 'Well done!',
-    toastEmptyTask: 'Enter something first!',
-  },
-
   settings: {
     title: 'Settings',
     wipNote: 'Work in progress.',
