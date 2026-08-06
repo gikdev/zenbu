@@ -6,7 +6,7 @@ export function FieldMeta({ meta }: { meta: AnyFieldMeta }) {
   if (meta.isValidating) {
     return (
       <p dir='auto' className='text-xs text-mist-500'>
-        در حال بررسی...
+        ...
       </p>
     )
   }

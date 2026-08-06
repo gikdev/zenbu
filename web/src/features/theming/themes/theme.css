@@ -1,0 +1,18 @@
+@theme inline {
+  --color-bg-1: var(--clr-bg-1);
+  --color-bg-2: var(--clr-bg-2);
+  --color-bg-3: var(--clr-bg-3);
+
+  --color-bg-1-info: var(--clr-bg-1-info);
+
+  --color-text-important: var(--clr-text-important);
+  --color-text-muted: var(--clr-text-muted);
+
+  --color-text-important-info: var(--clr-text-important-info);
+  --color-text-muted-info: var(--clr-text-muted-info);
+
+  --color-border-muted: var(--clr-border-muted);
+
+  --color-brand: var(--clr-brand);
+  --color-danger: var(--clr-danger);
+}

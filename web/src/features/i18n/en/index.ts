@@ -2,7 +2,7 @@ import type { BaseTranslation } from '../i18n-types.js'
 
 const en = {
   welcome: {
-    title: 'Isshin',
+    title: 'Zenbu',
     slogan: '🎯 One task at a time',
     description: "This app helps you focus on a single task until it's finished.",
     start: "Let's Go!",

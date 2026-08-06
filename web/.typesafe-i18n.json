@@ -2,5 +2,5 @@
   "adapter": "react",
   "esmImports": true,
   "outputPath": "./src/features/i18n",
-  "$schema": "./node_modules/typesafe-i18n/schema/typesafe-i18n.json"
+  "$schema": "https://unpkg.com/typesafe-i18n@5.27.1/schema/typesafe-i18n.json"
 }

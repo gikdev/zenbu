@@ -33,7 +33,7 @@ export function TaskDoingCard() {
 
   return (
     <div className={CONTAINER_CLN}>
-      <p className='text-center text-2xl font-bold text-mist-100'>{task}</p>
+      <p className='text-text-important text-center text-2xl font-bold'>{task}</p>
 
       <p className='text-center text-xs'>{LL.task.doingTip()}</p>
 

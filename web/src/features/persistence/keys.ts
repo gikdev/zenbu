@@ -1,5 +1,8 @@
 export const keys = {
   I18n: {
-    CurrentLanguage: 'Isshin.I18n.CurrentLanguage',
+    CurrentLanguage: 'Zenbu.I18n.CurrentLanguage',
+  },
+  Theming: {
+    CurrentTheme: 'Zenbu.Theming.CurrentTheme',
   },
 } as const

@@ -4,25 +4,25 @@ export const styleBtn = tv({
   base: `
     group/button inline-flex shrink-0 items-center
     justify-center rounded-lg border border-transparent
-    bg-clip-padding text-sm text-mist-400
+    bg-clip-padding text-sm text-text-muted
     whitespace-nowrap transition-all
     outline-none select-none
     cursor-pointer
 
-    focus-visible:border-indigo-500
-    focus-visible:ring-3 focus-visible:ring-indigo-500/50
+    focus-visible:border-brand
+    focus-visible:ring-3 focus-visible:ring-brand/50
 
     disabled:pointer-events-none disabled:opacity-50
   `,
   variants: {
     variant: {
-      primary: 'bg-indigo-500 text-indigo-100 hover:bg-indigo-500/80',
-      outline: 'border-mist-800 bg-transparent hover:border-mist-700 hover:text-mist-100',
-      secondary: 'bg-mist-900 hover:bg-mist-800 text-mist-400 hover:text-mist-100',
-      ghost: 'hover:bg-mist-800 hover:text-mist-100',
+      primary: 'bg-brand text-text-important hover:bg-brand/80',
+      outline: 'border-border-muted/50 bg-transparent hover:border-border-muted/100 hover:text-text-important',
+      secondary: 'bg-bg-2 hover:bg-bg-3 text-text-muted hover:text-text-important',
+      ghost: 'hover:bg-bg-3 hover:text-text-important',
       destructive:
-        'bg-red-500/10 text-red-100 hover:bg-red-500/20 focus-visible:border-red-500/40 focus-visible:ring-red-500/20',
-      link: 'text-indigo-500 underline-offset-4 hover:underline',
+        'bg-danger/10 text-text-important hover:bg-danger/20 focus-visible:border-danger/40 focus-visible:ring-danger/20',
+      link: 'text-brand underline-offset-4 hover:underline',
     },
     size: {
       default: 'h-8 gap-1.5 px-2.5',

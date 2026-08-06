@@ -8,7 +8,7 @@ export const Route = createFileRoute('/welcome')({
 
 function RouteComponent() {
   return (
-    <div className='flex min-h-dvh flex-col items-center justify-center bg-mist-950 p-4 text-mist-400'>
+    <div className='flex min-h-dvh flex-col items-center justify-center p-4'>
       <WelcomeCard />
     </div>
   )

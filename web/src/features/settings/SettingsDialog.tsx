@@ -11,20 +11,22 @@ import { useSelector } from '@tanstack/react-store'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
+import { useI18nContext } from '#/features/i18n/i18n-react'
+import { themeStore, useCurrentTheme } from '#/features/theming'
 
-import { useI18nContext } from '../i18n/i18n-react'
 import { settingsStore } from './store'
 
 export const SettingsDialog = () => {
   const { LL, locale, setLocale } = useI18nContext()
   const isModalOpen = useSelector(settingsStore, s => s.isModalOpen)
+  const theme = useCurrentTheme()
   const OPTION_CONTAINER_CLN = 'flex flex-col gap-2'
   const BTNS_CONTAINER_CLN = 'flex items-center gap-2 *:flex-1'
 
   return (
     <AdaptiveDialog isOpen={isModalOpen} onClose={settingsStore.actions.close} title={LL.settings.title()}>
       <div className='flex flex-col gap-4'>
-        <div className='flex items-center gap-2 rounded-md bg-blue-950 p-2 text-blue-400'>
+        <div className='bg-bg-1-info text-text-muted-info flex items-center gap-2 rounded-md p-2'>
           <InfoIcon size={20} weight='fill' />
           <span>{LL.settings.wipNote()}</span>
         </div>
@@ -68,12 +70,20 @@ export const SettingsDialog = () => {
               <span>{LL.settings.sections.theme.auto()}</span>
             </button>
 
-            <button type='button' disabled className={styleBtn({ size: 'lg', variant: 'primary' })}>
+            <button
+              type='button'
+              onClick={() => themeStore.actions.set('dark')}
+              className={styleBtn({ size: 'lg', variant: theme === 'dark' ? 'primary' : 'outline' })}
+            >
               <MoonIcon size={16} />
               <span>{LL.settings.sections.theme.dark()}</span>
             </button>
 
-            <button type='button' disabled className={styleBtn({ size: 'lg', variant: 'outline' })}>
+            <button
+              type='button'
+              onClick={() => themeStore.actions.set('light')}
+              className={styleBtn({ size: 'lg', variant: theme === 'light' ? 'primary' : 'outline' })}
+            >
               <SunIcon size={16} />
               <span>{LL.settings.sections.theme.light()}</span>
             </button>

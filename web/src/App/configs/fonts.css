@@ -1,7 +1,22 @@
-@font-face {
-  font-family: 'Vazirmatn';
-  src: url('../assets/fonts/Vazirmatn[wght].woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
+@import '@fontsource/zen-maru-gothic';
+@import '@fontsource-variable/vazirmatn';
+@import '@fontsource-variable/google-sans-flex';
+
+.lang--en,
+[lang='en'] {
+  --font-main: 'Google Sans Flex Variable', sans-serif;
+}
+
+.lang--ja,
+[lang='ja'] {
+  --font-main: 'Zen Maru Gothic', sans-serif;
+}
+
+.lang--fa,
+[lang='fa'] {
+  --font-main: 'Vazirmatn Variable', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
 }

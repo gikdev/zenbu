@@ -1,0 +1,18 @@
+[data-theme='light'] {
+  --clr-bg-1: var(--color-mist-50);
+  --clr-bg-2: var(--color-mist-100);
+  --clr-bg-3: var(--color-mist-200);
+
+  --clr-bg-1-info: var(--color-blue-100);
+
+  --clr-text-important: var(--color-mist-900);
+  --clr-text-muted: var(--color-mist-600);
+
+  --clr-text-important-info: var(--color-blue-900);
+  --clr-text-muted-info: var(--color-blue-600);
+
+  --clr-border-muted: var(--color-mist-300);
+
+  --clr-brand: var(--color-sky-500);
+  --clr-danger: var(--color-red-500);
+}

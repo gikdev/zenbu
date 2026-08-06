@@ -2,7 +2,7 @@ import type { Translation } from '../i18n-types.js'
 
 const ja = {
   welcome: {
-    title: '一心',
+    title: '全部',
     slogan: '🎯 一度にひとつだけ',
     description: 'このアプリは、一つのタスクが終わるまで集中できるようにサポートします。',
     start: '始める！',

@@ -1,0 +1,18 @@
+[data-theme='dark'] {
+  --clr-bg-1: var(--color-mist-950);
+  --clr-bg-2: var(--color-mist-900);
+  --clr-bg-3: var(--color-mist-800);
+
+  --clr-bg-1-info: var(--color-blue-950);
+
+  --clr-text-important: var(--color-mist-100);
+  --clr-text-muted: var(--color-mist-400);
+
+  --clr-text-important-info: var(--color-blue-100);
+  --clr-text-muted-info: var(--color-blue-400);
+
+  --clr-border-muted: var(--color-mist-700);
+
+  --clr-brand: var(--color-sky-500);
+  --clr-danger: var(--color-red-500);
+}

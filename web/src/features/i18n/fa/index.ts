@@ -2,7 +2,7 @@ import type { Translation } from '../i18n-types.js'
 
 const fa = {
   welcome: {
-    title: 'ایشّین',
+    title: 'زنبو',
     slogan: '🎯 هر بار فقط یک کار',
     description: 'این برنامه به شما کمک می‌کنه که روی یه کار تمرکز کنین و تمومش کنین.',
     start: 'بزن بریم!',
