@@ -9,20 +9,12 @@
     <File Path="README.md" />
   </Folder>
 
-  <Folder Name="/Src/">
-    <Project Path="src/Domain/App.Domain.csproj" />
-    <Project Path="src/Application/App.Application.csproj" />
-    <Project Path="src/Infrastructure/App.Infrastructure.csproj" />
-    <Project Path="src/Api/App.Api.csproj" />
-  </Folder>
-
-  <Folder Name="/Aspire/">
-    <Project Path="src/AppHost/App.AppHost.csproj" />
-    <Project Path="src/ServiceDefaults/App.ServiceDefaults.csproj" />
-  </Folder>
-
-  <Folder Name="/Tests/">
-    <Project Path="tests/Architecture.Tests/App.Architecture.Tests.csproj" />
-    <Project Path="tests/Application.UnitTests/App.Application.UnitTests.csproj" />
-  </Folder>
+  <Project Path="src/Api/App.Api.csproj" />
+  <Project Path="src/AppHost/App.AppHost.csproj" />
+  <Project Path="src/Application/App.Application.csproj" />
+  <Project Path="src/Domain/App.Domain.csproj" />
+  <Project Path="src/Infrastructure/App.Infrastructure.csproj" />
+  <Project Path="src/ServiceDefaults/App.ServiceDefaults.csproj" />
+  <Project Path="tests/Application.UnitTests/App.Application.UnitTests.csproj" />
+  <Project Path="tests/Architecture.Tests/App.Architecture.Tests.csproj" />
 </Solution>
