@@ -24,7 +24,7 @@ try {
     );
 
     builder.Services.AddLocalization(
-        // options => options.ResourcesPath = "Resources"    
+        // options => options.ResourcesPath = "Resources"
     );
 
     builder.Services.Configure<RequestLocalizationOptions>(options => {
@@ -92,6 +92,7 @@ try {
     app.UseRequestLocalization();
 
     app.MapOpenApi();
+    app.MapOpenApi("openapi.yml");
     app.MapScalarApiReference(options => {
         options.WithTitle("App API");
         options.WithDefaultHttpClient(ScalarTarget.JavaScript, ScalarClient.Fetch);

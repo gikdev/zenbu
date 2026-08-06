@@ -9,8 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './../../routes/__root'
-import { Route as IndexRouteImport } from './../../routes/index'
 import { Route as AppRouteImport } from './../../routes/app'
+import { Route as IndexRouteImport } from './../../routes/index'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
 
 const IndexRoute = IndexRouteImport.update({
@@ -90,6 +90,4 @@ const rootRouteChildren: RootRouteChildren = {
   AppRoute: AppRoute,
   WelcomeRoute: WelcomeRoute,
 }
-export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()

@@ -1,0 +1,460 @@
+openapi: '3.1.1'
+info:
+  title: App API
+  description: A production-ready Clean Architecture template for .NET 10 by Mukesh Murugan
+  contact:
+    name: Mukesh Murugan
+    url: https://codewithmukesh.com
+  version: 1.0.0
+servers:
+  - url: https://localhost:7200/
+paths:
+  /api/welcome:
+    get:
+      tags:
+        - Temp
+      summary: Get welcome
+      operationId: Welcome
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WelcomeResponse'
+  /api/identity/register:
+    post:
+      tags:
+        - Identity
+      summary: Register a new user
+      operationId: Register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterCommand'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+  /api/identity/login:
+    post:
+      tags:
+        - Identity
+      summary: Login with email and password
+      operationId: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginCommand'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+        '401':
+          description: Unauthorized
+  /api/identity/refresh:
+    post:
+      tags:
+        - Identity
+      summary: Refresh an expired access token
+      operationId: RefreshToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshTokenCommand'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          description: Unauthorized
+  /api/todos:
+    get:
+      tags:
+        - Todos
+      summary: Get all todos with pagination
+      operationId: GetAllTodos
+      parameters:
+        - name: page
+          in: query
+          schema:
+            pattern: '^-?(?:0|[1-9]\d*)$'
+            type:
+              - integer
+              - string
+            format: int32
+        - name: pageSize
+          in: query
+          schema:
+            pattern: '^-?(?:0|[1-9]\d*)$'
+            type:
+              - integer
+              - string
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResultOfTodoDetailResponse'
+        '401':
+          description: Unauthorized
+    post:
+      tags:
+        - Todos
+      summary: Create a new todo
+      operationId: CreateTodo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTodoCommand'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTodoResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+        '401':
+          description: Unauthorized
+  '/api/todos/{id}':
+    get:
+      tags:
+        - Todos
+      summary: Get a todo by ID
+      operationId: GetTodoById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoDetailResponse'
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+    put:
+      tags:
+        - Todos
+      summary: Update an existing todo
+      operationId: UpdateTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTodoRequest'
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+    delete:
+      tags:
+        - Todos
+      summary: Delete a todo
+      operationId: DeleteTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+  '/api/todos/{id}/complete':
+    patch:
+      tags:
+        - Todos
+      summary: Mark a todo as completed
+      operationId: CompleteTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    CreateTodoCommand:
+      required:
+        - title
+        - description
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type:
+            - 'null'
+            - string
+    CreateTodoResponse:
+      required:
+        - id
+        - title
+        - description
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type:
+            - 'null'
+            - string
+    HttpValidationProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+            - 'null'
+            - string
+        title:
+          type:
+            - 'null'
+            - string
+        status:
+          pattern: '^-?(?:0|[1-9]\d*)$'
+          type:
+            - 'null'
+            - integer
+            - string
+          format: int32
+        detail:
+          type:
+            - 'null'
+            - string
+        instance:
+          type:
+            - 'null'
+            - string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    LoginCommand:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    PagedResultOfTodoDetailResponse:
+      required:
+        - items
+        - totalCount
+        - page
+        - pageSize
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TodoDetailResponse'
+        totalCount:
+          pattern: '^-?(?:0|[1-9]\d*)$'
+          type:
+            - integer
+            - string
+          format: int32
+        page:
+          pattern: '^-?(?:0|[1-9]\d*)$'
+          type:
+            - integer
+            - string
+          format: int32
+        pageSize:
+          pattern: '^-?(?:0|[1-9]\d*)$'
+          type:
+            - integer
+            - string
+          format: int32
+        totalPages:
+          pattern: '^-?(?:0|[1-9]\d*)$'
+          type:
+            - integer
+            - string
+          format: int32
+        hasNextPage:
+          type: boolean
+        hasPreviousPage:
+          type: boolean
+    RefreshTokenCommand:
+      required:
+        - accessToken
+        - refreshToken
+      type: object
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+    RegisterCommand:
+      required:
+        - firstName
+        - lastName
+        - email
+        - password
+        - confirmPassword
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        confirmPassword:
+          type: string
+    TodoDetailResponse:
+      required:
+        - id
+        - title
+        - description
+        - isCompleted
+        - completedAt
+        - createdAt
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type:
+            - 'null'
+            - string
+        isCompleted:
+          type: boolean
+        completedAt:
+          type:
+            - 'null'
+            - string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+    TokenResponse:
+      required:
+        - accessToken
+        - refreshToken
+        - expiresAt
+      type: object
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+    UpdateTodoRequest:
+      required:
+        - title
+        - description
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type:
+            - 'null'
+            - string
+    WelcomeResponse:
+      required:
+        - message
+      type: object
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    Bearer:
+      type: http
+      description: Enter your JWT token
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - {}
+tags:
+  - name: Temp
+  - name: Identity
+  - name: Todos

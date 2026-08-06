@@ -4,7 +4,8 @@ version: '3'
 dotenv: ['.env']
 
 vars:
-  # GREENING: "Hello"
+  OPENAPI_SPEC_URL: https://localhost:7200/openapi.yml
+  OPENAPI_OUTPUT_FILE: ./src/features/api/openapi.yml
 
 tasks:
   default: task --list-all
@@ -45,6 +46,12 @@ tasks:
     aliases: [f]
     cmds:
       - vp fmt . --write
+
+  api:download:
+    aliases: [api]
+    desc: Download OpenAPI definition
+    cmds:
+      - curl --ssl-no-revoke -o "{{.OPENAPI_OUTPUT_FILE}}" "{{.OPENAPI_SPEC_URL}}"
 
   i18n:
     cmds:
