@@ -1,15 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { WelcomeCard } from '#/features/welcome/WelcomeCard'
+import { WelcomePage } from '#/features/welcome/WelcomePage'
 
 export const Route = createFileRoute('/welcome')({
-  component: RouteComponent,
+  component: WelcomePage,
 })
-
-function RouteComponent() {
-  return (
-    <div className='flex min-h-dvh flex-col items-center justify-center p-4'>
-      <WelcomeCard />
-    </div>
-  )
-}

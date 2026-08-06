@@ -1,15 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { TaskCard } from '#/features/task/TaskCard'
+import { TaskPage } from '#/features/task/TaskPage'
 
 export const Route = createFileRoute('/app')({
-  component: RouteComponent,
+  component: TaskPage,
 })
-
-function RouteComponent() {
-  return (
-    <div className='flex min-h-dvh flex-col items-center justify-center p-4'>
-      <TaskCard />
-    </div>
-  )
-}
