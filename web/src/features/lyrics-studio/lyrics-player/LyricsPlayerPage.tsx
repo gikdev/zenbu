@@ -1,4 +1,4 @@
-import { ArrowLeftIcon } from '@phosphor-icons/react'
+import { HouseIcon } from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
 
 import { styleBtn } from '#/common/atoms/btn'
@@ -17,8 +17,8 @@ export const LyricsPlayerPage = () => {
 
       <div className='flex items-center justify-between px-4 py-2'>
         <div className='flex items-center gap-1'>
-          <Link to='/apps/lyrics-player' className={styleBtn({ size: 'icon' })}>
-            <ArrowLeftIcon mirrored={isRtl} size={20} />
+          <Link to='/apps' className={styleBtn({ size: 'icon' })}>
+            <HouseIcon mirrored={isRtl} size={20} />
           </Link>
 
           <h1 className='text-text-important text-lg font-bold tracking-wide'>{LL.lyricsPlayer.player.title()}</h1>
