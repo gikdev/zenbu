@@ -23,11 +23,11 @@ export const AppShortcut = ({ shortcut: s }: AppShortcutProps) =>
   s.disabled ? (
     <button className={styleApp({ class: 'opacity-50' })} title={s.description} onClick={() => alert(s.description)}>
       <s.icon weight='fill' size='32' />
-      <p className='text-xs'>{s.name}</p>
+      <p className='line-clamp-1 text-xs text-ellipsis'>{s.name}</p>
     </button>
   ) : (
     <Link to={s.url} className={styleApp()} title={s.description} onContextMenu={() => alert(s.description)}>
       <s.icon weight='fill' size='32' />
-      <p className='text-xs'>{s.name}</p>
+      <p className='line-clamp-1 text-xs text-ellipsis'>{s.name}</p>
     </Link>
   )
