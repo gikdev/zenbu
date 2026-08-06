@@ -1,8 +1,8 @@
+import { useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 
 import { currentLanguageStorage } from './currentLanguageStorage'
 import { useI18nContext } from './i18n-react'
-import { useQueryClient } from '@tanstack/react-query'
 
 export function useHandleLanguageChange() {
   const queryClient = useQueryClient()

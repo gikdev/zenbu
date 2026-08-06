@@ -9,19 +9,11 @@ export function WelcomeCard() {
 
   return (
     <div className='flex w-full max-w-60 min-w-20 flex-col items-center gap-4'>
-      <div className='flex w-full items-end justify-center overflow-x-clip'>
-        <img className='size-16 -rotate-12 -hue-rotate-75 rtl:rotate-12' src='/zenbu.svg' alt='' />
-        <img className='size-24 rotate-0 hue-rotate-0' src='/zenbu.svg' alt='' />
-        <img className='size-16 rotate-12 hue-rotate-90 rtl:-rotate-12' src='/zenbu.svg' alt='' />
-      </div>
+      <img className='size-24 rotate-0 hue-rotate-0' src='/zenbu.svg' alt='' />
 
       <p className='text-text-important text-5xl font-bold'>{LL.welcome.title()}</p>
 
-      <p className='text-text-important'>{LL.welcome.slogan()}</p>
-
-      <p className='text-center'>{LL.welcome.description()}</p>
-
-      <Link to='/' className={styleBtn({ variant: 'primary', size: 'lg', class: 'w-full' })}>
+      <Link to='/apps' className={styleBtn({ variant: 'primary', size: 'lg', class: 'w-full' })}>
         <span>{LL.welcome.start()}</span>
       </Link>
 

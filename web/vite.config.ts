@@ -68,7 +68,7 @@ export default defineConfig({
         plugins: [
           {
             name: '@hey-api/client-axios',
-            baseUrl: "",
+            baseUrl: '',
             includeInEntry: true,
           },
           {

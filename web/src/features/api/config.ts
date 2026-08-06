@@ -1,8 +1,8 @@
 import axios from 'axios'
-
-import { client } from './client'
 import { useEffect } from 'react'
+
 import { useI18nContext } from '../i18n'
+import { client } from './client'
 
 export function useConfigApiClient() {
   const { locale } = useI18nContext()
@@ -11,7 +11,7 @@ export function useConfigApiClient() {
     const newInstance = axios.create({
       withCredentials: true,
       headers: {
-        "Accept-Language": locale,
+        'Accept-Language': locale,
       },
     })
 
