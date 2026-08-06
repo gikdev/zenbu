@@ -6,6 +6,7 @@ import { unwrapOr } from '#/common/helpers/Result'
 
 import { keys, storage, StorageEntry } from '../persistence'
 import type { Session } from './Session'
+import { useI18nContext } from '../i18n'
 
 const timeLogStorage = new StorageEntry<{ sessions: Session[] }>(storage, keys.Apps.TimeLog, {
   sessions: [],
@@ -14,6 +15,7 @@ const timeLogStorage = new StorageEntry<{ sessions: Session[] }>(storage, keys.A
 const loadSessions = () => unwrapOr(timeLogStorage.load(), data => data.sessions, [])
 
 export function TimeLog() {
+  const { LL } = useI18nContext()
   const [sessions, setSessions] = useState<Session[]>(loadSessions)
 
   const activeSession = sessions.find(s => s.endedAt === null)
@@ -41,7 +43,7 @@ export function TimeLog() {
   const toggle = () => (isRunning ? endCurrentSession() : startNewSession())
 
   const deleteAll = () => {
-    const isConfirmed = window.confirm('Clear all sessions?')
+    const isConfirmed = window.confirm(LL.timeLog.clearSessionsConfirm())
     if (!isConfirmed) return
 
     setSessions([])
@@ -85,12 +87,12 @@ export function TimeLog() {
           className='flex flex-1 cursor-pointer flex-col items-center justify-center gap-2 transition-colors hover:bg-emerald-950/50 hover:text-emerald-400'
         >
           <p>
-            <span>Total sessions: </span>
+            <span>{LL.timeLog.totalSessionsLabel()}: </span>
             <span>{count}</span>
           </p>
 
           <p>
-            <span>Total duration: </span>
+            <span>{LL.timeLog.totalDurationLabel()}: </span>
             <span>{formatted}</span>
           </p>
         </button>

@@ -1,2 +1,2 @@
 export { AppShortcut } from './AppShortcut'
-export { appShortcuts } from './appShortcuts'
+export { appShortcuts } from './useAppShortcuts'

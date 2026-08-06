@@ -1,9 +1,17 @@
-import { DownloadSimpleIcon, MoonIcon, SunIcon, TrashSimpleIcon } from '@phosphor-icons/react'
+import {
+  ArrowLeftIcon,
+  DownloadSimpleIcon,
+  MoonIcon,
+  SunIcon,
+  TextAlignLeftIcon,
+  TrashSimpleIcon,
+} from '@phosphor-icons/react'
+import { Link } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { unwrapOr } from '#/common/helpers/Result'
-import { useI18nContext } from '#/features/i18n'
+import { useI18nContext, useIsRtl } from '#/features/i18n'
 import { useCurrentTheme, themeStore } from '#/features/theming'
 
 import { keys, storage, StorageEntry } from './persistence'
@@ -17,7 +25,9 @@ const loadContent = () => unwrapOr(writingAreaStorage.load(), data => data.conte
 export function WritingArea() {
   const { LL, locale, setLocale } = useI18nContext()
   const theme = useCurrentTheme()
+  const isRtl = useIsRtl()
   const [content, setContent] = useState(loadContent)
+  const [wrapEnabled, setWrapEnabled] = useState(true)
 
   useEffect(() => {
     const result = writingAreaStorage.save({ content })
@@ -28,7 +38,7 @@ export function WritingArea() {
     const now = new Date()
     const pad = (n: number) => n.toString().padStart(2, '0')
     const defaultName = `note-${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}-${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}.txt`
-    const filename = window.prompt('File name:', defaultName)
+    const filename = window.prompt(LL.writingArea.fileNamePrompt(), defaultName)
     if (!filename) return
 
     const blob = new Blob([content], { type: 'text/plain' })
@@ -43,7 +53,9 @@ export function WritingArea() {
   }
 
   const handleReset = () => {
-    if (!window.confirm('Clear all content?')) return
+    const isConfirmed = window.confirm(LL.writingArea.clearConfirm())
+    if (!isConfirmed) return
+
     setContent('')
   }
 
@@ -52,7 +64,13 @@ export function WritingArea() {
       <title>{LL.writingArea.title()}</title>
 
       <div className='flex items-center justify-between px-4 py-2'>
-        <h1 className='text-lg font-bold tracking-wide'>{LL.writingArea.title()}</h1>
+        <div className='flex items-center gap-1'>
+          <Link to='/apps' className={styleBtn({ size: 'icon' })}>
+            <ArrowLeftIcon mirrored={isRtl} size={20} />
+          </Link>
+
+          <h1 className='text-lg font-bold tracking-wide'>{LL.writingArea.title()}</h1>
+        </div>
 
         <div className='flex items-center gap-1'>
           <button
@@ -88,6 +106,14 @@ export function WritingArea() {
             {theme === 'light' && <SunIcon size={20} />}
           </button>
 
+          <button
+            type='button'
+            onClick={() => setWrapEnabled(p => !p)}
+            className={styleBtn({ size: 'icon', variant: wrapEnabled ? 'primary' : 'outline' })}
+          >
+            <TextAlignLeftIcon size={20} />
+          </button>
+
           <button type='button' onClick={handleDownload} className={styleBtn({ size: 'icon' })}>
             <DownloadSimpleIcon size={18} />
           </button>
@@ -102,7 +128,8 @@ export function WritingArea() {
         dir='auto'
         value={content}
         onChange={e => setContent(e.target.value)}
-        placeholder='...'
+        placeholder={LL.writingArea.placeholder()}
+        wrap={wrapEnabled ? 'soft' : 'off'}
         className='w-full flex-1 resize-none px-4 py-4 outline-none'
       />
     </div>
