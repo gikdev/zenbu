@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react'
 
 import { unwrapOr } from '#/common/helpers/Result'
 
+import { useI18nContext } from '../i18n'
 import { keys, storage, StorageEntry } from '../persistence'
 import type { Session } from './Session'
-import { useI18nContext } from '../i18n'
 
 const timeLogStorage = new StorageEntry<{ sessions: Session[] }>(storage, keys.Apps.TimeLog, {
   sessions: [],

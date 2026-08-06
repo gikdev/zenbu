@@ -1,50 +1,50 @@
-import { GearIcon, MusicNoteIcon, PencilIcon, TimerIcon, UserCircleIcon } from "@phosphor-icons/react";
-import { linkOptions } from "@tanstack/react-router";
-import { useMemo } from "react";
+import { GearIcon, MusicNoteIcon, PencilIcon, TimerIcon, UserCircleIcon } from '@phosphor-icons/react'
+import { linkOptions } from '@tanstack/react-router'
+import { useMemo } from 'react'
 
-import type { IAppShortcut } from "./IAppShortcut";
-import { useI18nContext } from "../i18n";
+import { useI18nContext } from '../i18n'
+import type { IAppShortcut } from './IAppShortcut'
 
 export const useAppShortcuts = (): IAppShortcut[] => {
-  const { LL, locale } = useI18nContext();
+  const { LL, locale } = useI18nContext()
 
   return useMemo(
     () => [
       {
-        id: "time-log",
+        id: 'time-log',
         name: LL.timeLog.title(),
         icon: TimerIcon,
-        url: linkOptions({ to: "/apps/time-log" }).to,
+        url: linkOptions({ to: '/apps/time-log' }).to,
         disabled: false,
         description: LL.timeLog.description(),
       },
       {
-        id: "writing",
+        id: 'writing',
         name: LL.writingArea.title(),
         icon: PencilIcon,
         disabled: false,
-        url: linkOptions({ to: "/apps/writing-area" }).to,
+        url: linkOptions({ to: '/apps/writing-area' }).to,
         description: LL.writingArea.description(),
       },
       {
-        id: "phrase-player",
+        id: 'phrase-player',
         name: LL.phrasePlayer.title(),
         icon: MusicNoteIcon,
-        url: linkOptions({ to: "." }).to,
+        url: linkOptions({ to: '.' }).to,
         disabled: true,
         description: LL.phrasePlayer.description(),
       },
       {
-        id: "account-manager",
+        id: 'account-manager',
         name: LL.accountManager.title(),
         icon: UserCircleIcon,
-        url: linkOptions({ to: "." }).to,
+        url: linkOptions({ to: '.' }).to,
         disabled: true,
         description: LL.accountManager.description(),
       },
       {
-        id: "settings",
-        url: linkOptions({ to: "/apps/settings" }).to,
+        id: 'settings',
+        url: linkOptions({ to: '/apps/settings' }).to,
         name: LL.settings.title(),
         icon: GearIcon,
         disabled: false,
@@ -52,5 +52,5 @@ export const useAppShortcuts = (): IAppShortcut[] => {
       },
     ],
     [locale],
-  );
-};
+  )
+}
