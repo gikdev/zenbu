@@ -9,15 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './../../routes/__root'
+import { Route as IndexRouteImport } from './../../routes/index'
+import { Route as WelcomeRouteImport } from './../../routes/welcome'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
-import { Route as AppsPhrasePlayerEditorRouteImport } from './../../routes/apps/phrase-player/editor'
-import { Route as AppsPhrasePlayerIndexRouteImport } from './../../routes/apps/phrase-player/index'
-import { Route as AppsPhrasePlayerPlayerRouteImport } from './../../routes/apps/phrase-player/player'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
 import { Route as AppsTimeLogRouteImport } from './../../routes/apps/time-log'
 import { Route as AppsWritingAreaRouteImport } from './../../routes/apps/writing-area'
-import { Route as IndexRouteImport } from './../../routes/index'
-import { Route as WelcomeRouteImport } from './../../routes/welcome'
+import { Route as AppsPhrasePlayerIndexRouteImport } from './../../routes/apps/phrase-player/index'
+import { Route as AppsPhrasePlayerEditorRouteImport } from './../../routes/apps/phrase-player/editor'
+import { Route as AppsPhrasePlayerPlayerRouteImport } from './../../routes/apps/phrase-player/player'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -226,4 +226,6 @@ const rootRouteChildren: RootRouteChildren = {
   AppsPhrasePlayerPlayerRoute: AppsPhrasePlayerPlayerRoute,
   AppsPhrasePlayerIndexRoute: AppsPhrasePlayerIndexRoute,
 }
-export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()
+export const routeTree = rootRouteImport
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
