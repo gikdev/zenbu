@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './../../routes/index'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
+import { Route as AppsTimeLogRouteImport } from './../../routes/apps/time-log'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,17 +35,24 @@ const AppsSettingsRoute = AppsSettingsRouteImport.update({
   path: '/apps/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppsTimeLogRoute = AppsTimeLogRouteImport.update({
+  id: '/apps/time-log',
+  path: '/apps/time-log',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/welcome': typeof WelcomeRoute
   '/apps/settings': typeof AppsSettingsRoute
+  '/apps/time-log': typeof AppsTimeLogRoute
   '/apps/': typeof AppsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/welcome': typeof WelcomeRoute
   '/apps/settings': typeof AppsSettingsRoute
+  '/apps/time-log': typeof AppsTimeLogRoute
   '/apps': typeof AppsIndexRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,28 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/welcome': typeof WelcomeRoute
   '/apps/settings': typeof AppsSettingsRoute
+  '/apps/time-log': typeof AppsTimeLogRoute
   '/apps/': typeof AppsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/welcome' | '/apps/settings' | '/apps/'
+  fullPaths: '/' | '/welcome' | '/apps/settings' | '/apps/time-log' | '/apps/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/welcome' | '/apps/settings' | '/apps'
-  id: '__root__' | '/' | '/welcome' | '/apps/settings' | '/apps/'
+  to: '/' | '/welcome' | '/apps/settings' | '/apps/time-log' | '/apps'
+  id:
+    | '__root__'
+    | '/'
+    | '/welcome'
+    | '/apps/settings'
+    | '/apps/time-log'
+    | '/apps/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WelcomeRoute: typeof WelcomeRoute
   AppsSettingsRoute: typeof AppsSettingsRoute
+  AppsTimeLogRoute: typeof AppsTimeLogRoute
   AppsIndexRoute: typeof AppsIndexRoute
 }
 
@@ -99,6 +115,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppsSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/apps/time-log': {
+      id: '/apps/time-log'
+      path: '/apps/time-log'
+      fullPath: '/apps/time-log'
+      preLoaderRoute: typeof AppsTimeLogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -106,6 +129,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WelcomeRoute: WelcomeRoute,
   AppsSettingsRoute: AppsSettingsRoute,
+  AppsTimeLogRoute: AppsTimeLogRoute,
   AppsIndexRoute: AppsIndexRoute,
 }
 export const routeTree = rootRouteImport

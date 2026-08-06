@@ -27,8 +27,8 @@ export const appShortcuts: IAppShortcut[] = [
     id: 'time-log',
     name: 'Time Log',
     icon: TimerIcon,
-    url: linkOptions({ to: '.' }).to,
-    disabled: true,
+    url: linkOptions({ to: '/apps/time-log' }).to,
+    disabled: false,
     description:
       'A dead-simple work focus timer with one big play/pause button; start a session, stop it, and at the end of the day see exactly how many focused sessions you had and total raw work time — nothing more.',
   },

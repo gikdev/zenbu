@@ -5,4 +5,7 @@ export const keys = {
   Theming: {
     CurrentTheme: 'Zenbu.Theming.CurrentTheme',
   },
+  Apps: {
+    TimeLog: 'Zenbu.Apps.TimeLog',
+  },
 } as const

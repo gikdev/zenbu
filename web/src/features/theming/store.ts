@@ -9,7 +9,7 @@ type ThemeStoreValue = {
   theme: Theme
 }
 
-const getTheme = (): Theme => unwrapOr(currentThemeStorage.load(), defaultTheme, data => data.theme)
+const getTheme = (): Theme => unwrapOr(currentThemeStorage.load(), data => data.theme, defaultTheme)
 
 const initialValue: ThemeStoreValue = {
   theme: getTheme(),

@@ -14,5 +14,5 @@ export const err = <TError>(error: TError): Result<never, TError> => ({
   error,
 })
 
-export const unwrapOr = <TData, TValue>(result: Result<TData>, fallback: TValue, callback: (data: TData) => TValue) =>
+export const unwrapOr = <TData, TValue>(result: Result<TData>, callback: (data: TData) => TValue, fallback: TValue) =>
   result.ok ? callback(result.data) : fallback
