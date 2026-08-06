@@ -12,6 +12,11 @@ const fa = {
     clearConfirm: 'همهٔ محتوا پاک بشه؟',
     fileNamePrompt: 'نام فایل:',
     description: 'یه جای راحت برای نوشتن.',
+    moreOptionsDialogTitle: 'گزینه‌های بیشتر',
+    removeEverything: 'همه چی رو پاک کن',
+    downloadAsFile: 'دانلود به صورت فایل',
+    toggleLineWrap: 'تغییر خط‌پیچی',
+    toggleTheme: 'تغییر تم',
   },
 
   timeLog: {

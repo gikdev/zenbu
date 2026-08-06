@@ -12,6 +12,11 @@ const ja = {
     clearConfirm: 'すべての内容を消去しますか？',
     fileNamePrompt: 'ファイル名:',
     description: '快適に書き込めるエリア',
+    moreOptionsDialogTitle: 'その他のオプション',
+    removeEverything: 'すべて削除',
+    downloadAsFile: 'ファイルとしてダウンロード',
+    toggleLineWrap: '折り返し表示の切り替え',
+    toggleTheme: 'テーマの切り替え',
   },
 
   timeLog: {

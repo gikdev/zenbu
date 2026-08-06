@@ -12,6 +12,11 @@ const en = {
     placeholder: 'Write something…',
     clearConfirm: 'Clear all content?',
     fileNamePrompt: 'File name:',
+    moreOptionsDialogTitle: 'More Options',
+    removeEverything: 'Remove Everything',
+    downloadAsFile: 'Download As File',
+    toggleLineWrap: 'Toggle Line Wrap',
+    toggleTheme: 'Toggle Theme',
   },
 
   timeLog: {
