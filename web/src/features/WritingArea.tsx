@@ -110,11 +110,21 @@ export function WritingArea() {
             <TextAlignLeftIcon size={20} />
           </button>
 
-          <button type='button' onClick={handleDownload} title={LL.writingArea.downloadAsFile()} className={styleBtn({ size: 'icon' })}>
+          <button
+            type='button'
+            onClick={handleDownload}
+            title={LL.writingArea.downloadAsFile()}
+            className={styleBtn({ size: 'icon' })}
+          >
             <DownloadSimpleIcon size={18} />
           </button>
 
-          <button onClick={handleReset} title={LL.writingArea.removeEverything()} type='button' className={styleBtn({ size: 'icon', variant: 'destructive' })}>
+          <button
+            onClick={handleReset}
+            title={LL.writingArea.removeEverything()}
+            type='button'
+            className={styleBtn({ size: 'icon', variant: 'destructive' })}
+          >
             <TrashSimpleIcon size={18} />
           </button>
         </div>
