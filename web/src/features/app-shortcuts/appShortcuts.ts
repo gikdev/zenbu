@@ -45,8 +45,8 @@ export const appShortcuts: IAppShortcut[] = [
     id: 'writing',
     name: 'Writing Area',
     icon: PencilIcon,
-    disabled: true,
-    url: linkOptions({ to: '.' }).to,
+    disabled: false,
+    url: linkOptions({ to: '/apps/writing-area' }).to,
     description:
       'A full-screen, distraction-free text area that saves automatically to local storage, with selectable fonts, themes, font sizing, word wrap, and file open/save — so you can write comfortably in any language or mood.',
   },

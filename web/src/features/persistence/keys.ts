@@ -7,5 +7,6 @@ export const keys = {
   },
   Apps: {
     TimeLog: 'Zenbu.Apps.TimeLog',
+    WritingArea: 'Zenbu.Apps.WritingArea',
   },
 } as const

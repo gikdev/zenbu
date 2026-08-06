@@ -8,6 +8,10 @@ const en = {
     start: "Let's Go!",
   },
 
+  writingArea: {
+    title: "Writing Area",
+  },
+
   settings: {
     title: 'Settings',
     wipNote: 'Work in progress.',

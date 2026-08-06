@@ -8,6 +8,10 @@ const fa = {
     start: 'بزن بریم!',
   },
 
+  writingArea: {
+    title: "محل نوشتن"
+  },
+
   settings: {
     title: 'تنظیمات',
     wipNote: 'این بخش در حال توسعه (ساخت) هست.',

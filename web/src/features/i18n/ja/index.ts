@@ -8,6 +8,10 @@ const ja = {
     start: '始める！',
   },
 
+  writingArea: {
+    title: "入力エリア",
+  },
+
   settings: {
     title: '設定',
     wipNote: '開発中です。',
