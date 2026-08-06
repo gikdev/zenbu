@@ -14,7 +14,7 @@ import { toast } from 'react-toastify'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
-import { useI18nContext } from '#/features/i18n'
+import { useI18nContext, useIsRtl } from '#/features/i18n'
 
 import {
   type PlaybackSpeed,
@@ -43,6 +43,7 @@ const {
 
 export function TimestampSongPlayer() {
   const { LL } = useI18nContext()
+  const isRtl = useIsRtl()
   const blobRef = useRef<string>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
   const currentTime = useSelector(songPlayerStore, s => s.currentTime)
@@ -233,7 +234,7 @@ export function TimestampSongPlayer() {
           className={styleBtn({ size: 'icon-lg' })}
           onClick={handleRewind}
         >
-          <RewindIcon size={24} />
+          <RewindIcon mirrored={isRtl} size={24} />
         </button>
 
         <button
@@ -246,7 +247,7 @@ export function TimestampSongPlayer() {
             class: 'rounded-full',
           })}
         >
-          {isPlaying ? <PauseIcon size={24} weight='fill' /> : <PlayIcon size={24} weight='fill' />}
+          {isPlaying ? <PauseIcon mirrored={isRtl} size={24} weight='fill' /> : <PlayIcon mirrored={isRtl} size={24} weight='fill' />}
         </button>
 
         <button
@@ -255,7 +256,7 @@ export function TimestampSongPlayer() {
           className={styleBtn({ size: 'icon-lg' })}
           onClick={handleFastForward}
         >
-          <FastForwardIcon size={24} />
+          <FastForwardIcon mirrored={isRtl} size={24} />
         </button>
 
         <button
@@ -280,7 +281,7 @@ export function TimestampSongPlayer() {
             className={styleBtn({ variant: 'outline' })}
             onClick={handleJumpToTime}
           >
-            <ArrowArcRightIcon size={20} />
+            <ArrowArcRightIcon mirrored={isRtl} size={20} />
             <span>{LL.lyricsPlayer.timestampSongPlayer.jumpToButton()}</span>
           </button>
 
