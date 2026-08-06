@@ -2,19 +2,25 @@
 @import '@fontsource-variable/vazirmatn';
 @import '@fontsource-variable/google-sans-flex';
 
+@theme {
+  --font-en: 'Google Sans Flex Variable', sans-serif;
+  --font-ja: 'Zen Maru Gothic', sans-serif;
+  --font-fa: 'Vazirmatn Variable', sans-serif;
+}
+
 .lang--en,
 [lang='en'] {
-  --font-main: 'Google Sans Flex Variable', sans-serif;
+  --font-main: var(--font-en);
 }
 
 .lang--ja,
 [lang='ja'] {
-  --font-main: 'Zen Maru Gothic', sans-serif;
+  --font-main: var(--font-ja);
 }
 
 .lang--fa,
 [lang='fa'] {
-  --font-main: 'Vazirmatn Variable', sans-serif;
+  --font-main: var(--font-fa);
 }
 
 body {
