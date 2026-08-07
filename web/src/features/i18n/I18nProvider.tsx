@@ -9,8 +9,10 @@ interface Props {
 }
 
 export function I18nProvider(p: Props) {
-  const langResult = currentLanguageStorage.load()
-  const lang = langResult.ok ? langResult.data.locale : defaultLocale
+  const lang = currentLanguageStorage.load().match(
+    t => t.locale,
+    () => defaultLocale,
+  )
   const [wasLoaded, setWasLoaded] = useState(false)
 
   useEffect(() => {

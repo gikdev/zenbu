@@ -1,6 +1,5 @@
+import { err, ok, type Result } from 'neverthrow'
 import z from 'zod'
-
-import { convertResult, err, ok, type Result } from '#/common/helpers/Result'
 
 import { zLanguageCode, type LanguageCode } from './LanguageCode'
 import { lyricBlockUtils, zLyricBlock, type LyricBlock } from './LyricBlock'
@@ -24,7 +23,7 @@ export const LyricErrors = {
 export const lyricUtils = {
   factories: {
     /** Validate and create a Lyric from unknown data. */
-    fromRaw(data: unknown): Result<Lyric> {
+    fromRaw(data: unknown): Result<Lyric, string> {
       const result = zLyric.safeParse(data)
 
       return result.success ? ok(result.data) : err(result.error.message)
@@ -42,7 +41,7 @@ export const lyricUtils = {
 
   queries: {
     /** Get a block by index. */
-    getBlock(lyric: Lyric, index: number): Result<LyricBlock> {
+    getBlock(lyric: Lyric, index: number): Result<LyricBlock, string> {
       const block = lyric.blocks[index]
 
       if (!block) {
@@ -104,7 +103,7 @@ export const lyricUtils = {
     },
 
     /** Validate the lyric against the schema. */
-    validate(lyric: Lyric): Result<Lyric> {
+    validate(lyric: Lyric): Result<Lyric, string> {
       return lyricUtils.factories.fromRaw(lyric)
     },
   },
@@ -131,7 +130,7 @@ export const lyricUtils = {
     },
 
     /** Insert a block at a specific index. */
-    insertBlock(lyric: Lyric, index: number, block: LyricBlock): Result<Lyric> {
+    insertBlock(lyric: Lyric, index: number, block: LyricBlock): Result<Lyric, string> {
       if (index < 0 || index > lyric.blocks.length) {
         return err(LyricErrors.InsertOutOfRange(index))
       }
@@ -143,7 +142,7 @@ export const lyricUtils = {
     },
 
     /** Replace an existing block at a specific index. */
-    replaceBlock(lyric: Lyric, index: number, block: LyricBlock): Result<Lyric> {
+    replaceBlock(lyric: Lyric, index: number, block: LyricBlock): Result<Lyric, string> {
       if (index < 0 || index >= lyric.blocks.length) {
         return err(LyricErrors.BlockNotFound(index))
       }
@@ -155,7 +154,7 @@ export const lyricUtils = {
     },
 
     /** Remove a block by index. */
-    removeBlock(lyric: Lyric, index: number): Result<Lyric> {
+    removeBlock(lyric: Lyric, index: number): Result<Lyric, string> {
       if (index < 0 || index >= lyric.blocks.length) {
         return err(LyricErrors.BlockNotFound(index))
       }
@@ -195,21 +194,19 @@ export const lyricUtils = {
 
   syncer: {
     /** Mark a block as finished at the current audio time (auto-sorts & normalizes). */
-    finishBlock(lyric: Lyric, index: number, currentAudioTime: number): Result<Lyric> {
+    finishBlock(lyric: Lyric, index: number, currentAudioTime: number): Result<Lyric, string> {
       const updatedBlock = lyricBlockUtils.update.setEndTimestamp(lyric.blocks[index], currentAudioTime)
-      const replaceBlockResult = lyricUtils.mutations.replaceBlock(lyric, index, updatedBlock)
-      const sortBlocksResult = convertResult(replaceBlockResult, data => lyricUtils.mutations.sortBlocks(data))
-      const normalizationResult = convertResult(sortBlocksResult, data =>
-        lyricUtils.mutations.normalizeTimestamps(data),
-      )
 
-      return normalizationResult
+      return lyricUtils.mutations
+        .replaceBlock(lyric, index, updatedBlock)
+        .map(lyricUtils.mutations.sortBlocks)
+        .map(lyricUtils.mutations.normalizeTimestamps)
     },
   },
 
   serialization: {
     /** Parse a Lyric from a JSON string. */
-    fromJSON(json: string): Result<Lyric> {
+    fromJSON(json: string): Result<Lyric, string> {
       try {
         const parsed = JSON.parse(json)
         return lyricUtils.factories.fromRaw(parsed)

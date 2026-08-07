@@ -12,7 +12,6 @@ import { useEffect, useState } from 'react'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { styleInput } from '#/common/atoms/input'
-import { unwrapOr } from '#/common/helpers/Result'
 import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
 import { PageShell } from '#/common/molecules/PageShell'
 import { useI18nContext, useIsRtl, type Locales } from '#/features/i18n'
@@ -24,7 +23,11 @@ const writingAreaStorage = new StorageEntry<{ content: string }>(storage, keys.A
   content: '',
 })
 
-const loadContent = () => unwrapOr(writingAreaStorage.load(), data => data.content, '')
+const loadContent = (): string =>
+  writingAreaStorage.load().match(
+    data => data.content,
+    () => '',
+  )
 
 export function WritingArea() {
   const { LL, locale, setLocale } = useI18nContext()
@@ -36,7 +39,7 @@ export function WritingArea() {
 
   useEffect(() => {
     const result = writingAreaStorage.save({ content })
-    if (!result.ok) console.error(result.error)
+    if (result.isErr()) console.error(result.error)
   }, [content])
 
   const handleDownload = () => {

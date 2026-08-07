@@ -21,7 +21,7 @@ export function useHandleLanguageChange() {
   useEffect(() => {
     const result = currentLanguageStorage.save({ locale })
 
-    if (!result.ok) {
+    if (result.isErr()) {
       console.warn("Saving wasn't successful.", result.error)
     }
   }, [locale])

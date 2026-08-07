@@ -1,7 +1,5 @@
 import { createStore, useSelector } from '@tanstack/react-store'
 
-import { unwrapOr } from '#/common/helpers/Result'
-
 import { currentThemeStorage, defaultTheme } from './currentThemeStorage'
 import type { Theme } from './Theme'
 
@@ -9,7 +7,11 @@ type ThemeStoreValue = {
   theme: Theme
 }
 
-const getTheme = (): Theme => unwrapOr(currentThemeStorage.load(), data => data.theme, defaultTheme)
+const getTheme = (): Theme =>
+  currentThemeStorage.load().match(
+    data => data.theme,
+    () => defaultTheme,
+  )
 
 const initialValue: ThemeStoreValue = {
   theme: getTheme(),

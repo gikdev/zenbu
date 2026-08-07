@@ -1,6 +1,5 @@
+import { err, ok, type Result } from 'neverthrow'
 import z from 'zod'
-
-import { err, ok, type Result } from '#/common/helpers/Result'
 
 import { zLocalizedText, type LocalizedText } from './LocalizedText'
 
@@ -51,7 +50,7 @@ export const lyricBlockUtils = {
     },
 
     /** Create a verse block with localized lines. */
-    createVerse(endTimestamp: number, lines: LocalizedText[]): Result<LyricBlockVerse> {
+    createVerse(endTimestamp: number, lines: LocalizedText[]): Result<LyricBlockVerse, string> {
       if (lines.length === 0) {
         return err(LyricBlockErrors.VerseAtLeastOneLine)
       }
@@ -78,7 +77,7 @@ export const lyricBlockUtils = {
     },
 
     /** Replace all lines of a verse block. */
-    setVerseLines(block: LyricBlock, newLines: LocalizedText[]): Result<LyricBlock> {
+    setVerseLines(block: LyricBlock, newLines: LocalizedText[]): Result<LyricBlock, string> {
       if (!lyricBlockUtils.typeGuards.isVerse(block)) {
         return err(LyricBlockErrors.CanNotChangeNonVerseBlockLines)
       }
@@ -91,7 +90,7 @@ export const lyricBlockUtils = {
     },
 
     /** Append a new line to a verse block. */
-    addVerseLine(block: LyricBlock, line: LocalizedText): Result<LyricBlock> {
+    addVerseLine(block: LyricBlock, line: LocalizedText): Result<LyricBlock, string> {
       if (!lyricBlockUtils.typeGuards.isVerse(block)) {
         return err(LyricBlockErrors.CanNotChangeNonVerseBlockLines)
       }
@@ -100,7 +99,7 @@ export const lyricBlockUtils = {
     },
 
     /** Remove a line from a verse block by index. */
-    removeVerseLine(block: LyricBlock, index: number): Result<LyricBlock> {
+    removeVerseLine(block: LyricBlock, index: number): Result<LyricBlock, string> {
       if (!lyricBlockUtils.typeGuards.isVerse(block)) {
         return err(LyricBlockErrors.CanNotChangeNonVerseBlockLines)
       }
@@ -116,7 +115,7 @@ export const lyricBlockUtils = {
     },
 
     /** Update a specific line in a verse block by index. */
-    updateVerseLine(block: LyricBlock, index: number, newLine: LocalizedText): Result<LyricBlock> {
+    updateVerseLine(block: LyricBlock, index: number, newLine: LocalizedText): Result<LyricBlock, string> {
       if (!lyricBlockUtils.typeGuards.isVerse(block)) {
         return err(LyricBlockErrors.CanNotChangeNonVerseBlockLines)
       }
@@ -128,7 +127,7 @@ export const lyricBlockUtils = {
     },
 
     /** Update the text label of an instrumental block. */
-    setInstrumentalText(block: LyricBlock, newText: string | undefined): Result<LyricBlock> {
+    setInstrumentalText(block: LyricBlock, newText: string | undefined): Result<LyricBlock, string> {
       if (!lyricBlockUtils.typeGuards.isInstrumental(block)) {
         return err(LyricBlockErrors.CanNotSetNonInstrumentalText)
       }
@@ -153,7 +152,7 @@ export const lyricBlockUtils = {
     },
 
     /** Convert any block to a verse block. */
-    convertToVerse(block: LyricBlock, lines: LocalizedText[]): Result<LyricBlockVerse> {
+    convertToVerse(block: LyricBlock, lines: LocalizedText[]): Result<LyricBlockVerse, string> {
       if (lines.length === 0) {
         return err(LyricBlockErrors.VerseAtLeastOneLine)
       }

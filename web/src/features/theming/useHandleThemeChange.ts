@@ -9,7 +9,7 @@ export function useHandleThemeChange() {
   useEffect(() => {
     const result = currentThemeStorage.save({ theme })
 
-    if (!result.ok) {
+    if (result.isErr()) {
       console.warn("Saving wasn't successful.", result.error)
     }
   }, [theme])

@@ -3,7 +3,6 @@ import { Link } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 
 import { styleBtn } from '#/common/atoms/btn'
-import { unwrapOr } from '#/common/helpers/Result'
 
 import { useI18nContext } from '../i18n'
 import { keys, storage, StorageEntry } from '../persistence'
@@ -13,7 +12,11 @@ const timeLogStorage = new StorageEntry<{ sessions: Session[] }>(storage, keys.A
   sessions: [],
 })
 
-const loadSessions = () => unwrapOr(timeLogStorage.load(), data => data.sessions, [])
+const loadSessions = (): Session[] =>
+  timeLogStorage.load().match(
+    data => data.sessions,
+    () => [],
+  )
 
 export function TimeLog() {
   const { LL } = useI18nContext()
@@ -27,7 +30,7 @@ export function TimeLog() {
 
   useEffect(() => {
     const result = timeLogStorage.save({ sessions })
-    if (!result.ok) console.error(result.error)
+    if (result.isErr()) console.error(result.error)
   }, [sessions])
 
   const startNewSession = () => {

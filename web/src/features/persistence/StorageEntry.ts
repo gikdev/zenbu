@@ -1,4 +1,4 @@
-import { ok, type Result } from '#/common/helpers/Result'
+import { Err, ok, type Result } from 'neverthrow'
 
 import type { IStorageAdapter } from './IStorageAdapter'
 
@@ -13,23 +13,23 @@ export class StorageEntry<T> {
     this.#defaultValue = defaultValue
   }
 
-  save(value: T): Result {
+  save(value: T): Result<void, string> {
     return this.#storage.save(this.#key, JSON.stringify(value))
   }
 
-  load(): Result<T> {
+  load(): Result<T, string> {
     const result = this.#storage.load(this.#key)
 
-    if (!result.ok) {
-      return result
+    if (result.isErr()) {
+      return result as Err<T, string>
     }
 
-    if (!result.data.some) {
+    if (!result.value.some) {
       return ok(this.#defaultValue)
     }
 
     try {
-      return ok(JSON.parse(result.data.value) as T)
+      return ok(JSON.parse(result.value.value) as T)
     } catch {
       return ok(this.#defaultValue)
     }
