@@ -23,6 +23,10 @@
   --font-main: var(--font-fa);
 }
 
+.use-lang-font {
+  font-family: var(--font-main);
+}
+
 body {
   font-family: var(--font-main);
 }

@@ -1,7 +1,9 @@
 import type { AnyFieldMeta } from '@tanstack/react-form'
 
+import { getErrorMessagesOf } from './getErrorMessagesOf'
+
 export function FieldMeta({ meta }: { meta: AnyFieldMeta }) {
-  const errorMsg = meta.errors.map(e => e?.message).join(', ')
+  const errorMsgs = getErrorMessagesOf(meta)
 
   if (meta.isValidating) {
     return (
@@ -11,11 +13,15 @@ export function FieldMeta({ meta }: { meta: AnyFieldMeta }) {
     )
   }
 
-  if (!meta.isValid) {
+  if (!meta.isValid && errorMsgs.some) {
     return (
-      <p dir='auto' className='text-xs text-red-500'>
-        {errorMsg}
-      </p>
+      <div dir='auto' className='text-xs text-red-500'>
+        {errorMsgs.value.map((msg, i) => (
+          <p dir='auto' key={i}>
+            {msg}
+          </p>
+        ))}
+      </div>
     )
   }
 

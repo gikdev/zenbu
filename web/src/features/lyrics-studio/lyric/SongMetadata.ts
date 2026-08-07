@@ -6,6 +6,7 @@ export const zSongMetadata = z.object({
   title: zLocalizedText,
   artist: zLocalizedText.nullable(),
   source: z.string().nullable(),
+  imageUrl: z.string().nullable(),
 })
 
 export type SongMetadata = z.infer<typeof zSongMetadata>
@@ -27,5 +28,11 @@ export const songMetadataUtils = {
   setSource: (metadata: SongMetadata, source: string | null): SongMetadata => ({
     ...metadata,
     source,
+  }),
+
+  /** Update the image URL (or null to remove). */
+  setImageUrl: (metadata: SongMetadata, imageUrl: string | null): SongMetadata => ({
+    ...metadata,
+    imageUrl,
   }),
 }

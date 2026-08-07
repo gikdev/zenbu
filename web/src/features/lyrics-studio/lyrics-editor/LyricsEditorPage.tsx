@@ -5,6 +5,8 @@ import { styleBtn } from '#/common/atoms/btn'
 import { PageShell } from '#/common/molecules/PageShell'
 import { useI18nContext, useIsRtl } from '#/features/i18n'
 
+import { LyricForm } from './LyricForm'
+
 export const LyricsEditorPage = () => {
   const { LL } = useI18nContext()
   const isRtl = useIsRtl()
@@ -22,7 +24,9 @@ export const LyricsEditorPage = () => {
         </div>
       </div>
 
-      <div className='flex-1' />
+      <div className='flex-1 overflow-y-auto p-4'>
+        <LyricForm mode='CREATE' />
+      </div>
     </PageShell>
   )
 }

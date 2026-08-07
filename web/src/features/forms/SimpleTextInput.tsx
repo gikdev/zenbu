@@ -1,5 +1,12 @@
-import { useFieldContext } from '.'
+import type { ChangeEventHandler } from 'react'
+
+import { styleInput } from '#/common/atoms/input'
+
+import { LabelContainer, useFieldContext } from '.'
 import { FieldMeta } from './FieldMeta'
+
+type TextInputChangeHandler = ChangeEventHandler<HTMLTextAreaElement, HTMLTextAreaElement> &
+  ChangeEventHandler<HTMLInputElement, HTMLInputElement>
 
 interface SimpleTextInputProps {
   title: string
@@ -7,23 +14,27 @@ interface SimpleTextInputProps {
 }
 
 export function SimpleTextInput({ title, isMultiline = false }: SimpleTextInputProps) {
-  const field = useFieldContext<string>()
+  const field = useFieldContext<string | null>()
   const Tag = isMultiline ? 'textarea' : 'input'
+  const value = field.state.value || ''
+
+  const handleChange: TextInputChangeHandler = e => {
+    field.handleChange(e.target.value || '')
+  }
 
   return (
-    <div>
-      <label htmlFor={field.name}>{title}</label>
-
+    <LabelContainer title={title} htmlFor={field.name}>
       <Tag
         dir='auto'
         id={field.name}
         name={field.name}
-        value={field.state.value || ''}
+        value={value}
         onBlur={field.handleBlur}
-        onChange={e => field.handleChange(e.target.value)}
+        onChange={handleChange}
+        className={styleInput({ mode: isMultiline ? 'multiline' : 'block' })}
       />
 
       <FieldMeta meta={field.state.meta} />
-    </div>
+    </LabelContainer>
   )
 }
