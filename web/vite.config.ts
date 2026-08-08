@@ -30,6 +30,7 @@ export default defineConfig({
       'react/rules-of-hooks': 'error',
       'vite-plus/prefer-vite-plus-imports': 'error',
       'react/only-export-components': ['off', { allowConstantExport: true }],
+      'react/no-children-prop': 'off',
     },
     options: {
       typeAware: true,

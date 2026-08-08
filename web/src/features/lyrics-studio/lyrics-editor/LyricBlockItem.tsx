@@ -5,7 +5,7 @@ import { styleBtn } from '#/common/atoms/btn'
 import { Show } from '#/common/helpers/Show'
 
 import { TimeFormatter } from '../helpers/TimeFormatter'
-import type { LyricBlock } from '../lyric/Lyric'
+import type { LyricBlock } from '../lyric/LyricBlock'
 
 interface LyricBlockItemProps {
   block: LyricBlock

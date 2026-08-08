@@ -1,9 +1,7 @@
-import { ImageBrokenIcon, ImageSquareIcon, PencilSimpleIcon, XIcon } from '@phosphor-icons/react'
+import { ImageBrokenIcon, ImageSquareIcon } from '@phosphor-icons/react'
 import { useState, useEffect } from 'react'
 
-import { styleBtn } from '#/common/atoms/btn'
-
-import type { LyricMetadata } from '../lyric/Lyric'
+import type { LyricMetadata } from '../lyric/LyricMetadata'
 
 export const LyricMetadataCard = (p: { metadata: LyricMetadata }) => {
   const { artist, imageUrl, source, title } = p.metadata

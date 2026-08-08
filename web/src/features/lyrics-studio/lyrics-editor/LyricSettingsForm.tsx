@@ -3,7 +3,7 @@ import { FloppyDiskIcon } from '@phosphor-icons/react'
 import { styleBtn } from '#/common/atoms/btn'
 import { useAppForm } from '#/features/forms'
 
-import type { LyricSettings } from '../lyric/Lyric'
+import type { LyricSettings } from '../lyric/LyricSettings'
 
 export const LyricSettingsForm = (p: { settings: LyricSettings; onSubmit: (settings: LyricSettings) => void }) => {
   const form = useAppForm({

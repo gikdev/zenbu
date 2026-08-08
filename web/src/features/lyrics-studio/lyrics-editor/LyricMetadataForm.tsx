@@ -3,7 +3,7 @@ import { FloppyDiskIcon } from '@phosphor-icons/react'
 import { styleBtn } from '#/common/atoms/btn'
 import { useAppForm } from '#/features/forms'
 
-import type { LyricMetadata } from '../lyric/Lyric'
+import type { LyricMetadata } from '../lyric/LyricMetadata'
 
 export const LyricMetadataForm = (p: { metadata: LyricMetadata; onSubmit: (metadata: LyricMetadata) => void }) => {
   const form = useAppForm({

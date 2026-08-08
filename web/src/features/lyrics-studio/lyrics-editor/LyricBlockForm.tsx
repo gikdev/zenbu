@@ -3,7 +3,7 @@ import { FloppyDiskIcon } from '@phosphor-icons/react'
 import { styleBtn } from '#/common/atoms/btn'
 import { useAppForm } from '#/features/forms'
 
-import type { LyricBlock } from '../lyric/Lyric'
+import type { LyricBlock } from '../lyric/LyricBlock'
 
 interface LyricBlockFormProps {
   block: LyricBlock
