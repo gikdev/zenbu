@@ -1,66 +1,95 @@
-import { Guid } from '#/common/helpers/Guid'
-import { type Option } from '#/common/helpers/Option'
+import { generateShortId } from '#/common/helpers/generateShortId'
 
 import type { LanguageCode } from './LanguageCode'
 import type { LocalizedText } from './LocalizedText'
 
-type LyricMetadata = {
+export type LyricMetadata = {
   title: LocalizedText
-  artist: Option<LocalizedText>
-  source: Option<string>
-  imageUrl: Option<string>
+  artist: LocalizedText | null
+  source: string | null
+  imageUrl: string | null
 }
 
-type LyricSettings = {
+export type LyricSettings = {
   defaultLanguage: LanguageCode
 }
 
-type LyricBlockBase = {
-  id: Guid
+export type LyricBlock = {
+  id: string
   endTimestamp: number
+  defaultLanguageOverride?: LanguageCode
+  tx: string
+  ar: string
+  en: string
+  es: string
+  fa: string
+  ja: string
+  rj: string
 }
 
-type LyricBlockVerse = LyricBlockBase & {
-  type: 'verse'
-  overrideDefaultLanguage?: LanguageCode
-  lines: LocalizedText[]
-}
-
-type LyricBlockInstrumental = LyricBlockBase & {
-  type: 'instrumental'
-  text?: string
-}
-
-type LyricBlock = LyricBlockVerse | LyricBlockInstrumental
-
-interface ILyric {
+export interface ILyric {
   metadata: LyricMetadata
   settings: LyricSettings
   blocks: LyricBlock[]
 }
 
 export class Lyric implements ILyric {
+  readonly #ID_LENGTH = 2
+
   metadata: LyricMetadata
   settings: LyricSettings
   blocks: LyricBlock[]
 
   constructor(lyric: ILyric) {
-    this.metadata = lyric.metadata
-    this.settings = lyric.settings
-    this.blocks = lyric.blocks
+    const { blocks, metadata, settings } = window.structuredClone(lyric)
+
+    this.metadata = metadata
+    this.settings = settings
+    this.blocks = blocks
   }
 
-  clone = (): Lyric => new Lyric(structuredClone(this))
+  clone = (): Lyric =>
+    new Lyric({
+      blocks: this.blocks,
+      metadata: this.metadata,
+      settings: this.settings,
+    })
 
   addBlock(block: LyricBlock) {
     this.blocks.push(block)
   }
 
+  removeBlock(blockId: string) {
+    const index = this.blocks.findIndex(b => b.id === blockId)
+    if (index === -1) return
+    this.blocks.splice(index, 1)
+  }
+
   addEmptyBlock() {
     this.blocks.push({
-      id: Guid.new(),
+      id: this.#generateUniqueBlockId(),
       endTimestamp: 0,
-      type: 'instrumental',
+      tx: '',
+      ar: '',
+      en: '',
+      es: '',
+      fa: '',
+      ja: '',
+      rj: '',
     })
+  }
+
+  #generateUniqueBlockId(): string {
+    const existingIds = new Set(this.blocks.map(b => b.id))
+    let id: string
+    let attempts = 0
+    const maxAttempts = 100
+
+    do {
+      id = generateShortId(this.#ID_LENGTH)
+      attempts++
+    } while (existingIds.has(id) && attempts < maxAttempts)
+
+    return id
   }
 }

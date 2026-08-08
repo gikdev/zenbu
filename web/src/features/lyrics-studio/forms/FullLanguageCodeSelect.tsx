@@ -4,13 +4,11 @@ import { styleInput } from '#/common/atoms/input'
 import { useFieldContext, FieldMeta, LabelContainer } from '#/features/forms'
 import { useI18nContext } from '#/features/i18n'
 
-import { languageCodeUtils, type LanguageCode } from '../lyric/LanguageCode'
+import { languageCodes, languageCodeUtils, type LanguageCode } from '../lyric/LanguageCode'
 
 export function FullLanguageCodeSelect(p: { title: string }) {
   const { locale } = useI18nContext()
   const field = useFieldContext<LanguageCode>()
-
-  const codes = languageCodeUtils.getListOfAllValues()
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement, HTMLSelectElement>) =>
     field.handleChange(languageCodeUtils.validateOrDefault(e.target.value, locale))
@@ -26,7 +24,7 @@ export function FullLanguageCodeSelect(p: { title: string }) {
         onChange={handleChange}
         className={styleInput()}
       >
-        {codes.map(code => (
+        {languageCodes.map(code => (
           <option className='bg-bg-1 text-text-muted' value={code} key={code}>
             {code}
           </option>

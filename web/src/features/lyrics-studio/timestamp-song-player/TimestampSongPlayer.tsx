@@ -16,6 +16,7 @@ import { styleBtn } from '#/common/atoms/btn'
 import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
 import { useI18nContext, useIsRtl } from '#/features/i18n'
 
+import { TimeFormatter } from '../helpers/TimeFormatter'
 import {
   type PlaybackSpeed,
   playbackSpeedValues,
@@ -25,7 +26,6 @@ import {
   type VolumeLevel,
   volumeLevelValues,
 } from './store'
-import { TimeFormatter } from './TimeFormatter'
 
 const {
   pause,

@@ -4,7 +4,7 @@ import { styleInput } from '#/common/atoms/input'
 import { useFieldContext, FieldMeta, LabelContainer } from '#/features/forms'
 import { useI18nContext } from '#/features/i18n'
 
-import { languageCodeUtils } from '../lyric/LanguageCode'
+import { languageCodes, languageCodeUtils } from '../lyric/LanguageCode'
 import type { LocalizedText } from '../lyric/LocalizedText'
 
 type TextInputChangeHandler = ChangeEventHandler<HTMLTextAreaElement, HTMLTextAreaElement> &
@@ -14,7 +14,6 @@ export function LocalizedTextInput(p: { title: string; isMultiline?: boolean }) 
   const { locale } = useI18nContext()
   const field = useFieldContext<LocalizedText>()
   const Tag = p.isMultiline ? 'textarea' : 'input'
-  const codes = languageCodeUtils.getListOfAllValues()
 
   const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement, HTMLSelectElement>) =>
     field.handleChange(p => ({ ...p, lang: languageCodeUtils.validateOrDefault(e.target.value, locale) }))
@@ -31,7 +30,7 @@ export function LocalizedTextInput(p: { title: string; isMultiline?: boolean }) 
           onChange={handleLanguageChange}
           className={styleInput({ mode: 'inline' })}
         >
-          {codes.map(code => (
+          {languageCodes.map(code => (
             <option className='bg-bg-1 text-text-muted' value={code} key={code}>
               {code}
             </option>
