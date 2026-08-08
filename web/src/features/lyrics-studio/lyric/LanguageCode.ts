@@ -11,12 +11,9 @@ export const zLanguageCode = z.union([
 
 export type LanguageCode = z.infer<typeof zLanguageCode>
 
-export const languageCodeUtils = {
-  /** Get a list of all available values */
-  getListOfAllValues(): LanguageCode[] {
-    return ['ar', 'en', 'es', 'fa', 'ja', 'rj']
-  },
+export const languageCodes: LanguageCode[] = ['ar', 'en', 'es', 'fa', 'ja', 'rj']
 
+export const languageCodeUtils = {
   /** Validate a string or fall back to a value */
   validateOrDefault(input: string, fallback: LanguageCode): LanguageCode {
     const result = zLanguageCode.safeParse(input)
