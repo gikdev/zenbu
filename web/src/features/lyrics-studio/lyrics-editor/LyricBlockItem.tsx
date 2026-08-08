@@ -15,7 +15,7 @@ interface LyricBlockItemProps {
 
 export const LyricBlockItem = (p: LyricBlockItemProps) => {
   const { ar, en, id, endTimestamp, es, fa, ja, rj, tx, defaultLanguageOverride } = p.block
-  const [isDetailsOpen, setDetailsOpen] = useState(false)
+  const [isDetailsOpen, setDetailsOpen] = useState(true)
 
   return (
     <div>
@@ -49,10 +49,10 @@ export const LyricBlockItem = (p: LyricBlockItemProps) => {
       </p>
 
       <Show if={isDetailsOpen}>
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-4'>
           <Show if={!!ar}>
             <div className='flex flex-col gap-1'>
-              <p className=''>Arabic</p>
+              <p className='text-xs opacity-50'>Arabic</p>
               <p className='use-lang-font' lang='ar' dir='auto'>
                 {ar}
               </p>
@@ -61,7 +61,7 @@ export const LyricBlockItem = (p: LyricBlockItemProps) => {
 
           <Show if={!!en}>
             <div className='flex flex-col gap-1'>
-              <p className=''>English</p>
+              <p className='text-xs opacity-50'>English</p>
               <p className='use-lang-font' lang='en' dir='auto'>
                 {en}
               </p>
@@ -70,7 +70,7 @@ export const LyricBlockItem = (p: LyricBlockItemProps) => {
 
           <Show if={!!es}>
             <div className='flex flex-col gap-1'>
-              <p className=''>Spanish</p>
+              <p className='text-xs opacity-50'>Spanish</p>
               <p className='use-lang-font' lang='es' dir='auto'>
                 {es}
               </p>
@@ -79,7 +79,7 @@ export const LyricBlockItem = (p: LyricBlockItemProps) => {
 
           <Show if={!!fa}>
             <div className='flex flex-col gap-1'>
-              <p className=''>Persian</p>
+              <p className='text-xs opacity-50'>Persian</p>
               <p className='use-lang-font' lang='fa' dir='auto'>
                 {fa}
               </p>
@@ -88,7 +88,7 @@ export const LyricBlockItem = (p: LyricBlockItemProps) => {
 
           <Show if={!!ja}>
             <div className='flex flex-col gap-1'>
-              <p className=''>Japanese</p>
+              <p className='text-xs opacity-50'>Japanese</p>
               <p className='use-lang-font' lang='ja' dir='auto'>
                 {ja}
               </p>
@@ -97,7 +97,7 @@ export const LyricBlockItem = (p: LyricBlockItemProps) => {
 
           <Show if={!!rj}>
             <div className='flex flex-col gap-1'>
-              <p className=''>Romaji</p>
+              <p className='text-xs opacity-50'>Romaji</p>
               <p className='use-lang-font' lang='en' dir='auto'>
                 {rj}
               </p>
@@ -106,7 +106,7 @@ export const LyricBlockItem = (p: LyricBlockItemProps) => {
 
           <Show if={!!tx}>
             <div className='flex flex-col gap-1'>
-              <p className=''>Text</p>
+              <p className='text-xs opacity-50'>Text</p>
               <p className='use-lang-font' lang='en' dir='auto'>
                 {tx}
               </p>

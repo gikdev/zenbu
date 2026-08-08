@@ -16,12 +16,13 @@ const styleAdaptiveDialog = tv({
       flex flex-col border border-border-muted bg-bg-2
       rounded-t-md sm:rounded-md
       min-h-[50dvh] sm:min-h-auto
-      max-w-full sm:max-w-120
-      min-w-full sm:min-w-80
+      max-h-[90dvh]
+      max-w-full sm:max-w-160
+      min-w-full sm:min-w-120
     `,
     header: 'flex items-center justify-between border-b border-border-muted px-4 py-2',
     title: 'font-bold text-text-important',
-    content: 'p-4',
+    content: 'p-4 overflow-y-auto',
   },
 })
 

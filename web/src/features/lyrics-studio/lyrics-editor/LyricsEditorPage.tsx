@@ -1,14 +1,15 @@
-import { CaretDownIcon, HouseIcon, PencilSimpleIcon, PlusIcon, TrashSimpleIcon } from '@phosphor-icons/react'
+import { HouseIcon, PlusIcon } from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 
 import { styleBtn } from '#/common/atoms/btn'
 import { Show } from '#/common/helpers/Show'
+import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
 import { PageShell } from '#/common/molecules/PageShell'
 import { useI18nContext, useIsRtl } from '#/features/i18n'
 
-import { TimeFormatter } from '../helpers/TimeFormatter'
 import { Lyric } from '../lyric/Lyric'
+import { LyricBlockForm } from './LyricBlockForm'
 import { LyricBlockItem } from './LyricBlockItem'
 import { LyricMetadataCard } from './LyricMetadataCard'
 import { LyricMetadataForm } from './LyricMetadataForm'
@@ -18,17 +19,18 @@ import { SectionTitle } from './SectionTitle'
 const emptyLyric = new Lyric({
   metadata: {
     // title: { lang: 'ja', text: '結婚行進曲' },
-    title: { lang: 'en', text: 'Kekkon Koushinkyoku' },
+    // title: { lang: 'en', text: 'Kekkon Koushinkyoku' },
+    title: { lang: 'en', text: 'Unknown Lyric/Music' },
 
-    artist: { lang: 'en', text: 'ASOBI Doumei' },
-    // artist: null,
+    // artist: { lang: 'en', text: 'ASOBI Doumei' },
+    artist: null,
 
-    source: 'https://animegate.ir/anime/theme/11567',
-    // source: null,
+    // source: 'https://animegate.ir/anime/theme/11567',
+    source: null,
 
-    imageUrl: 'https://animegate.ir/storage/anime/images/2024/15164.webp',
+    // imageUrl: 'https://animegate.ir/storage/anime/images/2024/15164.webp',
     // imageUrl: 'https://aniegate.ir/storage/anime/images/2024/15164.webp',
-    // imageUrl: null,
+    imageUrl: null,
   },
   settings: {
     defaultLanguage: 'en',
@@ -41,6 +43,9 @@ export const LyricsEditorPage = () => {
   const isRtl = useIsRtl()
   const [lyric, setLyric] = useState<Lyric>(emptyLyric)
   const [isEditMetadataOpen, setEditMetadataOpen] = useState(false)
+  const [editBlockId, setEditBlockId] = useState<string | null>(null)
+  const isEditBlockModalOpen = !!editBlockId
+  const blockToEdit = lyric.blocks.find(b => b.id === editBlockId)
 
   return (
     <PageShell variants={{ heightFull: 'min' }}>
@@ -86,21 +91,21 @@ export const LyricsEditorPage = () => {
 
           <SectionTitle title='Blocks' />
 
-          {lyric.blocks.map(b => (
-            <LyricBlockItem
-              key={b.id}
-              block={b}
-              onEdit={() => {
-                /* open edit modal */
-              }}
-              onDelete={() => {
-                const isSure = window.confirm('Sure?')
-                if (!isSure) return
-                lyric.removeBlock(b.id)
-                setLyric(lyric.clone())
-              }}
-            />
-          ))}
+          <div className='flex flex-col gap-8'>
+            {lyric.blocks.map(b => (
+              <LyricBlockItem
+                key={b.id}
+                block={b}
+                onEdit={() => setEditBlockId(b.id)}
+                onDelete={() => {
+                  const isSure = window.confirm('Sure?')
+                  if (!isSure) return
+                  lyric.removeBlock(b.id)
+                  setLyric(lyric.clone())
+                }}
+              />
+            ))}
+          </div>
 
           <button
             type='button'
@@ -114,6 +119,21 @@ export const LyricsEditorPage = () => {
             <span>Add Empty Block</span>
           </button>
         </div>
+
+        <AdaptiveDialog
+          title={`Edit Block #${blockToEdit?.id}`}
+          isOpen={isEditBlockModalOpen}
+          onClose={() => setEditBlockId(null)}
+        >
+          <LyricBlockForm
+            block={blockToEdit!}
+            onSubmit={updatedBlock => {
+              lyric.updateBlock(updatedBlock)
+              setLyric(lyric.clone())
+              setEditBlockId(null)
+            }}
+          />
+        </AdaptiveDialog>
       </div>
     </PageShell>
   )

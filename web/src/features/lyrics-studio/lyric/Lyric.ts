@@ -65,6 +65,12 @@ export class Lyric implements ILyric {
     this.blocks.splice(index, 1)
   }
 
+  updateBlock(updatedBlock: LyricBlock) {
+    const index = this.blocks.findIndex(b => b.id === updatedBlock.id)
+    if (index === -1) return
+    this.blocks[index] = updatedBlock
+  }
+
   addEmptyBlock() {
     this.blocks.push({
       id: this.#generateUniqueBlockId(),
