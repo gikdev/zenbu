@@ -1,37 +1,18 @@
+import { err, ok, type Result } from 'neverthrow'
+import z from 'zod'
+
 import { generateShortId } from '#/common/helpers/generateShortId'
 
-import type { LanguageCode } from './LanguageCode'
-import type { LocalizedText } from './LocalizedText'
+import { zLyricBlock, type LyricBlock } from './LyricBlock'
+import { zLyricMetadata, type LyricMetadata } from './LyricMetadata'
+import { zLyricSettings, type LyricSettings } from './LyricSettings'
 
-export type LyricMetadata = {
-  title: LocalizedText
-  artist: LocalizedText | null
-  source: string | null
-  imageUrl: string | null
-}
-
-export type LyricSettings = {
-  defaultLanguage: LanguageCode
-}
-
-export type LyricBlock = {
-  id: string
-  endTimestamp: number
-  defaultLanguageOverride?: LanguageCode
-  tx: string
-  ar: string
-  en: string
-  es: string
-  fa: string
-  ja: string
-  rj: string
-}
-
-export interface ILyric {
-  metadata: LyricMetadata
-  settings: LyricSettings
-  blocks: LyricBlock[]
-}
+const zILyric = z.object({
+  metadata: zLyricMetadata,
+  settings: zLyricSettings,
+  blocks: z.array(zLyricBlock),
+})
+type ILyric = z.infer<typeof zILyric>
 
 export class Lyric implements ILyric {
   readonly #ID_LENGTH = 2
@@ -46,6 +27,37 @@ export class Lyric implements ILyric {
     this.metadata = metadata
     this.settings = settings
     this.blocks = blocks
+  }
+
+  // 1. Static factory method: safely parse JSON and create a Lyric instance
+  static create(jsonString: string): Result<Lyric, string> {
+    let raw: unknown
+
+    try {
+      raw = JSON.parse(jsonString)
+    } catch (error) {
+      return err(`Invalid JSON: ${(error as Error).message}`)
+    }
+
+    const result = zILyric.safeParse(raw)
+
+    if (!result.success) {
+      return err(`Validation failed: ${result.error.message}`)
+    }
+
+    return ok(new Lyric(result.data))
+  }
+
+  toJsonString(): string {
+    return JSON.stringify(this.toJson())
+  }
+
+  toJson(): ILyric {
+    return {
+      metadata: this.metadata,
+      settings: this.settings,
+      blocks: this.blocks,
+    }
   }
 
   clone = (): Lyric =>

@@ -5,7 +5,7 @@ import { styleBtn } from '#/common/atoms/btn'
 
 import type { LyricMetadata } from '../lyric/Lyric'
 
-export const LyricMetadataCard = (p: { metadata: LyricMetadata; isEditing: boolean; onEdit: () => void }) => {
+export const LyricMetadataCard = (p: { metadata: LyricMetadata }) => {
   const { artist, imageUrl, source, title } = p.metadata
 
   const [imageState, setImageState] = useState<'missing' | 'error' | 'displaying'>(
@@ -67,12 +67,6 @@ export const LyricMetadataCard = (p: { metadata: LyricMetadata; isEditing: boole
             <span>(No Source)</span>
           )}
         </span>
-
-        <span>-</span>
-
-        <button type='button' className={styleBtn({ size: 'icon' })} onClick={p.onEdit}>
-          {p.isEditing ? <XIcon size={20} /> : <PencilSimpleIcon size={20} />}
-        </button>
       </p>
     </div>
   )

@@ -15,15 +15,17 @@ export const LyricMetadataForm = (p: { metadata: LyricMetadata; onSubmit: (metad
 
   return (
     <form.AppForm>
-      <form.AppField name='title' children={field => <field.LocalizedTextInput title='Title' />} />
-      <form.AppField name='artist' children={field => <field.LocalizedTextInput title='Artist' />} />
-      <form.AppField name='imageUrl' children={field => <field.SimpleTextInput title='Image URL' />} />
-      <form.AppField name='source' children={field => <field.SimpleTextInput title='Source' />} />
+      <div className='flex flex-col gap-2'>
+        <form.AppField name='title' children={field => <field.LocalizedTextInput title='Title' />} />
+        <form.AppField name='artist' children={field => <field.LocalizedTextInput title='Artist' />} />
+        <form.AppField name='imageUrl' children={field => <field.SimpleTextInput title='Image URL' />} />
+        <form.AppField name='source' children={field => <field.SimpleTextInput title='Source' />} />
 
-      <form.SimpleSubmitBtn className={styleBtn({ variant: 'primary' })}>
-        <FloppyDiskIcon size={20} />
-        <span>Save</span>
-      </form.SimpleSubmitBtn>
+        <form.SimpleSubmitBtn className={styleBtn({ variant: 'primary' })}>
+          <FloppyDiskIcon size={20} />
+          <span>Save</span>
+        </form.SimpleSubmitBtn>
+      </div>
     </form.AppForm>
   )
 }

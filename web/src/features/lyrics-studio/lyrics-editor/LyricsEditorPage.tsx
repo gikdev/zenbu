@@ -1,9 +1,16 @@
-import { HouseIcon, PlusIcon } from '@phosphor-icons/react'
+import {
+  DownloadSimpleIcon,
+  GearSixIcon,
+  HouseIcon,
+  PencilSimpleIcon,
+  PlusIcon,
+  UploadSimpleIcon,
+} from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { styleBtn } from '#/common/atoms/btn'
-import { Show } from '#/common/helpers/Show'
+import { downloadFile } from '#/common/helpers/downloadFile'
 import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
 import { PageShell } from '#/common/molecules/PageShell'
 import { useI18nContext, useIsRtl } from '#/features/i18n'
@@ -43,55 +50,109 @@ export const LyricsEditorPage = () => {
   const isRtl = useIsRtl()
   const [lyric, setLyric] = useState<Lyric>(emptyLyric)
   const [isEditMetadataOpen, setEditMetadataOpen] = useState(false)
+  const [isEditSettingsOpen, setEditSettingsOpen] = useState(false)
   const [editBlockId, setEditBlockId] = useState<string | null>(null)
   const isEditBlockModalOpen = !!editBlockId
   const blockToEdit = lyric.blocks.find(b => b.id === editBlockId)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleDownload = () => {
+    // 1. Get JSON string from the lyric instance
+    const jsonString = lyric.toJsonString()
+
+    // 2. Create a Blob and a File
+    const blob = new Blob([jsonString], { type: 'application/json' })
+
+    // 3. Build a filename from the title (fallback to "lyric")
+    const fileName = `${lyric.metadata.title.text}.json`
+    const file = new File([blob], fileName, { type: 'application/json' })
+
+    // 4. Trigger download
+    downloadFile(file)
+  }
+
+  const handleUploadClick = () => {
+    fileInputRef.current?.click()
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = event => {
+      try {
+        const jsonString = event.target?.result as string
+        const newLyricResult = Lyric.create(jsonString)
+
+        if (newLyricResult.isErr()) {
+          throw new Error(newLyricResult.error)
+        }
+
+        setLyric(newLyricResult.value)
+      } catch (err) {
+        alert(`Failed to load lyric: ${(err as Error).message}`)
+      } finally {
+        // Reset input so the same file can be re-uploaded
+        if (fileInputRef.current) fileInputRef.current.value = ''
+      }
+    }
+    reader.onerror = () => {
+      alert('Failed to read file')
+    }
+    reader.readAsText(file)
+  }
 
   return (
     <PageShell variants={{ heightFull: 'min' }}>
       <div className='mx-auto w-full max-w-160'>
-        <div className='flex items-center justify-between px-4 py-2'>
-          <div className='flex items-center gap-2'>
-            <Link to='/apps' className={styleBtn({ size: 'icon' })}>
-              <HouseIcon mirrored={isRtl} size={20} />
-            </Link>
+        <div className='flex items-center justify-between gap-1 px-4 py-2'>
+          <Link to='/apps' className={styleBtn({ size: 'icon' })}>
+            <HouseIcon mirrored={isRtl} size={20} />
+          </Link>
 
-            <h1 className='text-text-important text-lg font-bold'>{LL.lyricsEditor.title()}</h1>
-          </div>
+          <h1 className='text-text-important me-auto text-lg font-bold'>{LL.lyricsEditor.title()}</h1>
+
+          <button
+            type='button'
+            className={styleBtn({ size: 'icon' })}
+            onClick={() => {
+              lyric.addEmptyBlock()
+              setLyric(lyric.clone())
+            }}
+          >
+            <PlusIcon size={20} />
+          </button>
+
+          <button type='button' className={styleBtn({ size: 'icon' })} onClick={handleUploadClick}>
+            <UploadSimpleIcon size={20} />
+          </button>
+
+          <input
+            type='file'
+            accept='.json,application/json'
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            className='hidden'
+          />
+
+          <button type='button' className={styleBtn({ size: 'icon' })} onClick={() => setEditMetadataOpen(p => !p)}>
+            <PencilSimpleIcon size={20} />
+          </button>
+
+          <button type='button' className={styleBtn({ size: 'icon' })} onClick={() => setEditSettingsOpen(p => !p)}>
+            <GearSixIcon size={20} />
+          </button>
         </div>
 
         <div className='flex flex-1 flex-col gap-4 p-4'>
-          <SectionTitle title='Metadata' />
-
-          <LyricMetadataCard
-            metadata={lyric.metadata}
-            isEditing={isEditMetadataOpen}
-            onEdit={() => setEditMetadataOpen(p => !p)}
-          />
-
-          <Show if={isEditMetadataOpen}>
-            <LyricMetadataForm
-              metadata={lyric.metadata}
-              onSubmit={metadata => {
-                lyric.metadata = metadata
-                setLyric(lyric.clone())
-              }}
-            />
-          </Show>
-
-          <SectionTitle title='Settings' />
-
-          <LyricSettingsForm
-            settings={lyric.settings}
-            onSubmit={settings => {
-              lyric.settings = settings
-              setLyric(lyric.clone())
-            }}
-          />
+          <LyricMetadataCard metadata={lyric.metadata} />
 
           <SectionTitle title='Blocks' />
 
           <div className='flex flex-col gap-8'>
+            {lyric.blocks.length === 0 && <p className='text-center'>No blocks here for now.</p>}
+
             {lyric.blocks.map(b => (
               <LyricBlockItem
                 key={b.id}
@@ -107,16 +168,9 @@ export const LyricsEditorPage = () => {
             ))}
           </div>
 
-          <button
-            type='button'
-            className={styleBtn({ variant: 'outline' })}
-            onClick={() => {
-              lyric.addEmptyBlock()
-              setLyric(lyric.clone())
-            }}
-          >
-            <PlusIcon size={20} />
-            <span>Add Empty Block</span>
+          <button type='button' className={styleBtn({ variant: 'primary' })} onClick={handleDownload}>
+            <DownloadSimpleIcon size={20} />
+            <span>Download as file</span>
           </button>
         </div>
 
@@ -131,6 +185,28 @@ export const LyricsEditorPage = () => {
               lyric.updateBlock(updatedBlock)
               setLyric(lyric.clone())
               setEditBlockId(null)
+            }}
+          />
+        </AdaptiveDialog>
+
+        <AdaptiveDialog title='Settings' isOpen={isEditSettingsOpen} onClose={() => setEditSettingsOpen(false)}>
+          <LyricSettingsForm
+            settings={lyric.settings}
+            onSubmit={settings => {
+              lyric.settings = settings
+              setLyric(lyric.clone())
+              setEditSettingsOpen(false)
+            }}
+          />
+        </AdaptiveDialog>
+
+        <AdaptiveDialog title='Metadata' isOpen={isEditMetadataOpen} onClose={() => setEditMetadataOpen(false)}>
+          <LyricMetadataForm
+            metadata={lyric.metadata}
+            onSubmit={metadata => {
+              lyric.metadata = metadata
+              setLyric(lyric.clone())
+              setEditMetadataOpen(false)
             }}
           />
         </AdaptiveDialog>

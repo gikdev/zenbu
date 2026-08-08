@@ -15,15 +15,17 @@ export const LyricSettingsForm = (p: { settings: LyricSettings; onSubmit: (setti
 
   return (
     <form.AppForm>
-      <form.AppField
-        name='defaultLanguage'
-        children={field => <field.FullLanguageCodeSelect title='Default Language' />}
-      />
+      <div className='flex flex-col gap-2'>
+        <form.AppField
+          name='defaultLanguage'
+          children={field => <field.FullLanguageCodeSelect title='Default Language' />}
+        />
 
-      <form.SimpleSubmitBtn className={styleBtn({ variant: 'primary' })}>
-        <FloppyDiskIcon size={20} />
-        <span>Save</span>
-      </form.SimpleSubmitBtn>
+        <form.SimpleSubmitBtn className={styleBtn({ variant: 'primary' })}>
+          <FloppyDiskIcon size={20} />
+          <span>Save</span>
+        </form.SimpleSubmitBtn>
+      </div>
     </form.AppForm>
   )
 }
