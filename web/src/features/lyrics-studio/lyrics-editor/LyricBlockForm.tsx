@@ -31,19 +31,40 @@ export const LyricBlockForm = (p: LyricBlockFormProps) => {
           children={field => <field.FullLanguageCodeSelect title='Default Language Override' isOptional />}
         />
 
-        <form.AppField name='tx' children={field => <field.SimpleTextInput title='Text (tx)' />} />
+        <form.AppField
+          name='tx'
+          children={field => <field.SimpleTextInput className='lang--en use-lang-font' title='Text (tx)' />}
+        />
 
-        <form.AppField name='ar' children={field => <field.SimpleTextInput title='Arabic (ar)' />} />
+        <form.AppField
+          name='ar'
+          children={field => <field.SimpleTextInput className='lang--fa use-lang-font' title='Arabic (ar)' />}
+        />
 
-        <form.AppField name='en' children={field => <field.SimpleTextInput title='English (en)' />} />
+        <form.AppField
+          name='en'
+          children={field => <field.SimpleTextInput className='lang--en use-lang-font' title='English (en)' />}
+        />
 
-        <form.AppField name='es' children={field => <field.SimpleTextInput title='Spanish (es)' />} />
+        <form.AppField
+          name='es'
+          children={field => <field.SimpleTextInput className='lang--en use-lang-font' title='Spanish (es)' />}
+        />
 
-        <form.AppField name='fa' children={field => <field.SimpleTextInput title='Persian (fa)' />} />
+        <form.AppField
+          name='fa'
+          children={field => <field.SimpleTextInput className='lang--fa use-lang-font' title='Persian (fa)' />}
+        />
 
-        <form.AppField name='ja' children={field => <field.SimpleTextInput title='Japanese (ja)' />} />
+        <form.AppField
+          name='ja'
+          children={field => <field.SimpleTextInput className='lang--ja use-lang-font' title='Japanese (ja)' />}
+        />
 
-        <form.AppField name='rj' children={field => <field.SimpleTextInput title='Romaji (rj)' />} />
+        <form.AppField
+          name='rj'
+          children={field => <field.SimpleTextInput className='lang--en use-lang-font' title='Romaji (rj)' />}
+        />
 
         <form.SimpleSubmitBtn className={styleBtn({ variant: 'primary' })}>
           <FloppyDiskIcon size={20} />

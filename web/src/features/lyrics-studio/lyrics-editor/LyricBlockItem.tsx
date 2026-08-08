@@ -49,7 +49,7 @@ export const LyricBlockItem = (p: LyricBlockItemProps) => {
       </p>
 
       <Show if={isDetailsOpen}>
-        <div className='flex flex-col gap-4'>
+        <div className='bg-bg-2 flex flex-col gap-4 rounded-md p-2'>
           <Show if={!!ar}>
             <div className='flex flex-col gap-1'>
               <p className='text-xs opacity-50'>Arabic</p>

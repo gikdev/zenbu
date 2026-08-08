@@ -4,9 +4,9 @@ import { FullLanguageCodeSelect } from '../lyrics-studio/forms/FullLanguageCodeS
 import { LocalizedTextInput } from '../lyrics-studio/forms/LocalizedTextInput'
 import { MiniLanguageCodeSelect } from '../lyrics-studio/forms/MiniLanguageCodeSelect'
 import { fieldContext, formContext } from './formHookContexts'
+import { SimpleNumberInput } from './SimpleNumberInput'
 import { SimpleSubmitBtn } from './SimpleSubmitBtn'
 import { SimpleTextInput } from './SimpleTextInput'
-import { SimpleNumberInput } from './SimpleNumberInput'
 
 export const { useAppForm } = createFormHook({
   formContext,

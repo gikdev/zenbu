@@ -47,7 +47,7 @@ export const LyricMetadataCard = (p: { metadata: LyricMetadata; isEditing: boole
       {/* Artist and Source */}
       <p className='flex items-center gap-2'>
         <span>
-          {artist ? (
+          {artist?.text ? (
             <span className='use-lang-font' lang={artist.lang}>
               {artist.text}
             </span>

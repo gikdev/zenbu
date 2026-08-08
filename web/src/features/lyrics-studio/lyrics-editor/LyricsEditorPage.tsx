@@ -23,14 +23,14 @@ const emptyLyric = new Lyric({
     title: { lang: 'en', text: 'Unknown Lyric/Music' },
 
     // artist: { lang: 'en', text: 'ASOBI Doumei' },
-    artist: null,
+    artist: { lang: 'en', text: '' },
 
     // source: 'https://animegate.ir/anime/theme/11567',
-    source: null,
+    source: '',
 
     // imageUrl: 'https://animegate.ir/storage/anime/images/2024/15164.webp',
     // imageUrl: 'https://aniegate.ir/storage/anime/images/2024/15164.webp',
-    imageUrl: null,
+    imageUrl: '',
   },
   settings: {
     defaultLanguage: 'en',

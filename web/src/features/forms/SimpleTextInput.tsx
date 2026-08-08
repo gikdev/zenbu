@@ -11,9 +11,10 @@ type TextInputChangeHandler = ChangeEventHandler<HTMLTextAreaElement, HTMLTextAr
 interface SimpleTextInputProps {
   title: string
   isMultiline?: boolean
+  className?: string
 }
 
-export function SimpleTextInput({ title, isMultiline = false }: SimpleTextInputProps) {
+export function SimpleTextInput({ title, isMultiline = false, className }: SimpleTextInputProps) {
   const field = useFieldContext<string | null>()
   const Tag = isMultiline ? 'textarea' : 'input'
   const value = field.state.value || ''
@@ -31,7 +32,7 @@ export function SimpleTextInput({ title, isMultiline = false }: SimpleTextInputP
         value={value}
         onBlur={field.handleBlur}
         onChange={handleChange}
-        className={styleInput({ mode: isMultiline ? 'multiline' : 'block' })}
+        className={styleInput({ mode: isMultiline ? 'multiline' : 'block', className })}
       />
 
       <FieldMeta meta={field.state.meta} />
