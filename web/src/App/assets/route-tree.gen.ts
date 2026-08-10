@@ -9,15 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './../../routes/__root'
-import { Route as IndexRouteImport } from './../../routes/index'
-import { Route as WelcomeRouteImport } from './../../routes/welcome'
+import { Route as AppslyricsStudioLyricsEditorRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-editor'
+import { Route as AppslyricsStudioLyricsPlayerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-player'
+import { Route as AppslyricsStudioLyricsSyncerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-syncer'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
 import { Route as AppsTimeLogRouteImport } from './../../routes/apps/time-log'
 import { Route as AppsWritingAreaRouteImport } from './../../routes/apps/writing-area'
-import { Route as AppslyricsStudioLyricsEditorRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-editor'
-import { Route as AppslyricsStudioLyricsPlayerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-player'
-import { Route as AppslyricsStudioLyricsSyncerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-syncer'
+import { Route as IndexRouteImport } from './../../routes/index'
+import { Route as WelcomeRouteImport } from './../../routes/welcome'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -49,24 +49,21 @@ const AppsWritingAreaRoute = AppsWritingAreaRouteImport.update({
   path: '/apps/writing-area',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppslyricsStudioLyricsEditorRoute =
-  AppslyricsStudioLyricsEditorRouteImport.update({
-    id: '/apps/(lyrics-studio)/lyrics-editor',
-    path: '/apps/lyrics-editor',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const AppslyricsStudioLyricsPlayerRoute =
-  AppslyricsStudioLyricsPlayerRouteImport.update({
-    id: '/apps/(lyrics-studio)/lyrics-player',
-    path: '/apps/lyrics-player',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const AppslyricsStudioLyricsSyncerRoute =
-  AppslyricsStudioLyricsSyncerRouteImport.update({
-    id: '/apps/(lyrics-studio)/lyrics-syncer',
-    path: '/apps/lyrics-syncer',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const AppslyricsStudioLyricsEditorRoute = AppslyricsStudioLyricsEditorRouteImport.update({
+  id: '/apps/(lyrics-studio)/lyrics-editor',
+  path: '/apps/lyrics-editor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppslyricsStudioLyricsPlayerRoute = AppslyricsStudioLyricsPlayerRouteImport.update({
+  id: '/apps/(lyrics-studio)/lyrics-player',
+  path: '/apps/lyrics-player',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppslyricsStudioLyricsSyncerRoute = AppslyricsStudioLyricsSyncerRouteImport.update({
+  id: '/apps/(lyrics-studio)/lyrics-syncer',
+  path: '/apps/lyrics-syncer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -229,6 +226,4 @@ const rootRouteChildren: RootRouteChildren = {
   AppslyricsStudioLyricsPlayerRoute: AppslyricsStudioLyricsPlayerRoute,
   AppslyricsStudioLyricsSyncerRoute: AppslyricsStudioLyricsSyncerRoute,
 }
-export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()

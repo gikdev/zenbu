@@ -1,11 +1,4 @@
-import {
-  DownloadSimpleIcon,
-  GearSixIcon,
-  HouseIcon,
-  PencilSimpleIcon,
-  PlusIcon,
-  UploadSimpleIcon,
-} from '@phosphor-icons/react'
+import { DownloadSimpleIcon, GearSixIcon, HouseIcon, InfoIcon, PlusIcon, UploadSimpleIcon } from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
 import { useRef, useState } from 'react'
 
@@ -113,17 +106,6 @@ export const LyricsEditorPage = () => {
 
           <h1 className='text-text-important me-auto text-lg font-bold'>{LL.lyricsEditor.title()}</h1>
 
-          <button
-            type='button'
-            className={styleBtn({ size: 'icon' })}
-            onClick={() => {
-              lyric.addEmptyBlock()
-              setLyric(lyric.clone())
-            }}
-          >
-            <PlusIcon size={20} />
-          </button>
-
           <button type='button' className={styleBtn({ size: 'icon' })} onClick={handleUploadClick}>
             <UploadSimpleIcon size={20} />
           </button>
@@ -137,7 +119,7 @@ export const LyricsEditorPage = () => {
           />
 
           <button type='button' className={styleBtn({ size: 'icon' })} onClick={() => setEditMetadataOpen(p => !p)}>
-            <PencilSimpleIcon size={20} />
+            <InfoIcon size={20} />
           </button>
 
           <button type='button' className={styleBtn({ size: 'icon' })} onClick={() => setEditSettingsOpen(p => !p)}>
@@ -148,7 +130,22 @@ export const LyricsEditorPage = () => {
         <div className='flex flex-1 flex-col gap-4 p-4'>
           <LyricMetadataCard metadata={lyric.metadata} />
 
-          <SectionTitle title='Blocks' />
+          <SectionTitle
+            title='Blocks'
+            slot={
+              <button
+                type='button'
+                className={styleBtn({ size: 'sm' })}
+                onClick={() => {
+                  lyric.addEmptyBlock()
+                  setLyric(lyric.clone())
+                }}
+              >
+                <PlusIcon size={16} />
+                <span>New Block</span>
+              </button>
+            }
+          />
 
           <div className='flex flex-col gap-8'>
             {lyric.blocks.length === 0 && <p className='text-center'>No blocks here for now.</p>}
