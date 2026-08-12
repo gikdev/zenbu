@@ -128,7 +128,7 @@ tasks:
     aliases: [generate, gen]
     desc: Create a new EF Core migration
     cmds:
-      - dotnet ef migrations add {{.MIGRATION_NAME}} -p {{.INFRASTRUCTURE_PROJECT_PATH}} -s {{.API_PROJECT_PATH}} {{.CLI_ARGS}}
+      - dotnet ef migrations add {{.MIGRATION_NAME}} -p {{.INFRASTRUCTURE_PROJECT_PATH}} -s {{.API_PROJECT_PATH}} --output-dir Persistence/Migrations {{.CLI_ARGS}}
     requires:
       vars: [MIGRATION_NAME, INFRASTRUCTURE_PROJECT_PATH, API_PROJECT_PATH]
 
