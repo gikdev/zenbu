@@ -1,4 +1,4 @@
-namespace App.Domain.Models.MediaLibrary;
+namespace App.Domain.Models.MediaLibrary.MediaCategories;
 
 public enum MediaFormat {
     Other = 0,

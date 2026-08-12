@@ -1,4 +1,4 @@
-namespace App.Domain.Models.MediaLibrary;
+namespace App.Domain.Models.MediaLibrary.MediaSessions;
 
 public enum TrackingStatus {
     Planned = 0,

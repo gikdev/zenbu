@@ -1,6 +1,6 @@
 using App.Domain.Common;
 
-namespace App.Domain.Models.MediaLibrary;
+namespace App.Domain.Models.MediaLibrary.MediaShelves;
 
 public sealed class MediaShelf : AggregateRoot, IHasOwner {
     public required Guid OwnerId { get; init; }

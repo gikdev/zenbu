@@ -1,15 +1,10 @@
-namespace App.Domain.Models.MediaLibrary;
+using App.Domain.Models.MediaLibrary.MediaCategories;
+using App.Domain.Models.MediaLibrary.MediaSessions;
 
+namespace App.Domain.Models.MediaLibrary.Services;
 
-public static class MediaInsightService {
-    public sealed record MediaDashboardInsightsProps {
-        public required IReadOnlyList<MediaCategory> Categories { get; init; }
-        public required IReadOnlyList<MediaItem> Items { get; init; }
-        public required IReadOnlyList<MediaSession> Sessions { get; init; }
-        public required IReadOnlyList<MediaShelf> Shelves { get; init; }
-    }
-
-    public static MediaDashboardInsightsDto GenerateDashboardInsights(
+public static class MediaDashboardInsightsService {
+    public static MediaDashboardInsightsReport Generate(
         MediaDashboardInsightsProps p
     ) {
         // Completed sessions joined with categories
@@ -32,7 +27,7 @@ public static class MediaInsightService {
         // 1. Time per Category (Convert Unit to string)
         var categoryTotals = completedSessions
             .GroupBy(x => x.category.Title)
-            .Select(g => new MediaDashboardInsightsDto.CategoryTotalDto(
+            .Select(g => new CategoryTotalDto(
                 CategoryName: g.Key,
                 Total: g.Sum(x => x.session.ActualTimeSpent ?? x.item.StandardLength ?? 0),
                 Unit: g.First().category.Unit.ToString()
@@ -57,7 +52,7 @@ public static class MediaInsightService {
                 (session, shelf) => new { session, shelf }
             )
             .GroupBy(x => x.shelf.Name)
-            .Select(g => new MediaDashboardInsightsDto.ShelfStatusBreakdownDto(
+            .Select(g => new ShelfStatusBreakdownDto(
                 ShelfName: g.Key,
                 Total: g.Count(),
                 Counts: g.GroupBy(x => x.session.TrackingStatus)
@@ -68,21 +63,11 @@ public static class MediaInsightService {
             ))
             .ToList();
 
-        return new MediaDashboardInsightsDto {
+        return new MediaDashboardInsightsReport {
             CategoryTotals = categoryTotals,
             GlobalTotalMinutes = globalTotalMinutes,
             GlobalTotalPages = globalTotalPages,
             ShelfBreakdowns = shelfStatusBreakdowns,
         };
-    }
-
-    public sealed record MediaDashboardInsightsDto {
-        public required List<CategoryTotalDto> CategoryTotals { get; init; }
-        public required long GlobalTotalMinutes { get; init; }
-        public required long GlobalTotalPages { get; init; }
-        public required List<ShelfStatusBreakdownDto> ShelfBreakdowns { get; init; }
-
-        public sealed record CategoryTotalDto(string CategoryName, long Total, string Unit);
-        public sealed record ShelfStatusBreakdownDto(string ShelfName, int Total, Dictionary<string, int> Counts);
     }
 }

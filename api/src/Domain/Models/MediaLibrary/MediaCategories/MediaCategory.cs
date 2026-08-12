@@ -1,6 +1,6 @@
 using App.Domain.Common;
 
-namespace App.Domain.Models.MediaLibrary;
+namespace App.Domain.Models.MediaLibrary.MediaCategories;
 
 public sealed class MediaCategory : AggregateRoot, IHasOwner {
     public required Guid OwnerId { get; init; }
