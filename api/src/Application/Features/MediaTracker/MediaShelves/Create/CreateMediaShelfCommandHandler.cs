@@ -9,13 +9,13 @@ namespace App.Application.Features.MediaTracker.MediaShelves.Create;
 public sealed class CreateMediaShelfCommandHandler(
     IAppDbContext dbContext,
     ICurrentUser currentUser
-) : ICommandHandler<CreateMediaShelfCommand, Result<MediaShelf>> {
-    public async Task<Result<MediaShelf>> HandleAsync(
+) : ICommandHandler<CreateMediaShelfCommand, Result<MediaShelfResponse>> {
+    public async Task<Result<MediaShelfResponse>> HandleAsync(
         CreateMediaShelfCommand command,
         CancellationToken cancellationToken = default
     ) {
         if (string.IsNullOrWhiteSpace(currentUser.UserId)) {
-            return Result.Failure<MediaShelf>(
+            return Result.Failure<MediaShelfResponse>(
                 Error.Validation(
                     "UserIsNotAuthenticated",
                     "User is not authenticated."
@@ -25,7 +25,7 @@ public sealed class CreateMediaShelfCommandHandler(
 
         // 2. Safely parse the string to a Guid
         if (!Guid.TryParse(currentUser.UserId, out var ownerId)) {
-            return Result.Failure<MediaShelf>(
+            return Result.Failure<MediaShelfResponse>(
                 Error.Validation(
                     "InvalidUserIdentifierFormat",
                     "Invalid user identifier format."
@@ -42,6 +42,14 @@ public sealed class CreateMediaShelfCommandHandler(
         dbContext.MediaShelves.Add(mediaShelf);
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        return Result.Success(mediaShelf);
+        var response = new MediaShelfResponse {
+            Id = mediaShelf.Id,
+            CreatedAt = mediaShelf.CreatedAt,
+            UpdatedAt = mediaShelf.UpdatedAt,
+            Name = mediaShelf.Name,
+            Notes = mediaShelf.Notes,
+        };
+
+        return Result.Success(response);
     }
 }
