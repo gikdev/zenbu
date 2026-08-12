@@ -8,5 +8,7 @@ public sealed class MediaShelfConfiguration : IEntityTypeConfiguration<MediaShel
     public void Configure(EntityTypeBuilder<MediaShelf> builder) {
         builder.Property(x => x.Id)
             .ValueGeneratedNever();
+
+        builder.Property(x => x.OwnerId);
     }
 }
