@@ -4,7 +4,7 @@ using App.Domain.Models.MediaLibrary.MediaSessions;
 namespace App.Domain.Models.MediaLibrary.Services;
 
 public static class MediaDashboardInsightsService {
-    public static MediaDashboardInsightsReport Generate(
+    public static MediaDashboardInsightsDto Generate(
         MediaDashboardInsightsProps p
     ) {
         // Completed sessions joined with categories
@@ -63,7 +63,7 @@ public static class MediaDashboardInsightsService {
             ))
             .ToList();
 
-        return new MediaDashboardInsightsReport {
+        return new MediaDashboardInsightsDto {
             CategoryTotals = categoryTotals,
             GlobalTotalMinutes = globalTotalMinutes,
             GlobalTotalPages = globalTotalPages,

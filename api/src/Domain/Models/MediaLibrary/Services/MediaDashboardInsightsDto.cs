@@ -1,6 +1,6 @@
 namespace App.Domain.Models.MediaLibrary.Services;
 
-public sealed record MediaDashboardInsightsReport {
+public sealed record MediaDashboardInsightsDto {
     public required List<CategoryTotalDto> CategoryTotals { get; init; }
     public required long GlobalTotalMinutes { get; init; }
     public required long GlobalTotalPages { get; init; }
