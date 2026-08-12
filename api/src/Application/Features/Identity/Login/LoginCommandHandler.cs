@@ -1,7 +1,7 @@
 using App.Application.Abstractions.Identity;
 using App.Application.Abstractions.Messaging;
 using App.Domain.Common;
-using App.Domain.Entities;
+using App.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace App.Application.Features.Identity.Login;

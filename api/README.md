@@ -34,7 +34,7 @@ task test
 
 Follow the Todos pattern:
 
-1. **Domain** — Add your entity in `Domain/Entities/`
+1. **Domain** — Add your entity in `Domain/Models/`
 2. **Application** — Create a feature folder in `Application/Features/YourFeature/` with command/query records, handlers, and validators
 3. **Infrastructure** — Add EF Core configuration in `Infrastructure/Persistence/Configurations/` and repository in `Infrastructure/Persistence/Repositories/`
 4. **Api** — Add endpoints in `Api/Endpoints/` and register in `Program.cs`

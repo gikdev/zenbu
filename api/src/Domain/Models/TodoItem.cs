@@ -1,8 +1,8 @@
 using App.Domain.Common;
 
-namespace App.Domain.Entities;
+namespace App.Domain.Models;
 
-public sealed class TodoItem : Entity<TodoItem> {
+public sealed class TodoItem : Entity {
     public required string Title { get; set; }
     public string? Description { get; set; }
     public bool IsCompleted { get; private set; }

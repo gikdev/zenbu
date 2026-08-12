@@ -1,6 +1,6 @@
 using App.Application.Features.Todos.Delete;
 using App.Domain.Common;
-using App.Domain.Entities;
+using App.Domain.Models;
 using FluentAssertions;
 
 namespace App.Application.UnitTests.Features.Todos;
@@ -17,7 +17,7 @@ public sealed class DeleteTodoCommandHandlerTests {
         var handler = new DeleteTodoCommandHandler(dbContext);
 
         // Act
-        var result = await handler.HandleAsync(new DeleteTodoCommand(todo.Id.Value), TestContext.Current.CancellationToken);
+        var result = await handler.HandleAsync(new DeleteTodoCommand(todo.Id), TestContext.Current.CancellationToken);
 
         // Assert
         result.IsSuccess.Should().BeTrue();

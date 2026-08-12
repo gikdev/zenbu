@@ -1,7 +1,7 @@
 using App.Application.Abstractions.Data;
 using App.Application.Abstractions.Messaging;
 using App.Domain.Common;
-using App.Domain.Entities;
+using App.Domain.Models;
 
 namespace App.Application.Features.Todos.Create;
 
@@ -19,7 +19,7 @@ public sealed class CreateTodoCommandHandler(IAppDbContext dbContext)
         dbContext.Todos.Add(todo);
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        var response = new CreateTodoResponse(todo.Id.Value, todo.Title, todo.Description);
+        var response = new CreateTodoResponse(todo.Id, todo.Title, todo.Description);
         return Result.Success(response);
     }
 }

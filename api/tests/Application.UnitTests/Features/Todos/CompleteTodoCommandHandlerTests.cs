@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using App.Application.Features.Todos.Complete;
 using App.Domain.Common;
-using App.Domain.Entities;
+using App.Domain.Models;
 using FluentAssertions;
 
 namespace App.Application.UnitTests.Features.Todos;
@@ -19,7 +19,7 @@ public sealed class CompleteTodoCommandHandlerTests {
         var handler = new CompleteTodoCommandHandler(dbContext);
 
         // Act
-        var result = await handler.HandleAsync(new CompleteTodoCommand(todo.Id.Value), TestContext.Current.CancellationToken);
+        var result = await handler.HandleAsync(new CompleteTodoCommand(todo.Id), TestContext.Current.CancellationToken);
 
         // Assert
         result.IsSuccess.Should().BeTrue();

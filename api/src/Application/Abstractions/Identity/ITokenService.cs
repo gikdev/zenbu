@@ -1,4 +1,4 @@
-using App.Domain.Entities;
+using App.Domain.Models;
 
 namespace App.Application.Abstractions.Identity;
 

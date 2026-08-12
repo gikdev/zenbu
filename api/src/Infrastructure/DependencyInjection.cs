@@ -1,7 +1,7 @@
 using System.Text;
 using App.Application.Abstractions.Data;
 using App.Application.Abstractions.Identity;
-using App.Domain.Entities;
+using App.Domain.Models;
 using App.Infrastructure.Identity;
 using App.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

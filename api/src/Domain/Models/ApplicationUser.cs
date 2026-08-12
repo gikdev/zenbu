@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace App.Domain.Entities;
+namespace App.Domain.Models;
 
 public sealed class ApplicationUser : IdentityUser {
     public string FirstName { get; set; } = default!;

@@ -1,6 +1,6 @@
 namespace App.Domain.Common;
 
-public abstract class AggregateRoot<TEntity> : Entity<TEntity> {
+public abstract class AggregateRoot : Entity {
     private readonly List<IDomainEvent> _domainEvents = [];
 
     public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();

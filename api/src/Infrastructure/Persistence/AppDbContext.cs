@@ -1,6 +1,6 @@
 using App.Application.Abstractions.Data;
 using App.Domain.Common;
-using App.Domain.Entities;
+using App.Domain.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,15 +22,15 @@ public sealed class AppDbContext(
     }
 
     private void UpdateAuditableEntities() {
-        var entries = ChangeTracker.Entries<IEntity>();
+        var entries = ChangeTracker.Entries<Entity>();
 
         foreach (var entry in entries) {
             switch (entry.State) {
-                case EntityState.Added:
-                    entry.Entity.CreatedAt = DateTimeOffset.UtcNow;
-                    break;
+                // case EntityState.Added:
+                //     entry.Entity.CreatedAt = DateTimeOffset.UtcNow;
+                //     break;
                 case EntityState.Modified:
-                    entry.Entity.LastModifiedAt = DateTimeOffset.UtcNow;
+                    entry.Entity.UpdatedAt = DateTimeOffset.UtcNow;
                     break;
             }
         }

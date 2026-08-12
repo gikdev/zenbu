@@ -135,15 +135,15 @@ public sealed class ArchitectureTests {
     }
 
     /// <summary>
-    /// Domain entities should be sealed.
+    /// Domain Models should be sealed.
     /// Prevents inheritance-based complexity and
     /// encourages explicit composition within the domain model.
     /// </summary>
     [Fact]
-    public void Domain_Entities_Should_Be_Sealed() {
+    public void Domain_Models_Should_Be_Sealed() {
         var result = Types.InAssembly(DomainAssembly)
             .That()
-            .ResideInNamespace("App.Domain.Entities")
+            .ResideInNamespace("App.Domain.Models")
             .Should()
             .BeSealed()
             .GetResult();
