@@ -19,6 +19,10 @@ public sealed class MediaSession : AggregateRoot, IHasOwner {
 
         if (status == TrackingStatus.Completed) {
             CompletedAt = DateTimeOffset.UtcNow;
+
+            if (StartedAt == null) {
+                StartedAt = DateTimeOffset.UtcNow;
+            }
         }
 
         TrackingStatus = status;
