@@ -22,7 +22,7 @@ public sealed class GetAllTodosQueryHandler(
                 CompletedAt = t.CompletedAt,
                 CreatedAt = t.CreatedAt,
                 Description = t.Description,
-                Id = t.Id.Value,
+                Id = t.Id,
                 IsCompleted = t.IsCompleted,
                 Title = t.Title,
             })

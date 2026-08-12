@@ -1,5 +1,4 @@
 using App.Domain.Models;
-using App.Infrastructure.Persistence.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -8,7 +7,6 @@ namespace App.Infrastructure.Persistence.Configurations;
 public sealed class TodoItemConfiguration : IEntityTypeConfiguration<TodoItem> {
     public void Configure(EntityTypeBuilder<TodoItem> builder) {
         builder.Property(t => t.Id)
-            .HasConversion<IdValueConverter<TodoItem>>()
             .ValueGeneratedNever();
 
         builder.Property(t => t.Title)
