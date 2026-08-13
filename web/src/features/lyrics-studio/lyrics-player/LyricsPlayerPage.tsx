@@ -19,8 +19,8 @@ export const LyricsPlayerPage = () => {
             <HouseIcon mirrored={isRtl} size={20} />
           </Link>
 
-          <title>{LL.lyricsPlayer.player.title()}</title>
-          <h1 className='text-text-important text-lg font-bold tracking-wide'>{LL.lyricsPlayer.player.title()}</h1>
+          <title>{LL.lyricsPlayer.title()}</title>
+          <h1 className='text-text-important text-lg font-bold tracking-wide'>{LL.lyricsPlayer.title()}</h1>
         </div>
       </div>
 

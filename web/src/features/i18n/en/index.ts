@@ -37,34 +37,22 @@ const en = {
   lyricsPlayer: {
     title: 'Lyrics Player',
     description: 'A lyrics player with music.',
+  },
 
-    player: {
-      title: 'Player',
-      description: 'Play an existing configured song.',
-    },
-    editor: {
-      title: 'Editor',
-      description: 'Configure a song (new / edit).',
-    },
-    home: {
-      title: 'Home',
-      description: 'Go home.',
-    },
-    timestampSongPlayer: {
-      toastSuccess: 'Successfully set.',
-      toastError: 'An error related to audio has occurred.',
-      removeAudio: 'Remove audio',
-      moreOptions: 'More Options',
-      jumpToButton: 'Jump To',
-      jumpToPrompt: 'Jump To:',
-      audioNotSupported: 'Audio not supported.',
-      notAvailable: 'N/A',
-      volume: {
-        muted: 'Muted',
-        low: 'Low',
-        medium: 'Medium',
-        high: 'High',
-      },
+  timestampSongPlayer: {
+    toastSuccess: 'Successfully set.',
+    toastError: 'An error related to audio has occurred.',
+    removeAudio: 'Remove audio',
+    moreOptions: 'More Options',
+    jumpToButton: 'Jump To',
+    jumpToPrompt: 'Jump To:',
+    audioNotSupported: 'Audio not supported.',
+    notAvailable: 'N/A',
+    volume: {
+      muted: 'Muted',
+      low: 'Low',
+      medium: 'Medium',
+      high: 'High',
     },
   },
 

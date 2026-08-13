@@ -37,33 +37,22 @@ const ja = {
   lyricsPlayer: {
     title: '歌詞プレイヤー',
     description: '音楽付き歌詞プレイヤー',
-    player: {
-      title: 'プレーヤー',
-      description: '設定済みの曲を再生します。',
-    },
-    editor: {
-      title: 'エディター',
-      description: '曲を設定します（新規／編集）。',
-    },
-    home: {
-      title: 'ホーム',
-      description: 'ホームに戻ります。',
-    },
-    timestampSongPlayer: {
-      toastSuccess: '正常に設定されました。',
-      toastError: 'オーディオに関連するエラーが発生しました。',
-      removeAudio: '音声を削除',
-      moreOptions: 'その他のオプション',
-      jumpToButton: 'ジャンプ',
-      jumpToPrompt: 'ジャンプ先:',
-      audioNotSupported: '音声はサポートされていません。',
-      notAvailable: '該当なし',
-      volume: {
-        muted: 'ミュート',
-        low: '低',
-        medium: '中',
-        high: '高',
-      },
+  },
+
+  timestampSongPlayer: {
+    toastSuccess: '正常に設定されました。',
+    toastError: 'オーディオに関連するエラーが発生しました。',
+    removeAudio: '音声を削除',
+    moreOptions: 'その他のオプション',
+    jumpToButton: 'ジャンプ',
+    jumpToPrompt: 'ジャンプ先:',
+    audioNotSupported: '音声はサポートされていません。',
+    notAvailable: '該当なし',
+    volume: {
+      muted: 'ミュート',
+      low: '低',
+      medium: '中',
+      high: '高',
     },
   },
 

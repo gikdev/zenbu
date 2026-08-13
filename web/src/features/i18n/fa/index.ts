@@ -37,33 +37,22 @@ const fa = {
   lyricsPlayer: {
     title: 'پخش‌کننده متن آهنگ',
     description: 'پلیر متن آهنگ با موسیقی',
-    player: {
-      title: 'پخش‌کننده',
-      description: 'یک آهنگ پیکربندی‌شده را پخش کن.',
-    },
-    editor: {
-      title: 'ویرایشگر',
-      description: 'یک آهنگ را پیکربندی کن (جدید / ویرایش).',
-    },
-    home: {
-      title: 'خانه',
-      description: 'برو به صفحهٔ اصلی.',
-    },
-    timestampSongPlayer: {
-      toastSuccess: 'با موفقیت تنظیم شد.',
-      toastError: 'خطایی در رابطه با صدا رخ داده است.',
-      removeAudio: 'حذف صدا',
-      moreOptions: 'گزینه‌های بیشتر',
-      jumpToButton: 'پرش به',
-      jumpToPrompt: 'پرش به:',
-      audioNotSupported: 'صدا پشتیبانی نمی‌شود.',
-      notAvailable: 'ناموجود',
-      volume: {
-        muted: 'بی‌صدا',
-        low: 'کم',
-        medium: 'متوسط',
-        high: 'بلند',
-      },
+  },
+
+  timestampSongPlayer: {
+    toastSuccess: 'با موفقیت تنظیم شد.',
+    toastError: 'خطایی در رابطه با صدا رخ داده است.',
+    removeAudio: 'حذف صدا',
+    moreOptions: 'گزینه‌های بیشتر',
+    jumpToButton: 'پرش به',
+    jumpToPrompt: 'پرش به:',
+    audioNotSupported: 'صدا پشتیبانی نمی‌شود.',
+    notAvailable: 'ناموجود',
+    volume: {
+      muted: 'بی‌صدا',
+      low: 'کم',
+      medium: 'متوسط',
+      high: 'بلند',
     },
   },
 
