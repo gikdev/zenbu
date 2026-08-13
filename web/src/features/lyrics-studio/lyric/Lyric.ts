@@ -60,7 +60,7 @@ export class Lyric implements ILyric {
     }
   }
 
-    toLrc(): string {
+  toLrc(): string {
     const lines: string[] = []
 
     // --- Metadata headers ---
@@ -105,6 +105,47 @@ export class Lyric implements ILyric {
     }
 
     return lines.join('\n')
+  }
+
+  toSrt(languageCode?: string): string {
+    const lang = languageCode || this.settings.defaultLanguage
+    const sorted = [...this.blocks].sort((a, b) => a.endTimestamp - b.endTimestamp)
+
+    const lines: string[] = []
+    let prevEnd = 0
+    let index = 1
+
+    for (const block of sorted) {
+      const startSec = prevEnd
+      const endSec = block.endTimestamp
+      const text = (block[lang as keyof LyricBlock] as string) || ''
+
+      // Only output blocks that have actual text in that language
+      if (text.trim()) {
+        const startStr = this.#formatSrtTime(startSec)
+        const endStr = this.#formatSrtTime(endSec)
+
+        lines.push(String(index))
+        lines.push(`${startStr} --> ${endStr}`)
+        lines.push(text.trim())
+        lines.push('') // blank line after each entry
+        index++
+      }
+
+      prevEnd = endSec
+    }
+
+    return lines.join('\n').trim()
+  }
+
+  #formatSrtTime(seconds: number): string {
+    const totalMs = Math.round(seconds * 1000)
+    const hrs = Math.floor(totalMs / 3600000)
+    const mins = Math.floor((totalMs % 3600000) / 60000)
+    const secs = Math.floor((totalMs % 60000) / 1000)
+    const ms = totalMs % 1000
+
+    return `${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')},${String(ms).padStart(3, '0')}`
   }
 
   clone = (): Lyric =>

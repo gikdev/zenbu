@@ -7,6 +7,7 @@ import {
   ListPlusIcon,
   PlusIcon,
   UploadSimpleIcon,
+  SubtitlesIcon,
 } from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
 import { useRef, useState } from 'react'
@@ -67,6 +68,14 @@ export const LyricsEditorPage = () => {
     block.endTimestamp = songPlayerStore.get().currentTime
     lyric.updateBlock(block)
     setLyric(lyric.clone())
+  }
+
+  const handleExportSrt = () => {
+    const srtString = lyric.toSrt()
+    const blob = new Blob([srtString], { type: 'text/plain;charset=utf-8' })
+    const fileName = `${lyric.metadata.title.text || 'lyric'}.srt`
+    const file = new File([blob], fileName, { type: 'text/plain' })
+    downloadFile(file)
   }
 
   const handleExportLrc = () => {
@@ -133,6 +142,10 @@ export const LyricsEditorPage = () => {
           </Link>
 
           <h1 className='text-text-important me-auto text-lg font-bold'>{LL.lyricsEditor.title()}</h1>
+
+          <button type='button' className={styleBtn({ size: 'icon' })} onClick={handleExportSrt}>
+            <SubtitlesIcon size={20} />
+          </button>
 
           <button type='button' className={styleBtn({ size: 'icon' })} onClick={handleExportLrc}>
             <FileCodeIcon size={20} />
