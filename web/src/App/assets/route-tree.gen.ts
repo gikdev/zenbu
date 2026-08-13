@@ -17,7 +17,6 @@ import { Route as AppsTimeLogRouteImport } from './../../routes/apps/time-log'
 import { Route as AppsWritingAreaRouteImport } from './../../routes/apps/writing-area'
 import { Route as AppslyricsStudioLyricsEditorRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-editor'
 import { Route as AppslyricsStudioLyricsPlayerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-player'
-import { Route as AppslyricsStudioLyricsSyncerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-syncer'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -61,12 +60,6 @@ const AppslyricsStudioLyricsPlayerRoute =
     path: '/apps/lyrics-player',
     getParentRoute: () => rootRouteImport,
   } as any)
-const AppslyricsStudioLyricsSyncerRoute =
-  AppslyricsStudioLyricsSyncerRouteImport.update({
-    id: '/apps/(lyrics-studio)/lyrics-syncer',
-    path: '/apps/lyrics-syncer',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -77,7 +70,6 @@ export interface FileRoutesByFullPath {
   '/apps/': typeof AppsIndexRoute
   '/apps/lyrics-editor': typeof AppslyricsStudioLyricsEditorRoute
   '/apps/lyrics-player': typeof AppslyricsStudioLyricsPlayerRoute
-  '/apps/lyrics-syncer': typeof AppslyricsStudioLyricsSyncerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -88,7 +80,6 @@ export interface FileRoutesByTo {
   '/apps': typeof AppsIndexRoute
   '/apps/lyrics-editor': typeof AppslyricsStudioLyricsEditorRoute
   '/apps/lyrics-player': typeof AppslyricsStudioLyricsPlayerRoute
-  '/apps/lyrics-syncer': typeof AppslyricsStudioLyricsSyncerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -100,7 +91,6 @@ export interface FileRoutesById {
   '/apps/': typeof AppsIndexRoute
   '/apps/(lyrics-studio)/lyrics-editor': typeof AppslyricsStudioLyricsEditorRoute
   '/apps/(lyrics-studio)/lyrics-player': typeof AppslyricsStudioLyricsPlayerRoute
-  '/apps/(lyrics-studio)/lyrics-syncer': typeof AppslyricsStudioLyricsSyncerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -113,7 +103,6 @@ export interface FileRouteTypes {
     | '/apps/'
     | '/apps/lyrics-editor'
     | '/apps/lyrics-player'
-    | '/apps/lyrics-syncer'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -124,7 +113,6 @@ export interface FileRouteTypes {
     | '/apps'
     | '/apps/lyrics-editor'
     | '/apps/lyrics-player'
-    | '/apps/lyrics-syncer'
   id:
     | '__root__'
     | '/'
@@ -135,7 +123,6 @@ export interface FileRouteTypes {
     | '/apps/'
     | '/apps/(lyrics-studio)/lyrics-editor'
     | '/apps/(lyrics-studio)/lyrics-player'
-    | '/apps/(lyrics-studio)/lyrics-syncer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -147,7 +134,6 @@ export interface RootRouteChildren {
   AppsIndexRoute: typeof AppsIndexRoute
   AppslyricsStudioLyricsEditorRoute: typeof AppslyricsStudioLyricsEditorRoute
   AppslyricsStudioLyricsPlayerRoute: typeof AppslyricsStudioLyricsPlayerRoute
-  AppslyricsStudioLyricsSyncerRoute: typeof AppslyricsStudioLyricsSyncerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -208,13 +194,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppslyricsStudioLyricsPlayerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/apps/(lyrics-studio)/lyrics-syncer': {
-      id: '/apps/(lyrics-studio)/lyrics-syncer'
-      path: '/apps/lyrics-syncer'
-      fullPath: '/apps/lyrics-syncer'
-      preLoaderRoute: typeof AppslyricsStudioLyricsSyncerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -227,7 +206,6 @@ const rootRouteChildren: RootRouteChildren = {
   AppsIndexRoute: AppsIndexRoute,
   AppslyricsStudioLyricsEditorRoute: AppslyricsStudioLyricsEditorRoute,
   AppslyricsStudioLyricsPlayerRoute: AppslyricsStudioLyricsPlayerRoute,
-  AppslyricsStudioLyricsSyncerRoute: AppslyricsStudioLyricsSyncerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

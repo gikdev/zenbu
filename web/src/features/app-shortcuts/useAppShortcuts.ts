@@ -1,5 +1,4 @@
 import {
-  ClockCounterClockwiseIcon,
   GearIcon,
   MusicNoteIcon,
   PencilIcon,
@@ -41,14 +40,6 @@ export const useAppShortcuts = (): IAppShortcut[] => {
         url: linkOptions({ to: '/apps/lyrics-editor' }).to,
         disabled: false,
         description: LL.lyricsEditor.description(),
-      },
-      {
-        id: 'lyrics-syncer',
-        name: LL.lyricsSyncer.title(),
-        icon: ClockCounterClockwiseIcon,
-        url: linkOptions({ to: '/apps/lyrics-syncer' }).to,
-        disabled: false,
-        description: LL.lyricsSyncer.description(),
       },
       {
         id: 'lyrics-player',
