@@ -60,6 +60,53 @@ export class Lyric implements ILyric {
     }
   }
 
+    toLrc(): string {
+    const lines: string[] = []
+
+    // --- Metadata headers ---
+    if (this.metadata.title.text) {
+      lines.push(`[ti:${this.metadata.title.text}]`)
+    }
+    if (this.metadata.artist?.text) {
+      lines.push(`[ar:${this.metadata.artist.text}]`)
+    }
+    // note: [al:] not available; could be added later
+    // note: [by:] not available; could be added later
+    lines.push('[offset:0]')
+
+    lines.push('') // empty line
+
+    // --- Sort blocks by endTimestamp (just in case) ---
+    const sorted = [...this.blocks].sort((a, b) => a.endTimestamp - b.endTimestamp)
+
+    const lang = this.settings.defaultLanguage // e.g., 'en', 'es', 'ja', etc.
+
+    let prevEnd = 0
+
+    for (const block of sorted) {
+      // Format start time = prevEnd (mm:ss.cc)
+      const startSec = prevEnd
+      const mins = Math.floor(startSec / 60)
+      const secs = Math.floor(startSec % 60)
+      const centis = Math.round((startSec - Math.floor(startSec)) * 100)
+
+      const ts = `[${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}.${String(centis).padStart(2, '0')}]`
+
+      // Get text in the default language (fallback to empty string)
+      const text = (block[lang as keyof LyricBlock] as string) || ''
+
+      // Only output if there's actual text (skip empty lines)
+      if (text.trim()) {
+        lines.push(`${ts}${text.trim()}`)
+      }
+
+      // Advance time for next block
+      prevEnd = block.endTimestamp
+    }
+
+    return lines.join('\n')
+  }
+
   clone = (): Lyric =>
     new Lyric({
       blocks: this.blocks,

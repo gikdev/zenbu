@@ -3,6 +3,7 @@ import {
   GearSixIcon,
   HouseIcon,
   InfoIcon,
+  FileCodeIcon,
   ListPlusIcon,
   PlusIcon,
   UploadSimpleIcon,
@@ -68,6 +69,14 @@ export const LyricsEditorPage = () => {
     setLyric(lyric.clone())
   }
 
+  const handleExportLrc = () => {
+    const lrcString = lyric.toLrc()
+    const blob = new Blob([lrcString], { type: 'text/plain;charset=utf-8' })
+    const fileName = `${lyric.metadata.title.text || 'lyric'}.lrc`
+    const file = new File([blob], fileName, { type: 'text/plain' })
+    downloadFile(file)
+  }
+
   const handleDownload = () => {
     // 1. Get JSON string from the lyric instance
     const jsonString = lyric.toJsonString()
@@ -124,6 +133,10 @@ export const LyricsEditorPage = () => {
           </Link>
 
           <h1 className='text-text-important me-auto text-lg font-bold'>{LL.lyricsEditor.title()}</h1>
+
+          <button type='button' className={styleBtn({ size: 'icon' })} onClick={handleExportLrc}>
+            <FileCodeIcon size={20} />
+          </button>
 
           <button type='button' className={styleBtn({ size: 'icon' })} onClick={handleDownload}>
             <DownloadSimpleIcon size={20} />
