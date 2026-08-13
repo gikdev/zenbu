@@ -25,6 +25,7 @@ export function SimpleNumberInput(p: SimpleNumberInputProps) {
     <LabelContainer title={p.title} htmlFor={field.name}>
       <input
         dir='auto'
+        type='number'
         id={field.name}
         name={field.name}
         value={value}

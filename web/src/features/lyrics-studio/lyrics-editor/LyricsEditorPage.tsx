@@ -1,4 +1,12 @@
-import { DownloadSimpleIcon, GearSixIcon, HouseIcon, InfoIcon, PlusIcon, UploadSimpleIcon } from '@phosphor-icons/react'
+import {
+  DownloadSimpleIcon,
+  GearSixIcon,
+  HouseIcon,
+  InfoIcon,
+  ListPlusIcon,
+  PlusIcon,
+  UploadSimpleIcon,
+} from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
 import { useRef, useState } from 'react'
 
@@ -9,6 +17,8 @@ import { PageShell } from '#/common/molecules/PageShell'
 import { useI18nContext, useIsRtl } from '#/features/i18n'
 
 import { Lyric } from '../lyric/Lyric'
+import { songPlayerStore, TimestampSongPlayer } from '../timestamp-song-player'
+import { BatchAddBlockForm } from './BatchAddBlocksForm'
 import { LyricBlockForm } from './LyricBlockForm'
 import { LyricBlockItem } from './LyricBlockItem'
 import { LyricMetadataCard } from './LyricMetadataCard'
@@ -44,10 +54,19 @@ export const LyricsEditorPage = () => {
   const [lyric, setLyric] = useState<Lyric>(emptyLyric)
   const [isEditMetadataOpen, setEditMetadataOpen] = useState(false)
   const [isEditSettingsOpen, setEditSettingsOpen] = useState(false)
+  const [isBatchAddOpen, setBatchAddOpen] = useState(false)
   const [editBlockId, setEditBlockId] = useState<string | null>(null)
   const isEditBlockModalOpen = !!editBlockId
   const blockToEdit = lyric.blocks.find(b => b.id === editBlockId)
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleSettingCurrentTimestamp = (blockId: string) => {
+    const block = lyric.blocks.find(b => b.id === blockId)
+    if (!block) return
+    block.endTimestamp = songPlayerStore.get().currentTime
+    lyric.updateBlock(block)
+    setLyric(lyric.clone())
+  }
 
   const handleDownload = () => {
     // 1. Get JSON string from the lyric instance
@@ -97,14 +116,18 @@ export const LyricsEditorPage = () => {
   }
 
   return (
-    <PageShell variants={{ heightFull: 'min' }}>
-      <div className='mx-auto w-full max-w-160'>
+    <PageShell variants={{ heightFull: 'max' }}>
+      <div className='mx-auto flex min-h-0 w-full max-w-160 flex-1 flex-col'>
         <div className='flex items-center justify-between gap-1 px-4 py-2'>
           <Link to='/apps' className={styleBtn({ size: 'icon' })}>
             <HouseIcon mirrored={isRtl} size={20} />
           </Link>
 
           <h1 className='text-text-important me-auto text-lg font-bold'>{LL.lyricsEditor.title()}</h1>
+
+          <button type='button' className={styleBtn({ size: 'icon' })} onClick={handleDownload}>
+            <DownloadSimpleIcon size={20} />
+          </button>
 
           <button type='button' className={styleBtn({ size: 'icon' })} onClick={handleUploadClick}>
             <UploadSimpleIcon size={20} />
@@ -127,27 +150,29 @@ export const LyricsEditorPage = () => {
           </button>
         </div>
 
-        <div className='flex flex-1 flex-col gap-4 p-4'>
+        <div className='flex min-h-0 flex-1 flex-col gap-4 p-4'>
           <LyricMetadataCard metadata={lyric.metadata} />
 
           <SectionTitle
             title='Blocks'
             slot={
-              <button
-                type='button'
-                className={styleBtn({ size: 'sm' })}
-                onClick={() => {
-                  lyric.addEmptyBlock()
-                  setLyric(lyric.clone())
-                }}
-              >
-                <PlusIcon size={16} />
-                <span>New Block</span>
-              </button>
+              <div className='flex items-center gap-1'>
+                <button
+                  type='button'
+                  className={styleBtn({ size: 'icon' })}
+                  onClick={() => setLyric(lyric.addEmptyBlock().clone())}
+                >
+                  <PlusIcon size={20} />
+                </button>
+
+                <button type='button' className={styleBtn({ size: 'icon' })} onClick={() => setBatchAddOpen(true)}>
+                  <ListPlusIcon size={20} />
+                </button>
+              </div>
             }
           />
 
-          <div className='flex flex-col gap-8'>
+          <div className='flex min-h-0 flex-1 flex-col gap-8 overflow-y-auto'>
             {lyric.blocks.length === 0 && <p className='text-center'>No blocks here for now.</p>}
 
             {lyric.blocks.map(b => (
@@ -155,6 +180,7 @@ export const LyricsEditorPage = () => {
                 key={b.id}
                 block={b}
                 onEdit={() => setEditBlockId(b.id)}
+                onTimerClick={() => handleSettingCurrentTimestamp(b.id)}
                 onDelete={() => {
                   const isSure = window.confirm('Sure?')
                   if (!isSure) return
@@ -164,12 +190,18 @@ export const LyricsEditorPage = () => {
               />
             ))}
           </div>
-
-          <button type='button' className={styleBtn({ variant: 'primary' })} onClick={handleDownload}>
-            <DownloadSimpleIcon size={20} />
-            <span>Download as file</span>
-          </button>
         </div>
+
+        <TimestampSongPlayer />
+
+        <AdaptiveDialog title='Batch Add Blocks' isOpen={isBatchAddOpen} onClose={() => setBatchAddOpen(false)}>
+          <BatchAddBlockForm
+            onSubmit={input => {
+              setLyric(lyric.batchAddBlock(input).clone())
+              setBatchAddOpen(false)
+            }}
+          />
+        </AdaptiveDialog>
 
         <AdaptiveDialog
           title={`Edit Block #${blockToEdit?.id}`}

@@ -69,18 +69,48 @@ export class Lyric implements ILyric {
 
   addBlock(block: LyricBlock) {
     this.blocks.push(block)
+
+    return this
+  }
+
+  batchAddBlock(input: string | string[]) {
+    const lines: string[] = Array.isArray(input) ? [...input] : input.split('\n')
+
+    for (const line of lines) {
+      const block: LyricBlock = {
+        id: this.#generateUniqueBlockId(),
+        endTimestamp: 0,
+        tx: '',
+        ar: '',
+        en: '',
+        es: '',
+        fa: '',
+        ja: '',
+        rj: '',
+      }
+
+      block[this.settings.defaultLanguage] = line
+
+      this.addBlock(block)
+    }
+
+    return this
   }
 
   removeBlock(blockId: string) {
     const index = this.blocks.findIndex(b => b.id === blockId)
     if (index === -1) return
     this.blocks.splice(index, 1)
+
+    return this
   }
 
   updateBlock(updatedBlock: LyricBlock) {
     const index = this.blocks.findIndex(b => b.id === updatedBlock.id)
     if (index === -1) return
     this.blocks[index] = updatedBlock
+
+    return this
   }
 
   addEmptyBlock() {
@@ -95,6 +125,8 @@ export class Lyric implements ILyric {
       ja: '',
       rj: '',
     })
+
+    return this
   }
 
   #generateUniqueBlockId(): string {

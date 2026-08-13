@@ -1,4 +1,4 @@
-import { CaretDownIcon, CaretUpIcon, PencilSimpleIcon, TrashSimpleIcon } from '@phosphor-icons/react'
+import { CaretDownIcon, CaretUpIcon, PencilSimpleIcon, TimerIcon, TrashSimpleIcon } from '@phosphor-icons/react'
 import { useState } from 'react'
 
 import { styleBtn } from '#/common/atoms/btn'
@@ -11,6 +11,7 @@ interface LyricBlockItemProps {
   block: LyricBlock
   onEdit: () => void
   onDelete: () => void
+  onTimerClick: () => void
 }
 
 export const LyricBlockItem = (p: LyricBlockItemProps) => {
@@ -37,6 +38,10 @@ export const LyricBlockItem = (p: LyricBlockItemProps) => {
 
         <button type='button' className={styleBtn({ size: 'icon' })} onClick={() => setDetailsOpen(p => !p)}>
           {isDetailsOpen ? <CaretUpIcon size={20} /> : <CaretDownIcon size={20} />}
+        </button>
+
+        <button type='button' className={styleBtn({ size: 'icon' })} onClick={p.onTimerClick}>
+          <TimerIcon size={20} />
         </button>
 
         <button type='button' className={styleBtn({ size: 'icon' })} onClick={p.onEdit}>
