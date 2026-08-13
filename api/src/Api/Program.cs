@@ -1,5 +1,4 @@
 using App.Api.Endpoints;
-using App.Api.Endpoints.MediaTracker;
 using App.Api.Extensions;
 using App.Application;
 using App.Infrastructure;
@@ -108,7 +107,6 @@ try {
     app.MapIdentityEndpoints();
     app.MapTodoEndpoints();
     app.MapWelcomeEndpoints();
-    app.MapMediaTrackerMediaShelfEndpoints();
 
     // Aspire default endpoints (health, alive)
     app.MapDefaultEndpoints();

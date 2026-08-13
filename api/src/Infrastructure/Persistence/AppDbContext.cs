@@ -1,10 +1,6 @@
 using App.Application.Abstractions.Data;
 using App.Domain.Common;
 using App.Domain.Models;
-using App.Domain.Models.MediaLibrary.MediaCategories;
-using App.Domain.Models.MediaLibrary.MediaItems;
-using App.Domain.Models.MediaLibrary.MediaSessions;
-using App.Domain.Models.MediaLibrary.MediaShelves;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,10 +9,6 @@ namespace App.Infrastructure.Persistence;
 public sealed class AppDbContext(
     DbContextOptions<AppDbContext> options
 ) : IdentityDbContext<ApplicationUser>(options), IAppDbContext {
-    public DbSet<MediaCategory> MediaCategories => Set<MediaCategory>();
-    public DbSet<MediaItem> MediaItems => Set<MediaItem>();
-    public DbSet<MediaSession> MediaSessions => Set<MediaSession>();
-    public DbSet<MediaShelf> MediaShelves => Set<MediaShelf>();
     public DbSet<TodoItem> Todos => Set<TodoItem>();
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) {
