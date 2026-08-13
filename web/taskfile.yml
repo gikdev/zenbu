@@ -13,7 +13,7 @@ tasks:
   dev:
     aliases: [d]
     cmds:
-      - vp dev --host
+      - vp dev --host --open
 
   preview: vp preview --host
 
