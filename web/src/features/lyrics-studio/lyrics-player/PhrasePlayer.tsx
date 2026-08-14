@@ -5,6 +5,7 @@ import { Lyric } from "../lyric/Lyric";
 import { UploadSimpleIcon } from "@phosphor-icons/react";
 import { styleBtn } from "#/common/atoms/btn";
 import { cn } from "tailwind-variants";
+import { LyricMetadataCard } from "../lyrics-editor/LyricMetadataCard";
 
 export function PhrasePlayer() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -45,18 +46,22 @@ export function PhrasePlayer() {
   };
 
   return (
-    <div className="flex-1 flex items-center justify-center">
+    <div className="flex-1 flex flex-col gap-8 items-center justify-center">
+      {lyric && (
+        <LyricMetadataCard metadata={lyric?.metadata} />
+      )}
+
       {lyric ? (
         <div className="">
           {currentBlock ? (
-            <div className="*:use-lang-font text-center">
-              <p lang="ja" className={cn({'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'ja' })}>{currentBlock.ja}</p>
-              <p lang="en" className={cn({'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'rj' })}>{currentBlock.rj}</p>
-              <p lang="fa" className={cn({'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'ar' })}>{currentBlock.ar}</p>
-              <p lang="en" className={cn({'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'en' })}>{currentBlock.en}</p>
-              <p lang="en" className={cn({'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'es' })}>{currentBlock.es}</p>
-              <p lang="fa" className={cn({'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'fa' })}>{currentBlock.fa}</p>
-              <p lang="en" className={cn({'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'tx' })}>{currentBlock.tx}</p>
+            <div className="text-center">
+              <p dir="auto" lang="ja" className={cn('use-lang-font', {'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'ja' })}>{currentBlock.ja}</p>
+              <p dir="auto" lang="en" className={cn('use-lang-font', {'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'rj' })}>{currentBlock.rj}</p>
+              <p dir="auto" lang="fa" className={cn('use-lang-font', {'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'ar' })}>{currentBlock.ar}</p>
+              <p dir="auto" lang="en" className={cn('use-lang-font', {'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'en' })}>{currentBlock.en}</p>
+              <p dir="auto" lang="en" className={cn('use-lang-font', {'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'es' })}>{currentBlock.es}</p>
+              <p dir="auto" lang="fa" className={cn('use-lang-font', {'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'fa' })}>{currentBlock.fa}</p>
+              <p dir="auto" lang="en" className={cn('use-lang-font', {'text-text-important text-2xl': (currentBlock.defaultLanguageOverride ?? lyric.settings.defaultLanguage) === 'tx' })}>{currentBlock.tx}</p>
             </div>
           ) : <p>-</p>}
         </div>
