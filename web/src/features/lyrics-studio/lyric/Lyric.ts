@@ -155,6 +155,32 @@ export class Lyric implements ILyric {
       settings: this.settings,
     })
 
+    /**
+ * Returns the lyric block that should be playing at the given timestamp.
+ * Blocks are treated as contiguous: block i starts at the end of block i-1
+ * (with the first block starting at 0). The current block is the one whose
+ * endTimestamp is the first to be greater than `currentTimestamp`.
+ *
+ * @param currentTimestamp - time in seconds (non‑negative)
+ * @returns the matching LyricBlock, or `undefined` if no block is active
+ */
+getCurrentBlock(currentTimestamp: number): LyricBlock | null {
+  if (currentTimestamp < 0) return null;
+
+  // Sort a copy by endTimestamp (ascending)
+  const sorted = [...this.blocks].sort((a, b) => a.endTimestamp - b.endTimestamp);
+
+  // The first block whose end is strictly after the current time is the active one
+  for (const block of sorted) {
+    if (block.endTimestamp > currentTimestamp) {
+      return block;
+    }
+  }
+
+  // All blocks have ended
+  return null
+}
+
   addBlock(block: LyricBlock) {
     this.blocks.push(block)
 

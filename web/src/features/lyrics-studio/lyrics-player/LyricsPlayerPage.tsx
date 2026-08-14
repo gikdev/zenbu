@@ -6,6 +6,7 @@ import { PageShell } from '#/common/molecules/PageShell'
 import { useI18nContext, useIsRtl } from '#/features/i18n'
 
 import { TimestampSongPlayer } from '../timestamp-song-player'
+import { PhrasePlayer } from './PhrasePlayer'
 
 export const LyricsPlayerPage = () => {
   const { LL } = useI18nContext()
@@ -24,7 +25,7 @@ export const LyricsPlayerPage = () => {
         </div>
       </div>
 
-      <div className='flex-1' />
+      <PhrasePlayer />
 
       <TimestampSongPlayer />
     </PageShell>
