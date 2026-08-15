@@ -19,16 +19,6 @@ const en = {
     toggleTheme: 'Toggle Theme',
   },
 
-  timeLog: {
-    title: 'Time Log',
-    description: 'A dead-simple work focus timer',
-    clearSessionsConfirm: 'Clear all sessions?',
-    totalSessions: 'Total Sessions',
-    totalDuration: 'Total Duration',
-    goHome: 'Go Home',
-    reset: 'Reset',
-  },
-
   lyricsEditor: {
     title: 'Lyrics Editor',
     description: 'Write, edit, and view your lyrics.',

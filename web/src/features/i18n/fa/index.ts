@@ -19,16 +19,6 @@ const fa = {
     toggleTheme: 'تغییر تم',
   },
 
-  timeLog: {
-    title: 'ثبت زمان',
-    description: 'یک تایمر ساده برای تمرکز روی کار',
-    clearSessionsConfirm: 'جلسات پاک بشن؟',
-    totalDuration: 'طول کل جلسات',
-    totalSessions: 'تعداد کل جلسات',
-    goHome: 'برو خونه',
-    reset: 'ریست',
-  },
-
   lyricsEditor: {
     title: 'ویرایشگر متن آهنگ',
     description: 'نوشتن، ویرایش و مشاهدهٔ متن آهنگ.',

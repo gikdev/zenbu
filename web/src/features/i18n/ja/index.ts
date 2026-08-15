@@ -19,16 +19,6 @@ const ja = {
     toggleTheme: 'テーマの切り替え',
   },
 
-  timeLog: {
-    title: 'タイムログ',
-    description: 'シンプルな作業集中タイマー',
-    clearSessionsConfirm: 'すべてのセッションをクリアしますか？',
-    totalDuration: '合計時間',
-    totalSessions: 'セッション数',
-    goHome: 'ホームへ戻る',
-    reset: 'リセット',
-  },
-
   lyricsEditor: {
     title: '歌詞エディター',
     description: '歌詞の作成、編集、表示ができます。',

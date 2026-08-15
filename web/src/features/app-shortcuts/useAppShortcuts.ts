@@ -26,14 +26,6 @@ export const useAppShortcuts = (): IAppShortcut[] => {
         description: LL.sucof.description(),
       },
       {
-        id: 'time-log',
-        name: LL.timeLog.title(),
-        icon: TimerIcon,
-        url: linkOptions({ to: '/apps/time-log' }).to,
-        disabled: false,
-        description: LL.timeLog.description(),
-      },
-      {
         id: 'writing',
         name: LL.writingArea.title(),
         icon: PencilIcon,
