@@ -9,11 +9,14 @@ interface SucofStoreShape {
   sessions: IFocusSession[]
 }
 
-const initialState: SucofStoreShape = {
+const emptyState: SucofStoreShape = {
   sessions: [],
 }
 
-export const sucofStorage = new StorageEntry<SucofStoreShape>(storage, keys.Apps.Sucof, initialState)
+export const sucofStorage = new StorageEntry<SucofStoreShape>(storage, keys.Apps.Sucof, emptyState)
+
+const loaded = sucofStorage.load()
+const initialState = loaded.isOk() ? loaded.value : emptyState
 
 export const sucofStore = createStore(initialState, ({ setState }) => ({
   addManualSession: (duration: number) =>
@@ -33,8 +36,17 @@ export const sucofStore = createStore(initialState, ({ setState }) => ({
       ),
     })),
 
-  reset: () => setState(() => initialState),
+  reset: () => setState(() => emptyState),
 }))
+
+sucofStore.subscribe(() => {
+  const state = sucofStore.state
+  const result = sucofStorage.save(state)
+
+  if (result.isErr()) {
+    console.error('Failed to save Sucof sessions:', result.error)
+  }
+})
 
 const totalMinutesSelector = (s: SucofStoreShape): number =>
   s.sessions.map(s => new FocusSession(s).getDurationInMinutes() ?? 0).reduce((a, b) => a + b, 0)

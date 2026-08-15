@@ -14,7 +14,7 @@ import { styleBtn } from '#/common/atoms/btn'
 import { AdaptiveDialog } from '#/common/molecules/AdaptiveDialog'
 
 import { useI18nContext } from '../i18n'
-import { FocusSession } from './FocusSession'
+import { FocusSession, type IFocusSession } from './FocusSession'
 import { formatTotalMinutes } from './formatTotalMinutes'
 import { sucofStore, useTotalMinutes } from './store'
 
@@ -60,15 +60,11 @@ export function SucofCard() {
     <div className='sm:bg-bg-2/50 sm:border-border-muted/50 flex w-full max-w-80 flex-col items-center justify-center gap-8 rounded-lg p-8 sm:border'>
       <AdaptiveDialog isOpen={showHistory} title={LL.sucof.history()} onClose={() => setShowHistory(false)}>
         <div className='flex flex-col gap-2'>
-          {sessions.map(session => (
-            <p key={session.id} className='flex items-center justify-between'>
-              <code className='text-text-important text-2xl font-bold'>
-                {new FocusSession(session).getDurationInMinutes()}m
-              </code>
-
-              <code className='text-xs'>{session.duration.type}</code>
-            </p>
-          ))}
+          {sessions.length ? (
+            sessions.map(session => <SessionRecord key={session.id} session={session} />)
+          ) : (
+            <code className='text-center'>¯\_(ツ)_/¯</code>
+          )}
         </div>
       </AdaptiveDialog>
 
@@ -121,3 +117,13 @@ export function SucofCard() {
     </div>
   )
 }
+
+const SessionRecord = (p: { session: IFocusSession }) => (
+  <p className='flex items-center justify-between'>
+    <code className='text-text-important text-2xl font-bold'>
+      {formatTotalMinutes(new FocusSession(p.session).getDurationInMinutes() ?? 0)}
+    </code>
+
+    <code className='text-xs'>{p.session.duration.type}</code>
+  </p>
+)
