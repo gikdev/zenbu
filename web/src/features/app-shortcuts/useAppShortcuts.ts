@@ -18,6 +18,14 @@ export const useAppShortcuts = (): IAppShortcut[] => {
   return useMemo(
     () => [
       {
+        id: 'sucof',
+        name: LL.sucof.title(),
+        icon: TimerIcon,
+        url: linkOptions({ to: '/apps/sucof' }).to,
+        disabled: false,
+        description: LL.sucof.description(),
+      },
+      {
         id: 'time-log',
         name: LL.timeLog.title(),
         icon: TimerIcon,

@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './../../routes/index'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
+import { Route as AppsSucofRouteImport } from './../../routes/apps/sucof'
 import { Route as AppsTimeLogRouteImport } from './../../routes/apps/time-log'
 import { Route as AppsWritingAreaRouteImport } from './../../routes/apps/writing-area'
 import { Route as AppslyricsStudioLyricsEditorRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-editor'
@@ -36,6 +37,11 @@ const AppsIndexRoute = AppsIndexRouteImport.update({
 const AppsSettingsRoute = AppsSettingsRouteImport.update({
   id: '/apps/settings',
   path: '/apps/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsSucofRoute = AppsSucofRouteImport.update({
+  id: '/apps/sucof',
+  path: '/apps/sucof',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppsTimeLogRoute = AppsTimeLogRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/welcome': typeof WelcomeRoute
   '/apps/settings': typeof AppsSettingsRoute
+  '/apps/sucof': typeof AppsSucofRoute
   '/apps/time-log': typeof AppsTimeLogRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
   '/apps/': typeof AppsIndexRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/welcome': typeof WelcomeRoute
   '/apps/settings': typeof AppsSettingsRoute
+  '/apps/sucof': typeof AppsSucofRoute
   '/apps/time-log': typeof AppsTimeLogRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
   '/apps': typeof AppsIndexRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/welcome': typeof WelcomeRoute
   '/apps/settings': typeof AppsSettingsRoute
+  '/apps/sucof': typeof AppsSucofRoute
   '/apps/time-log': typeof AppsTimeLogRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
   '/apps/': typeof AppsIndexRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/'
     | '/welcome'
     | '/apps/settings'
+    | '/apps/sucof'
     | '/apps/time-log'
     | '/apps/writing-area'
     | '/apps/'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/'
     | '/welcome'
     | '/apps/settings'
+    | '/apps/sucof'
     | '/apps/time-log'
     | '/apps/writing-area'
     | '/apps'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/'
     | '/welcome'
     | '/apps/settings'
+    | '/apps/sucof'
     | '/apps/time-log'
     | '/apps/writing-area'
     | '/apps/'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   WelcomeRoute: typeof WelcomeRoute
   AppsSettingsRoute: typeof AppsSettingsRoute
+  AppsSucofRoute: typeof AppsSucofRoute
   AppsTimeLogRoute: typeof AppsTimeLogRoute
   AppsWritingAreaRoute: typeof AppsWritingAreaRoute
   AppsIndexRoute: typeof AppsIndexRoute
@@ -166,6 +179,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppsSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/apps/sucof': {
+      id: '/apps/sucof'
+      path: '/apps/sucof'
+      fullPath: '/apps/sucof'
+      preLoaderRoute: typeof AppsSucofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/apps/time-log': {
       id: '/apps/time-log'
       path: '/apps/time-log'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   WelcomeRoute: WelcomeRoute,
   AppsSettingsRoute: AppsSettingsRoute,
+  AppsSucofRoute: AppsSucofRoute,
   AppsTimeLogRoute: AppsTimeLogRoute,
   AppsWritingAreaRoute: AppsWritingAreaRoute,
   AppsIndexRoute: AppsIndexRoute,

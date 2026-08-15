@@ -56,6 +56,16 @@ const fa = {
     },
   },
 
+  sucof: {
+    title: 'سوکوف',
+    description: 'یک تایمر فوکوس کاری بسیار ساده',
+    promptManualMinutes: 'دقیقه برای جلسه دستی وارد کنید:',
+    invalidMinutes: 'دقیقه نامعتبر وارد شده است.',
+    confirmReset: 'آیا مطمئن هستید که می‌خواهید تمام جلسات سوکوف را بازنشانی کنید؟',
+    totalMinutes: 'مجموع دقیقه',
+    history: 'تاریخچه',
+  },
+
   accountManager: {
     title: 'مدیریت حساب',
     description: 'حساب کاربری‌تو مدیریت کن',

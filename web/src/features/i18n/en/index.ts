@@ -56,6 +56,16 @@ const en = {
     },
   },
 
+  sucof: {
+    title: 'Sucof',
+    description: 'A dead-simple work focus timer',
+    promptManualMinutes: 'Enter minutes for manual session:',
+    invalidMinutes: 'Invalid minutes entered.',
+    confirmReset: 'Are you sure you want to reset all Sucof sessions?',
+    totalMinutes: 'Total Minutes',
+    history: 'History',
+  },
+
   accountManager: {
     title: 'Account Manager',
     description: 'Manage your account.',

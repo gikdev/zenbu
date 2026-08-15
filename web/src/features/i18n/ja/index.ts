@@ -56,6 +56,16 @@ const ja = {
     },
   },
 
+  sucof: {
+    title: 'スコフ',
+    description: '非常にシンプルな作業集中タイマー',
+    promptManualMinutes: '手動セッションの分数を入力してください:',
+    invalidMinutes: '無効な分数が入力されました。',
+    confirmReset: '全てのソクフセッションをリセットしてもよろしいですか？',
+    totalMinutes: '合計分数',
+    history: '履歴',
+  },
+
   accountManager: {
     title: 'アカウント管理',
     description: 'アカウントを管理します。',
