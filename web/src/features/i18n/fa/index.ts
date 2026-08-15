@@ -19,16 +19,6 @@ const fa = {
     toggleTheme: 'تغییر تم',
   },
 
-  timeLog: {
-    title: 'ثبت زمان',
-    description: 'یک تایمر ساده برای تمرکز روی کار',
-    clearSessionsConfirm: 'جلسات پاک بشن؟',
-    totalDuration: 'طول کل جلسات',
-    totalSessions: 'تعداد کل جلسات',
-    goHome: 'برو خونه',
-    reset: 'ریست',
-  },
-
   lyricsEditor: {
     title: 'ویرایشگر متن آهنگ',
     description: 'نوشتن، ویرایش و مشاهدهٔ متن آهنگ.',
@@ -54,6 +44,16 @@ const fa = {
       medium: 'متوسط',
       high: 'بلند',
     },
+  },
+
+  sucof: {
+    title: 'سوکوف',
+    description: 'یک تایمر فوکوس کاری بسیار ساده',
+    promptManualMinutes: 'دقیقه برای جلسه دستی وارد کنید:',
+    invalidMinutes: 'دقیقه نامعتبر وارد شده است.',
+    confirmReset: 'آیا مطمئن هستید که می‌خواهید تمام جلسات سوکوف را بازنشانی کنید؟',
+    totalMinutes: 'مجموع دقیقه',
+    history: 'تاریخچه',
   },
 
   accountManager: {

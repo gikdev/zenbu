@@ -19,16 +19,6 @@ const ja = {
     toggleTheme: 'テーマの切り替え',
   },
 
-  timeLog: {
-    title: 'タイムログ',
-    description: 'シンプルな作業集中タイマー',
-    clearSessionsConfirm: 'すべてのセッションをクリアしますか？',
-    totalDuration: '合計時間',
-    totalSessions: 'セッション数',
-    goHome: 'ホームへ戻る',
-    reset: 'リセット',
-  },
-
   lyricsEditor: {
     title: '歌詞エディター',
     description: '歌詞の作成、編集、表示ができます。',
@@ -54,6 +44,16 @@ const ja = {
       medium: '中',
       high: '高',
     },
+  },
+
+  sucof: {
+    title: 'スコフ',
+    description: '非常にシンプルな作業集中タイマー',
+    promptManualMinutes: '手動セッションの分数を入力してください:',
+    invalidMinutes: '無効な分数が入力されました。',
+    confirmReset: '全てのソクフセッションをリセットしてもよろしいですか？',
+    totalMinutes: '合計分数',
+    history: '履歴',
   },
 
   accountManager: {

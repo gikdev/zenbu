@@ -19,16 +19,6 @@ const en = {
     toggleTheme: 'Toggle Theme',
   },
 
-  timeLog: {
-    title: 'Time Log',
-    description: 'A dead-simple work focus timer',
-    clearSessionsConfirm: 'Clear all sessions?',
-    totalSessions: 'Total Sessions',
-    totalDuration: 'Total Duration',
-    goHome: 'Go Home',
-    reset: 'Reset',
-  },
-
   lyricsEditor: {
     title: 'Lyrics Editor',
     description: 'Write, edit, and view your lyrics.',
@@ -54,6 +44,16 @@ const en = {
       medium: 'Medium',
       high: 'High',
     },
+  },
+
+  sucof: {
+    title: 'Sucof',
+    description: 'A dead-simple work focus timer',
+    promptManualMinutes: 'Enter minutes for manual session:',
+    invalidMinutes: 'Invalid minutes entered.',
+    confirmReset: 'Are you sure you want to reset all Sucof sessions?',
+    totalMinutes: 'Total Minutes',
+    history: 'History',
   },
 
   accountManager: {
