@@ -9,8 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './../../routes/__root'
-import { Route as IndexRouteImport } from './../../routes/index'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
+import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
 import { Route as AppsSucofRouteImport } from './../../routes/apps/sucof'
@@ -18,14 +18,14 @@ import { Route as AppsWritingAreaRouteImport } from './../../routes/apps/writing
 import { Route as AppslyricsStudioLyricsEditorRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-editor'
 import { Route as AppslyricsStudioLyricsPlayerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-player'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const WelcomeRoute = WelcomeRouteImport.update({
   id: '/welcome',
   path: '/welcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const cardfolioIndexRoute = cardfolioIndexRouteImport.update({
+  id: '/(cardfolio)/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppsIndexRoute = AppsIndexRouteImport.update({
@@ -62,32 +62,32 @@ const AppslyricsStudioLyricsPlayerRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/welcome': typeof WelcomeRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
+  '/': typeof cardfolioIndexRoute
   '/apps/': typeof AppsIndexRoute
   '/apps/lyrics-editor': typeof AppslyricsStudioLyricsEditorRoute
   '/apps/lyrics-player': typeof AppslyricsStudioLyricsPlayerRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/welcome': typeof WelcomeRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
+  '/': typeof cardfolioIndexRoute
   '/apps': typeof AppsIndexRoute
   '/apps/lyrics-editor': typeof AppslyricsStudioLyricsEditorRoute
   '/apps/lyrics-player': typeof AppslyricsStudioLyricsPlayerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/welcome': typeof WelcomeRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
+  '/(cardfolio)/': typeof cardfolioIndexRoute
   '/apps/': typeof AppsIndexRoute
   '/apps/(lyrics-studio)/lyrics-editor': typeof AppslyricsStudioLyricsEditorRoute
   '/apps/(lyrics-studio)/lyrics-player': typeof AppslyricsStudioLyricsPlayerRoute
@@ -95,42 +95,42 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/welcome'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
+    | '/'
     | '/apps/'
     | '/apps/lyrics-editor'
     | '/apps/lyrics-player'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/welcome'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
+    | '/'
     | '/apps'
     | '/apps/lyrics-editor'
     | '/apps/lyrics-player'
   id:
     | '__root__'
-    | '/'
     | '/welcome'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
+    | '/(cardfolio)/'
     | '/apps/'
     | '/apps/(lyrics-studio)/lyrics-editor'
     | '/apps/(lyrics-studio)/lyrics-player'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   WelcomeRoute: typeof WelcomeRoute
   AppsSettingsRoute: typeof AppsSettingsRoute
   AppsSucofRoute: typeof AppsSucofRoute
   AppsWritingAreaRoute: typeof AppsWritingAreaRoute
+  cardfolioIndexRoute: typeof cardfolioIndexRoute
   AppsIndexRoute: typeof AppsIndexRoute
   AppslyricsStudioLyricsEditorRoute: typeof AppslyricsStudioLyricsEditorRoute
   AppslyricsStudioLyricsPlayerRoute: typeof AppslyricsStudioLyricsPlayerRoute
@@ -138,18 +138,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/welcome': {
       id: '/welcome'
       path: '/welcome'
       fullPath: '/welcome'
       preLoaderRoute: typeof WelcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(cardfolio)/': {
+      id: '/(cardfolio)/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof cardfolioIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apps/': {
@@ -198,11 +198,11 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   WelcomeRoute: WelcomeRoute,
   AppsSettingsRoute: AppsSettingsRoute,
   AppsSucofRoute: AppsSucofRoute,
   AppsWritingAreaRoute: AppsWritingAreaRoute,
+  cardfolioIndexRoute: cardfolioIndexRoute,
   AppsIndexRoute: AppsIndexRoute,
   AppslyricsStudioLyricsEditorRoute: AppslyricsStudioLyricsEditorRoute,
   AppslyricsStudioLyricsPlayerRoute: AppslyricsStudioLyricsPlayerRoute,
