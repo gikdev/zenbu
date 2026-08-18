@@ -1,0 +1,1 @@
+export { SlashesPage } from './SlashesPage'

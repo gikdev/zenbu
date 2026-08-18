@@ -1,5 +1,6 @@
-import { useMemo } from "react"
-import { useLinkItems } from "./useLinkItems"
+import { useMemo } from 'react'
+
+import { useLinkItems } from './useLinkItems'
 
 export const usePinnedLinkItems = (pinned: boolean) => {
   const linkItems = useLinkItems()

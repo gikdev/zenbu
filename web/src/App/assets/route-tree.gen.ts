@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './../../routes/__root'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
 import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
+import { Route as cardfolioSlashesRouteImport } from './../../routes/(cardfolio)/slashes'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
 import { Route as AppsSucofRouteImport } from './../../routes/apps/sucof'
@@ -26,6 +27,11 @@ const WelcomeRoute = WelcomeRouteImport.update({
 const cardfolioIndexRoute = cardfolioIndexRouteImport.update({
   id: '/(cardfolio)/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const cardfolioSlashesRoute = cardfolioSlashesRouteImport.update({
+  id: '/(cardfolio)/slashes',
+  path: '/slashes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppsIndexRoute = AppsIndexRouteImport.update({
@@ -63,6 +69,7 @@ const AppslyricsStudioLyricsPlayerRoute =
 
 export interface FileRoutesByFullPath {
   '/welcome': typeof WelcomeRoute
+  '/slashes': typeof cardfolioSlashesRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/welcome': typeof WelcomeRoute
+  '/slashes': typeof cardfolioSlashesRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -84,6 +92,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/welcome': typeof WelcomeRoute
+  '/(cardfolio)/slashes': typeof cardfolioSlashesRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/welcome'
+    | '/slashes'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/welcome'
+    | '/slashes'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/welcome'
+    | '/(cardfolio)/slashes'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -127,6 +139,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   WelcomeRoute: typeof WelcomeRoute
+  cardfolioSlashesRoute: typeof cardfolioSlashesRoute
   AppsSettingsRoute: typeof AppsSettingsRoute
   AppsSucofRoute: typeof AppsSucofRoute
   AppsWritingAreaRoute: typeof AppsWritingAreaRoute
@@ -150,6 +163,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof cardfolioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(cardfolio)/slashes': {
+      id: '/(cardfolio)/slashes'
+      path: '/slashes'
+      fullPath: '/slashes'
+      preLoaderRoute: typeof cardfolioSlashesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apps/': {
@@ -199,6 +219,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   WelcomeRoute: WelcomeRoute,
+  cardfolioSlashesRoute: cardfolioSlashesRoute,
   AppsSettingsRoute: AppsSettingsRoute,
   AppsSucofRoute: AppsSucofRoute,
   AppsWritingAreaRoute: AppsWritingAreaRoute,

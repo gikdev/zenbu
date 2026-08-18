@@ -6,8 +6,8 @@ import { cn } from 'tailwind-variants'
 import { styleBtn } from '#/common/atoms/btn'
 
 import { CardPage } from '../../common/CardPage'
-import { usePinnedLinkItems } from './usePinnedLinkItems'
 import { HomeBtn } from './HomeBtn'
+import { usePinnedLinkItems } from './usePinnedLinkItems'
 
 export const HomePage = () => {
   const [showMore, setShowMore] = useState(false)
