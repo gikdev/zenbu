@@ -1,4 +1,4 @@
-import { EnvelopeIcon, GithubLogoIcon, ReadCvLogoIcon } from '@phosphor-icons/react'
+import { BrowsersIcon, EnvelopeIcon, GithubLogoIcon, ReadCvLogoIcon } from '@phosphor-icons/react'
 import { useMemo } from 'react'
 
 import type { LinkItem } from './LinkItem'
@@ -54,6 +54,16 @@ export const useLinkItems = () =>
         icon: {
           type: 'icon',
           icon: EnvelopeIcon,
+        },
+      },
+      {
+        id: 'slashes',
+        title: 'صفحات اسلش (SlashPages)',
+        url: '/slashes',
+        tags: [],
+        icon: {
+          type: 'icon',
+          icon: BrowsersIcon,
         },
       },
     ],
