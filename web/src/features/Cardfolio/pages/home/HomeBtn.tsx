@@ -2,9 +2,9 @@ import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { tv } from 'tailwind-variants'
 
-import type { LinkItem } from '../LinkItem'
+import type { LinkItem } from './LinkItem'
 
-interface ProfileButtonProps {
+interface HomeBtnProps {
   item: LinkItem
 }
 
@@ -18,7 +18,7 @@ const styleBtnBase = tv({
   `,
 })
 
-export const ProfileButton = ({ item }: ProfileButtonProps) => {
+export const HomeBtn = ({ item }: HomeBtnProps) => {
   const [isHovered, setIsHovered] = useState(false)
 
   const isDisabled = item.tags.includes('disabled')

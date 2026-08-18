@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react'
 
 import { PageShell } from '#/common/molecules/PageShell'
 
-import styles from './bg-pattern.module.css'
+import styles from './CardPage.module.css'
 
 export const CardPage = (p: PropsWithChildren) => (
   <PageShell variants={{ heightFull: 'min', class: styles.circuits }}>

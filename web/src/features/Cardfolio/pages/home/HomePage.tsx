@@ -5,11 +5,11 @@ import { cn } from 'tailwind-variants'
 
 import { styleBtn } from '#/common/atoms/btn'
 
-import { CardPage } from '../CardPage'
-import { usePinnedLinkItems } from '../useLinkItems'
-import { ProfileButton } from './ProfileButton'
+import { CardPage } from '../../common/CardPage'
+import { usePinnedLinkItems } from './usePinnedLinkItems'
+import { HomeBtn } from './HomeBtn'
 
-export const ProfilePage = () => {
+export const HomePage = () => {
   const [showMore, setShowMore] = useState(false)
 
   const pinnedLinkItems = usePinnedLinkItems(true)
@@ -37,7 +37,7 @@ export const ProfilePage = () => {
 
       <div className='flex w-full flex-wrap gap-2'>
         {pinnedLinkItems.map(item => (
-          <ProfileButton item={item} />
+          <HomeBtn item={item} />
         ))}
       </div>
 
@@ -54,7 +54,7 @@ export const ProfilePage = () => {
       {showMore && (
         <div className='flex w-full flex-col gap-2'>
           {unPinnedLinkItems.map(item => (
-            <ProfileButton item={item} />
+            <HomeBtn item={item} />
           ))}
         </div>
       )}

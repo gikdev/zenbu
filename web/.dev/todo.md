@@ -1,0 +1,20 @@
+- SlashPages
+  - `o` `/about`: Who you are, your story, and site purpose.
+  - `o` `/blank`: Intentionally empty — placeholder or joke.
+  - `o` `/bookmarks`: Saved or recommended links.
+  - `o` `/coffee`: Tip jar to support your work.
+  - `o` `/colophon`: Site tech stack, hosting, and design notes.
+  - `o` `/hello`: Warm greeting and preferred contact methods.
+  - `o` `/ideas`: Brainstormed projects and concepts.
+  - `o` `/interests`: Hobbies, passions, and deep curiosities.
+  - `o` `/languages`: Human languages you speak or learn.
+  - `o` `/nope`: Things you dislike or refuse.
+  - `o` `/now`: Current focus, projects, and priorities.
+  - `o` `/pricing`: Your rates or service fees.
+  - `o` `/questions`: Open queries you're pondering.
+  - `o` `/since`: Milestones and how long you've done things.
+  - `o` `/slashes`: Directory of all your slash pages.
+  - `o` `/someday`: Goals and dreams for the future.
+  - `o` `/uses`: Daily tools, hardware, and software.
+  - `o` `/wish`: Wishlist of items or experiences you'd love.
+  - `o` `/yep`: Things you like or agree with.
