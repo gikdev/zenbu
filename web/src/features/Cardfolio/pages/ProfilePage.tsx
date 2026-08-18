@@ -1,94 +1,63 @@
-import { EnvelopeIcon, GithubLogoIcon, ReadCvLogoIcon } from '@phosphor-icons/react'
+import { CaretCircleDownIcon } from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
-import { useMemo } from 'react'
+import { useState } from 'react'
+import { cn } from 'tailwind-variants'
+
+import { styleBtn } from '#/common/atoms/btn'
 
 import { CardPage } from '../CardPage'
-import { ProfileButton, type LinkItem } from './ProfileButton'
+import { usePinnedLinkItems } from '../useLinkItems'
+import { ProfileButton } from './ProfileButton'
 
 export const ProfilePage = () => {
-  const linkItems = useMemo<LinkItem[]>(
-    () => [
-      {
-        id: 'resume',
-        title: 'رزومه',
-        url: '#',
-        tags: ['disabled', 'external', 'new-tab'],
-        icon: {
-          type: 'icon',
-          icon: ReadCvLogoIcon,
-        },
-      },
-      {
-        id: 'github',
-        title: 'گیت‌هاب',
-        url: 'https://github.com/gikdev',
-        tags: ['external', 'new-tab'],
-        icon: {
-          type: 'icon',
-          icon: GithubLogoIcon,
-        },
-      },
-      {
-        id: 'eitaa',
-        title: 'ایتا',
-        url: 'https://eitaa.com/itsbahrami',
-        tags: ['external', 'new-tab'],
-        icon: {
-          type: 'node',
-          node: <img alt='' src='/cardfolio/eitaa.svg' className='size-6' />,
-        },
-      },
-      {
-        id: 'virasty',
-        title: 'ویراستی',
-        url: 'https://virasty.com/itsbahrami',
-        tags: ['external', 'new-tab'],
-        icon: {
-          type: 'node',
-          node: <img alt='' src='/cardfolio/virasty.svg' className='size-6' />,
-        },
-      },
-      {
-        id: 'email',
-        title: 'ایمیل',
-        url: 'mailto:bahrami@mailfa.com',
-        tags: ['external', 'new-tab'],
-        icon: {
-          type: 'icon',
-          icon: EnvelopeIcon,
-        },
-      },
-    ],
-    [],
-  )
+  const [showMore, setShowMore] = useState(false)
+
+  const pinnedLinkItems = usePinnedLinkItems(true)
+  const unPinnedLinkItems = usePinnedLinkItems(false)
 
   return (
     <CardPage>
       <div className='flex flex-col items-center gap-4'>
-        <img className='size-32 rounded-4xl hover:-scale-x-100' src='/cardfolio/AnimeMe.png' alt='' />
+        <img className='size-32 rounded-4xl' src='/cardfolio/AnimeMe.png' alt='' />
 
         <p className='text-text-important text-4xl font-bold'>
           <title>بهرامی</title>
-
           <span>بهرامی‌ام!</span>
-
           <Link to='/welcome' className='cursor-pointer'>
             👋🏻
           </Link>
         </p>
 
         <p className='text-center text-lg'>
-          برنامه‌نویس فول‌استک وب
+          <span>برنامه‌نویس فول‌استک وب</span>
           <span className='relative top-1 mx-2'>•</span>
-          خوره‌ی زبان
+          <span>خوره‌ی زبان</span>
         </p>
       </div>
 
-      <div className='flex w-full flex-col gap-2'>
-        {linkItems.map(item => (
-          <ProfileButton key={item.id} item={item} />
+      <div className='flex w-full flex-wrap gap-2'>
+        {pinnedLinkItems.map(item => (
+          <ProfileButton item={item} />
         ))}
       </div>
+
+      <div className='flex items-center justify-center gap-2' onClick={() => setShowMore(p => !p)}>
+        {showMore && <hr className='bg-border-muted/50 h-0.5 flex-1 rounded-full border-none' />}
+
+        <button type='button' className={styleBtn({ size: 'icon' })} title='مشاهده بیشتر'>
+          <CaretCircleDownIcon size={24} className={cn('transition-all', showMore ? 'rotate-180' : '')} />
+        </button>
+
+        {showMore && <hr className='bg-border-muted/50 h-0.5 flex-1 rounded-full border-none' />}
+      </div>
+
+      {showMore && (
+        <div className='flex w-full flex-col gap-2'>
+          {unPinnedLinkItems.map(item => (
+            <ProfileButton item={item} />
+          ))}
+        </div>
+      )}
     </CardPage>
   )
 }
