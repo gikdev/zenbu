@@ -10,7 +10,7 @@ export const slashPages: SlashPage[] = [
   // { slash: 'ideas', title: 'ایده‌ها' },
   // { slash: 'interests', title: 'علاقه‌مندی‌ها' },
   // { slash: 'languages', title: 'زبان‌ها' },
-  // { slash: 'nope', title: 'نه' },
+  { slash: 'nope', title: 'نه' },
   // { slash: 'now', title: 'اکنون' },
   // { slash: 'pricing', title: 'قیمت‌گذاری' },
   // { slash: 'questions', title: 'سوالات' },
@@ -19,5 +19,5 @@ export const slashPages: SlashPage[] = [
   // { slash: 'someday', title: 'روزی' },
   // { slash: 'uses', title: 'ابزارها' },
   // { slash: 'wish', title: 'آرزوها' },
-  // { slash: 'yep', title: 'بله' },
+  { slash: 'yep', title: 'آره' },
 ].toSorted((a, b) => a.slash.localeCompare(b.slash))
