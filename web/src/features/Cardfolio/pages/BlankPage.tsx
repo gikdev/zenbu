@@ -6,7 +6,7 @@ export const BlankPage = () => {
     <CardPage>
       <SlashHeader slash='/blank' title='خالی' />
 
-      <p className='text-center font-bold text-text-important'>این صفحه از قصد خالی هست.</p>
+      <p className='text-text-important text-center font-bold'>این صفحه از قصد خالی هست.</p>
     </CardPage>
   )
 }

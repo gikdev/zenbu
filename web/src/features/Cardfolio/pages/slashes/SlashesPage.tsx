@@ -19,7 +19,9 @@ export const SlashesPage = () => {
     <CardPage>
       <SlashHeader slash='/slashes' title='صفحات اسلش (Slash Pages)' />
 
-      <p>توی این صفحه، لیست تمام صحفات اسلش سایت من رو می‌بینی. برای اطلاعات بیشتر به {slashPagesNetAnchor} یه نگاهی بنداز.</p>
+      <p>
+        توی این صفحه، لیست تمام صحفات اسلش سایت من رو می‌بینی. برای اطلاعات بیشتر به {slashPagesNetAnchor} یه نگاهی بنداز.
+      </p>
 
       <div className='flex flex-col gap-2'>
         {slashPages.map(page => (

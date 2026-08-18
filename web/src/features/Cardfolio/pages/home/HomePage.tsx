@@ -31,7 +31,9 @@ export const HomePage = () => {
         <p className='text-center text-lg'>
           <span>برنامه‌نویس فول‌استک وب</span>
           <span className='relative top-1 mx-2'>•</span>
-          <span>خوره‌ی زبان</span>
+          <Link to='/languages' className='text-brand hover:text-text-important border-b transition-all'>
+            خوره‌ی زبان
+          </Link>
         </p>
       </div>
 

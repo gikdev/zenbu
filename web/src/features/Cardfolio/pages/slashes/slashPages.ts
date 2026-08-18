@@ -9,7 +9,7 @@ export const slashPages: SlashPage[] = [
   // { slash: 'hello', title: 'سلام' },
   // { slash: 'ideas', title: 'ایده‌ها' },
   // { slash: 'interests', title: 'علاقه‌مندی‌ها' },
-  // { slash: 'languages', title: 'زبان‌ها' },
+  { slash: 'languages', title: 'زبان‌ها' },
   { slash: 'nope', title: 'نه' },
   // { slash: 'now', title: 'اکنون' },
   // { slash: 'pricing', title: 'قیمت‌گذاری' },

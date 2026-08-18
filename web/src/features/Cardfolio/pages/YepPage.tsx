@@ -6,7 +6,7 @@ export const YepPage = () => {
     <CardPage>
       <SlashHeader slash='/yep' title='آره' />
 
-      <p className='text-center font-bold text-text-important'>فعلا چیزی ندارم بنویسم. پس خالیه.</p>
+      <p className='text-text-important text-center font-bold'>فعلا چیزی ندارم بنویسم. پس خالیه.</p>
     </CardPage>
   )
 }

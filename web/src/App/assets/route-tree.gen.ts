@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './../../routes/__root'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
 import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
 import { Route as cardfolioBlankRouteImport } from './../../routes/(cardfolio)/blank'
+import { Route as cardfolioLanguagesRouteImport } from './../../routes/(cardfolio)/languages'
 import { Route as cardfolioNopeRouteImport } from './../../routes/(cardfolio)/nope'
 import { Route as cardfolioSlashesRouteImport } from './../../routes/(cardfolio)/slashes'
 import { Route as cardfolioYepRouteImport } from './../../routes/(cardfolio)/yep'
@@ -35,6 +36,11 @@ const cardfolioIndexRoute = cardfolioIndexRouteImport.update({
 const cardfolioBlankRoute = cardfolioBlankRouteImport.update({
   id: '/(cardfolio)/blank',
   path: '/blank',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const cardfolioLanguagesRoute = cardfolioLanguagesRouteImport.update({
+  id: '/(cardfolio)/languages',
+  path: '/languages',
   getParentRoute: () => rootRouteImport,
 } as any)
 const cardfolioNopeRoute = cardfolioNopeRouteImport.update({
@@ -88,6 +94,7 @@ const AppslyricsStudioLyricsPlayerRoute =
 export interface FileRoutesByFullPath {
   '/welcome': typeof WelcomeRoute
   '/blank': typeof cardfolioBlankRoute
+  '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
   '/slashes': typeof cardfolioSlashesRoute
   '/yep': typeof cardfolioYepRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/welcome': typeof WelcomeRoute
   '/blank': typeof cardfolioBlankRoute
+  '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
   '/slashes': typeof cardfolioSlashesRoute
   '/yep': typeof cardfolioYepRoute
@@ -117,6 +125,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/welcome': typeof WelcomeRoute
   '/(cardfolio)/blank': typeof cardfolioBlankRoute
+  '/(cardfolio)/languages': typeof cardfolioLanguagesRoute
   '/(cardfolio)/nope': typeof cardfolioNopeRoute
   '/(cardfolio)/slashes': typeof cardfolioSlashesRoute
   '/(cardfolio)/yep': typeof cardfolioYepRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/welcome'
     | '/blank'
+    | '/languages'
     | '/nope'
     | '/slashes'
     | '/yep'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
   to:
     | '/welcome'
     | '/blank'
+    | '/languages'
     | '/nope'
     | '/slashes'
     | '/yep'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/welcome'
     | '/(cardfolio)/blank'
+    | '/(cardfolio)/languages'
     | '/(cardfolio)/nope'
     | '/(cardfolio)/slashes'
     | '/(cardfolio)/yep'
@@ -176,6 +188,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   WelcomeRoute: typeof WelcomeRoute
   cardfolioBlankRoute: typeof cardfolioBlankRoute
+  cardfolioLanguagesRoute: typeof cardfolioLanguagesRoute
   cardfolioNopeRoute: typeof cardfolioNopeRoute
   cardfolioSlashesRoute: typeof cardfolioSlashesRoute
   cardfolioYepRoute: typeof cardfolioYepRoute
@@ -209,6 +222,13 @@ declare module '@tanstack/react-router' {
       path: '/blank'
       fullPath: '/blank'
       preLoaderRoute: typeof cardfolioBlankRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(cardfolio)/languages': {
+      id: '/(cardfolio)/languages'
+      path: '/languages'
+      fullPath: '/languages'
+      preLoaderRoute: typeof cardfolioLanguagesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(cardfolio)/nope': {
@@ -280,6 +300,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   WelcomeRoute: WelcomeRoute,
   cardfolioBlankRoute: cardfolioBlankRoute,
+  cardfolioLanguagesRoute: cardfolioLanguagesRoute,
   cardfolioNopeRoute: cardfolioNopeRoute,
   cardfolioSlashesRoute: cardfolioSlashesRoute,
   cardfolioYepRoute: cardfolioYepRoute,
