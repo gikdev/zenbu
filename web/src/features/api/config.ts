@@ -15,7 +15,7 @@ export function useConfigApiClient() {
 
   useEffect(() => {
     const newInstance = axios.create({
-      withCredentials: true,
+      withCredentials: false,
       baseURL,
       headers: {
         'Accept-Language': locale,
