@@ -31,8 +31,7 @@ try {
         options.AddPolicy("Frontend", policy => {
             policy.AllowAnyOrigin()
                   .AllowAnyHeader()
-                  .AllowAnyMethod()
-                  .AllowCredentials();
+                  .AllowAnyMethod();
         });
     });
 

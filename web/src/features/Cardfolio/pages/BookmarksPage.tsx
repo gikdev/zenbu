@@ -1,10 +1,10 @@
+import { BookmarkSimpleIcon } from '@phosphor-icons/react'
 import { v4 } from 'uuid'
 
 import { styleBtn } from '#/common/atoms/btn'
 
 import { CardPage } from '../common/CardPage'
 import { SlashHeader } from '../common/SlashHeader'
-import { BookmarkSimpleIcon } from '@phosphor-icons/react'
 
 interface BookmarkItem {
   id: string
