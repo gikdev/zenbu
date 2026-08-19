@@ -112,9 +112,9 @@ try {
     app.MapDefaultEndpoints();
 
     // Seed database in development
-    if (app.Environment.IsDevelopment()) {
+    // if (app.Environment.IsDevelopment()) {
         await AppDbSeeder.SeedAsync(app.Services);
-    }
+    // }
 
     await app.RunAsync();
 } catch (Exception ex) when (ex is not HostAbortedException) {
