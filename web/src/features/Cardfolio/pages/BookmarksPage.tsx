@@ -15,16 +15,17 @@ interface BookmarkItem {
 const bookmarks: BookmarkItem[] = [
   { id: v4(), url: 'https://chat.deepseek.com/', name: 'دیپ‌سیک' },
   { id: v4(), url: 'https://google.com/', name: 'گوگل' },
+  { id: v4(), url: 'https://figma.com/', name: 'فیگما' },
   { id: v4(), url: 'https://songsara.net/', name: 'سانگ‌سرا' },
   { id: v4(), url: 'https://my.files.ir/', name: 'فایلز' },
   { id: v4(), url: 'https://animegate.ir/', name: 'انیمه‌گیت' },
   { id: v4(), url: 'https://time.ir/', name: 'تایم' },
   { id: v4(), url: 'https://b85.chbkn.dev/', name: 'بهرامی' },
-  { id: v4(), url: 'https://jisho.org/', name: 'Jisho' },
+  { id: v4(), url: 'https://jisho.org/', name: 'Jisho - دیکشنری ژاپنی' },
   { id: v4(), url: 'https://www.animesonglyrics.com/', name: 'Anime Song Lyrics' },
   { id: v4(), url: 'https://animex.click/', name: 'انیمکس' },
   { id: v4(), url: 'https://super-productivity.com/', name: 'Super Productivity' },
-  { id: v4(), url: 'https://git.ir/', name: 'گیت' },
+  { id: v4(), url: 'https://git.ir/', name: 'گیت (سایت آموزشی)' },
   { id: v4(), url: 'https://programmerhumor.io/', name: 'Programmer Humor' },
 ].sort((a, b) => a.name.localeCompare(b.name))
 
