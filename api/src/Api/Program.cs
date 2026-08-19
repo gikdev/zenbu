@@ -27,6 +27,15 @@ try {
         // options => options.ResourcesPath = "Resources"
     );
 
+    builder.Services.AddCors(options => {
+        options.AddPolicy("Frontend", policy => {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials();
+        });
+    });
+
     builder.Services.Configure<RequestLocalizationOptions>(options => {
         string[] cultures = ["en", "fa", "ja"];
 
@@ -91,6 +100,8 @@ try {
 
     app.UseRequestLocalization();
 
+    app.UseCors("Frontend");
+
     app.MapOpenApi();
     app.MapOpenApi("openapi.yml");
     app.MapScalarApiReference(options => {
@@ -113,7 +124,7 @@ try {
 
     // Seed database in development
     // if (app.Environment.IsDevelopment()) {
-        await AppDbSeeder.SeedAsync(app.Services);
+    await AppDbSeeder.SeedAsync(app.Services);
     // }
 
     await app.RunAsync();
