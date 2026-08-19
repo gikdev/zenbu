@@ -13,6 +13,12 @@
   - `o` `/uses`: Daily tools, hardware, and software.
   - `o` `/wish`: Wishlist of items or experiences you'd love.
   - `--------------------`
+  - `?` `/animes`
+  - `?` `/books`
+  - `?` `/faq`
+  - `?` `/ask` (needs backend)
+  - `?` `/status` (needs backend)
+  - `--------------------`
   - `x` `/blank`: Intentionally empty — placeholder or joke.
   - `x` `/colophon`: Site tech stack, hosting, and design notes.
   - `x` `/languages`: Human languages you speak or learn.
