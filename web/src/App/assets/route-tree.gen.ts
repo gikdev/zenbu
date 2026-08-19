@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './../../routes/__root'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
 import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
 import { Route as cardfolioBlankRouteImport } from './../../routes/(cardfolio)/blank'
+import { Route as cardfolioColophonRouteImport } from './../../routes/(cardfolio)/colophon'
 import { Route as cardfolioLanguagesRouteImport } from './../../routes/(cardfolio)/languages'
 import { Route as cardfolioNopeRouteImport } from './../../routes/(cardfolio)/nope'
 import { Route as cardfolioSlashesRouteImport } from './../../routes/(cardfolio)/slashes'
@@ -36,6 +37,11 @@ const cardfolioIndexRoute = cardfolioIndexRouteImport.update({
 const cardfolioBlankRoute = cardfolioBlankRouteImport.update({
   id: '/(cardfolio)/blank',
   path: '/blank',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const cardfolioColophonRoute = cardfolioColophonRouteImport.update({
+  id: '/(cardfolio)/colophon',
+  path: '/colophon',
   getParentRoute: () => rootRouteImport,
 } as any)
 const cardfolioLanguagesRoute = cardfolioLanguagesRouteImport.update({
@@ -94,6 +100,7 @@ const AppslyricsStudioLyricsPlayerRoute =
 export interface FileRoutesByFullPath {
   '/welcome': typeof WelcomeRoute
   '/blank': typeof cardfolioBlankRoute
+  '/colophon': typeof cardfolioColophonRoute
   '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
   '/slashes': typeof cardfolioSlashesRoute
@@ -109,6 +116,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/welcome': typeof WelcomeRoute
   '/blank': typeof cardfolioBlankRoute
+  '/colophon': typeof cardfolioColophonRoute
   '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
   '/slashes': typeof cardfolioSlashesRoute
@@ -125,6 +133,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/welcome': typeof WelcomeRoute
   '/(cardfolio)/blank': typeof cardfolioBlankRoute
+  '/(cardfolio)/colophon': typeof cardfolioColophonRoute
   '/(cardfolio)/languages': typeof cardfolioLanguagesRoute
   '/(cardfolio)/nope': typeof cardfolioNopeRoute
   '/(cardfolio)/slashes': typeof cardfolioSlashesRoute
@@ -142,6 +151,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/welcome'
     | '/blank'
+    | '/colophon'
     | '/languages'
     | '/nope'
     | '/slashes'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
   to:
     | '/welcome'
     | '/blank'
+    | '/colophon'
     | '/languages'
     | '/nope'
     | '/slashes'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/welcome'
     | '/(cardfolio)/blank'
+    | '/(cardfolio)/colophon'
     | '/(cardfolio)/languages'
     | '/(cardfolio)/nope'
     | '/(cardfolio)/slashes'
@@ -188,6 +200,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   WelcomeRoute: typeof WelcomeRoute
   cardfolioBlankRoute: typeof cardfolioBlankRoute
+  cardfolioColophonRoute: typeof cardfolioColophonRoute
   cardfolioLanguagesRoute: typeof cardfolioLanguagesRoute
   cardfolioNopeRoute: typeof cardfolioNopeRoute
   cardfolioSlashesRoute: typeof cardfolioSlashesRoute
@@ -222,6 +235,13 @@ declare module '@tanstack/react-router' {
       path: '/blank'
       fullPath: '/blank'
       preLoaderRoute: typeof cardfolioBlankRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(cardfolio)/colophon': {
+      id: '/(cardfolio)/colophon'
+      path: '/colophon'
+      fullPath: '/colophon'
+      preLoaderRoute: typeof cardfolioColophonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(cardfolio)/languages': {
@@ -300,6 +320,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   WelcomeRoute: WelcomeRoute,
   cardfolioBlankRoute: cardfolioBlankRoute,
+  cardfolioColophonRoute: cardfolioColophonRoute,
   cardfolioLanguagesRoute: cardfolioLanguagesRoute,
   cardfolioNopeRoute: cardfolioNopeRoute,
   cardfolioSlashesRoute: cardfolioSlashesRoute,

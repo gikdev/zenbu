@@ -2,7 +2,6 @@
   - `o` `/about`: Who you are, your story, and site purpose.
   - `o` `/bookmarks`: Saved or recommended links.
   - `o` `/coffee`: Tip jar to support your work.
-  - `o` `/colophon`: Site tech stack, hosting, and design notes.
   - `o` `/hello`: Warm greeting and preferred contact methods.
   - `o` `/ideas`: Brainstormed projects and concepts.
   - `o` `/interests`: Hobbies, passions, and deep curiosities.
@@ -15,6 +14,7 @@
   - `o` `/wish`: Wishlist of items or experiences you'd love.
   - `--------------------`
   - `x` `/blank`: Intentionally empty — placeholder or joke.
+  - `x` `/colophon`: Site tech stack, hosting, and design notes.
   - `x` `/languages`: Human languages you speak or learn.
   - `x` `/nope`: Things you dislike or refuse.
   - `x` `/slashes`: Directory of all your slash pages.

@@ -5,7 +5,7 @@ export const slashPages: SlashPage[] = [
   { slash: 'blank', title: 'خالی' },
   // { slash: 'bookmarks', title: 'نشانک‌ها' },
   // { slash: 'coffee', title: 'قهوه' },
-  // { slash: 'colophon', title: 'مشخصات فنی' },
+  { slash: 'colophon', title: 'مشخصات فنی' },
   // { slash: 'hello', title: 'سلام' },
   // { slash: 'ideas', title: 'ایده‌ها' },
   // { slash: 'interests', title: 'علاقه‌مندی‌ها' },
