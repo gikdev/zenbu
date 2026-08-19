@@ -18,7 +18,6 @@ export const CardPage = (p: PropsWithChildren) => (
           transition={{
             duration: 0.3,
             ease: 'easeInOut',
-            delay: 0.2,
           }}
         >
           {p.children}
