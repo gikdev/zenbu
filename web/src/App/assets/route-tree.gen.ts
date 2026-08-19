@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './../../routes/__root'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
 import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
 import { Route as cardfolioBlankRouteImport } from './../../routes/(cardfolio)/blank'
+import { Route as cardfolioBookmarksRouteImport } from './../../routes/(cardfolio)/bookmarks'
 import { Route as cardfolioColophonRouteImport } from './../../routes/(cardfolio)/colophon'
 import { Route as cardfolioLanguagesRouteImport } from './../../routes/(cardfolio)/languages'
 import { Route as cardfolioNopeRouteImport } from './../../routes/(cardfolio)/nope'
@@ -37,6 +38,11 @@ const cardfolioIndexRoute = cardfolioIndexRouteImport.update({
 const cardfolioBlankRoute = cardfolioBlankRouteImport.update({
   id: '/(cardfolio)/blank',
   path: '/blank',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const cardfolioBookmarksRoute = cardfolioBookmarksRouteImport.update({
+  id: '/(cardfolio)/bookmarks',
+  path: '/bookmarks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const cardfolioColophonRoute = cardfolioColophonRouteImport.update({
@@ -100,6 +106,7 @@ const AppslyricsStudioLyricsPlayerRoute =
 export interface FileRoutesByFullPath {
   '/welcome': typeof WelcomeRoute
   '/blank': typeof cardfolioBlankRoute
+  '/bookmarks': typeof cardfolioBookmarksRoute
   '/colophon': typeof cardfolioColophonRoute
   '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/welcome': typeof WelcomeRoute
   '/blank': typeof cardfolioBlankRoute
+  '/bookmarks': typeof cardfolioBookmarksRoute
   '/colophon': typeof cardfolioColophonRoute
   '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
@@ -133,6 +141,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/welcome': typeof WelcomeRoute
   '/(cardfolio)/blank': typeof cardfolioBlankRoute
+  '/(cardfolio)/bookmarks': typeof cardfolioBookmarksRoute
   '/(cardfolio)/colophon': typeof cardfolioColophonRoute
   '/(cardfolio)/languages': typeof cardfolioLanguagesRoute
   '/(cardfolio)/nope': typeof cardfolioNopeRoute
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/welcome'
     | '/blank'
+    | '/bookmarks'
     | '/colophon'
     | '/languages'
     | '/nope'
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
   to:
     | '/welcome'
     | '/blank'
+    | '/bookmarks'
     | '/colophon'
     | '/languages'
     | '/nope'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/welcome'
     | '/(cardfolio)/blank'
+    | '/(cardfolio)/bookmarks'
     | '/(cardfolio)/colophon'
     | '/(cardfolio)/languages'
     | '/(cardfolio)/nope'
@@ -200,6 +212,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   WelcomeRoute: typeof WelcomeRoute
   cardfolioBlankRoute: typeof cardfolioBlankRoute
+  cardfolioBookmarksRoute: typeof cardfolioBookmarksRoute
   cardfolioColophonRoute: typeof cardfolioColophonRoute
   cardfolioLanguagesRoute: typeof cardfolioLanguagesRoute
   cardfolioNopeRoute: typeof cardfolioNopeRoute
@@ -235,6 +248,13 @@ declare module '@tanstack/react-router' {
       path: '/blank'
       fullPath: '/blank'
       preLoaderRoute: typeof cardfolioBlankRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(cardfolio)/bookmarks': {
+      id: '/(cardfolio)/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/bookmarks'
+      preLoaderRoute: typeof cardfolioBookmarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(cardfolio)/colophon': {
@@ -320,6 +340,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   WelcomeRoute: WelcomeRoute,
   cardfolioBlankRoute: cardfolioBlankRoute,
+  cardfolioBookmarksRoute: cardfolioBookmarksRoute,
   cardfolioColophonRoute: cardfolioColophonRoute,
   cardfolioLanguagesRoute: cardfolioLanguagesRoute,
   cardfolioNopeRoute: cardfolioNopeRoute,
