@@ -6,7 +6,6 @@
   - `o` `/ideas`: Brainstormed projects and concepts.
   - `o` `/interests`: Hobbies, passions, and deep curiosities.
   - `o` `/now`: Current focus, projects, and priorities.
-  - `o` `/pricing`: Your rates or service fees.
   - `o` `/questions`: Open queries you're pondering.
   - `o` `/since`: Milestones and how long you've done things.
   - `o` `/someday`: Goals and dreams for the future.
@@ -14,9 +13,10 @@
   - `o` `/wish`: Wishlist of items or experiences you'd love.
   - `--------------------`
   - `?` `/animes`
+  - `?` `/ask` (needs backend)
   - `?` `/books`
   - `?` `/faq`
-  - `?` `/ask` (needs backend)
+  - `?` `/pricing`: Your rates or service fees.
   - `?` `/status` (needs backend)
   - `--------------------`
   - `x` `/blank`: Intentionally empty — placeholder or joke.
