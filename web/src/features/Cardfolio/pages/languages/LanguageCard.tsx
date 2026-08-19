@@ -15,12 +15,14 @@ export const LanguageCard = (p: LanguageCardProps) => {
         {languageNumber}
       </span>
 
-      <img src={getFlagUrl(id)} alt='' className='h-16 w-24 rounded-lg object-cover' />
+      <div className='flex gap-4'>
+        <img src={getFlagUrl(id)} alt='' className='h-16 w-24 rounded-lg object-cover' />
 
-      <p className='flex items-center gap-2'>
-        <span className='text-text-important text-2xl font-bold'>{name}</span>
-        <strong className='bg-bg-2 rounded-lg px-2 py-1 text-xs'>{level}</strong>
-      </p>
+        <p className='flex flex-col items-start gap-1'>
+          <span className='text-text-important text-2xl font-bold'>{name}</span>
+          <strong className='bg-bg-2 rounded-lg px-2 py-1 text-xs'>{level}</strong>
+        </p>
+      </div>
 
       {description ? <p className='text-center'>{description}</p> : null}
     </div>
