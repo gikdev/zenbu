@@ -58,7 +58,7 @@ export const useLinkItems = () =>
       },
       {
         id: 'slashes',
-        title: 'صفحات اسلش (SlashPages)',
+        title: 'صفحات اسلش (Slash Pages)',
         url: '/slashes',
         tags: [],
         icon: {
