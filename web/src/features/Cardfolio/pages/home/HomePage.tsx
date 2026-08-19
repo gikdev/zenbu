@@ -39,7 +39,7 @@ export const HomePage = () => {
 
       <div className='flex w-full flex-wrap gap-2'>
         {pinnedLinkItems.map(item => (
-          <HomeBtn item={item} />
+          <HomeBtn key={item.id} item={item} />
         ))}
       </div>
 
@@ -56,7 +56,7 @@ export const HomePage = () => {
       {showMore && (
         <div className='flex w-full flex-col gap-2'>
           {unPinnedLinkItems.map(item => (
-            <HomeBtn item={item} />
+            <HomeBtn key={item.id} item={item} />
           ))}
         </div>
       )}
