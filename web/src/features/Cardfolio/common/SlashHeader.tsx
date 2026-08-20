@@ -8,7 +8,7 @@ export const SlashHeader = (p: { title: string; slash: string }) => (
     <title>{p.title}</title>
 
     {/* Left Group: Home + Title */}
-    <div className='flex flex-1 items-center gap-2 justify-start w-full'>
+    <div className='flex w-full flex-1 items-center justify-start gap-2'>
       <Link to='/' className={styleBtn({ size: 'icon' })}>
         <HouseIcon mirrored size={20} />
       </Link>
@@ -17,7 +17,7 @@ export const SlashHeader = (p: { title: string; slash: string }) => (
     </div>
 
     {/* Right Group: Slashes + Code */}
-    <div className='flex flex-1 items-center gap-2 justify-start w-full' dir="ltr">
+    <div className='flex w-full flex-1 items-center justify-start gap-2' dir='ltr'>
       <Link to='/slashes' className={styleBtn({ size: 'icon' })}>
         <ArrowUpIcon mirrored size={20} />
       </Link>

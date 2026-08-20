@@ -8,7 +8,7 @@ export const slashPages: SlashPage[] = [
   { slash: 'colophon', title: 'مشخصات فنی' },
   // { slash: 'hello', title: 'سلام' },
   // { slash: 'ideas', title: 'ایده‌ها' },
-  // { slash: 'interests', title: 'علاقه‌مندی‌ها' },
+  { slash: 'interests', title: 'علایق' },
   { slash: 'languages', title: 'زبان‌ها' },
   { slash: 'nope', title: 'نه' },
   // { slash: 'now', title: 'اکنون' },

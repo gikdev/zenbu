@@ -3,9 +3,7 @@
   - `o` `/coffee`: Tip jar to support your work.
   - `o` `/hello`: Warm greeting and preferred contact methods.
   - `o` `/ideas`: Brainstormed projects and concepts.
-  - `o` `/interests`: Hobbies, passions, and deep curiosities.
   - `o` `/now`: Current focus, projects, and priorities.
-  - `o` `/questions`: Open queries you're pondering.
   - `o` `/since`: Milestones and how long you've done things.
   - `o` `/someday`: Goals and dreams for the future.
   - `o` `/uses`: Daily tools, hardware, and software.
@@ -21,7 +19,9 @@
   - `x` `/blank`: Intentionally empty — placeholder or joke.
   - `x` `/bookmarks`: Saved or recommended links.
   - `x` `/colophon`: Site tech stack, hosting, and design notes.
+  - `x` `/interests`: Hobbies, passions, and deep curiosities.
   - `x` `/languages`: Human languages you speak or learn.
   - `x` `/nope`: Things you dislike or refuse.
+  - `x` `/questions`: Open queries you're pondering.
   - `x` `/slashes`: Directory of all your slash pages.
   - `x` `/yep`: Things you like or agree with.

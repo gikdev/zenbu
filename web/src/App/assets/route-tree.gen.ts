@@ -14,6 +14,7 @@ import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/i
 import { Route as cardfolioBlankRouteImport } from './../../routes/(cardfolio)/blank'
 import { Route as cardfolioBookmarksRouteImport } from './../../routes/(cardfolio)/bookmarks'
 import { Route as cardfolioColophonRouteImport } from './../../routes/(cardfolio)/colophon'
+import { Route as cardfolioInterestsRouteImport } from './../../routes/(cardfolio)/interests'
 import { Route as cardfolioLanguagesRouteImport } from './../../routes/(cardfolio)/languages'
 import { Route as cardfolioNopeRouteImport } from './../../routes/(cardfolio)/nope'
 import { Route as cardfolioQuestionsRouteImport } from './../../routes/(cardfolio)/questions'
@@ -49,6 +50,11 @@ const cardfolioBookmarksRoute = cardfolioBookmarksRouteImport.update({
 const cardfolioColophonRoute = cardfolioColophonRouteImport.update({
   id: '/(cardfolio)/colophon',
   path: '/colophon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const cardfolioInterestsRoute = cardfolioInterestsRouteImport.update({
+  id: '/(cardfolio)/interests',
+  path: '/interests',
   getParentRoute: () => rootRouteImport,
 } as any)
 const cardfolioLanguagesRoute = cardfolioLanguagesRouteImport.update({
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/blank': typeof cardfolioBlankRoute
   '/bookmarks': typeof cardfolioBookmarksRoute
   '/colophon': typeof cardfolioColophonRoute
+  '/interests': typeof cardfolioInterestsRoute
   '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
   '/questions': typeof cardfolioQuestionsRoute
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/blank': typeof cardfolioBlankRoute
   '/bookmarks': typeof cardfolioBookmarksRoute
   '/colophon': typeof cardfolioColophonRoute
+  '/interests': typeof cardfolioInterestsRoute
   '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
   '/questions': typeof cardfolioQuestionsRoute
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/(cardfolio)/blank': typeof cardfolioBlankRoute
   '/(cardfolio)/bookmarks': typeof cardfolioBookmarksRoute
   '/(cardfolio)/colophon': typeof cardfolioColophonRoute
+  '/(cardfolio)/interests': typeof cardfolioInterestsRoute
   '/(cardfolio)/languages': typeof cardfolioLanguagesRoute
   '/(cardfolio)/nope': typeof cardfolioNopeRoute
   '/(cardfolio)/questions': typeof cardfolioQuestionsRoute
@@ -171,6 +180,7 @@ export interface FileRouteTypes {
     | '/blank'
     | '/bookmarks'
     | '/colophon'
+    | '/interests'
     | '/languages'
     | '/nope'
     | '/questions'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/blank'
     | '/bookmarks'
     | '/colophon'
+    | '/interests'
     | '/languages'
     | '/nope'
     | '/questions'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/(cardfolio)/blank'
     | '/(cardfolio)/bookmarks'
     | '/(cardfolio)/colophon'
+    | '/(cardfolio)/interests'
     | '/(cardfolio)/languages'
     | '/(cardfolio)/nope'
     | '/(cardfolio)/questions'
@@ -226,6 +238,7 @@ export interface RootRouteChildren {
   cardfolioBlankRoute: typeof cardfolioBlankRoute
   cardfolioBookmarksRoute: typeof cardfolioBookmarksRoute
   cardfolioColophonRoute: typeof cardfolioColophonRoute
+  cardfolioInterestsRoute: typeof cardfolioInterestsRoute
   cardfolioLanguagesRoute: typeof cardfolioLanguagesRoute
   cardfolioNopeRoute: typeof cardfolioNopeRoute
   cardfolioQuestionsRoute: typeof cardfolioQuestionsRoute
@@ -275,6 +288,13 @@ declare module '@tanstack/react-router' {
       path: '/colophon'
       fullPath: '/colophon'
       preLoaderRoute: typeof cardfolioColophonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(cardfolio)/interests': {
+      id: '/(cardfolio)/interests'
+      path: '/interests'
+      fullPath: '/interests'
+      preLoaderRoute: typeof cardfolioInterestsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(cardfolio)/languages': {
@@ -362,6 +382,7 @@ const rootRouteChildren: RootRouteChildren = {
   cardfolioBlankRoute: cardfolioBlankRoute,
   cardfolioBookmarksRoute: cardfolioBookmarksRoute,
   cardfolioColophonRoute: cardfolioColophonRoute,
+  cardfolioInterestsRoute: cardfolioInterestsRoute,
   cardfolioLanguagesRoute: cardfolioLanguagesRoute,
   cardfolioNopeRoute: cardfolioNopeRoute,
   cardfolioQuestionsRoute: cardfolioQuestionsRoute,
