@@ -16,6 +16,7 @@ import { Route as cardfolioBookmarksRouteImport } from './../../routes/(cardfoli
 import { Route as cardfolioColophonRouteImport } from './../../routes/(cardfolio)/colophon'
 import { Route as cardfolioLanguagesRouteImport } from './../../routes/(cardfolio)/languages'
 import { Route as cardfolioNopeRouteImport } from './../../routes/(cardfolio)/nope'
+import { Route as cardfolioQuestionsRouteImport } from './../../routes/(cardfolio)/questions'
 import { Route as cardfolioSlashesRouteImport } from './../../routes/(cardfolio)/slashes'
 import { Route as cardfolioYepRouteImport } from './../../routes/(cardfolio)/yep'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
@@ -58,6 +59,11 @@ const cardfolioLanguagesRoute = cardfolioLanguagesRouteImport.update({
 const cardfolioNopeRoute = cardfolioNopeRouteImport.update({
   id: '/(cardfolio)/nope',
   path: '/nope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const cardfolioQuestionsRoute = cardfolioQuestionsRouteImport.update({
+  id: '/(cardfolio)/questions',
+  path: '/questions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const cardfolioSlashesRoute = cardfolioSlashesRouteImport.update({
@@ -110,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/colophon': typeof cardfolioColophonRoute
   '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
+  '/questions': typeof cardfolioQuestionsRoute
   '/slashes': typeof cardfolioSlashesRoute
   '/yep': typeof cardfolioYepRoute
   '/apps/settings': typeof AppsSettingsRoute
@@ -127,6 +134,7 @@ export interface FileRoutesByTo {
   '/colophon': typeof cardfolioColophonRoute
   '/languages': typeof cardfolioLanguagesRoute
   '/nope': typeof cardfolioNopeRoute
+  '/questions': typeof cardfolioQuestionsRoute
   '/slashes': typeof cardfolioSlashesRoute
   '/yep': typeof cardfolioYepRoute
   '/apps/settings': typeof AppsSettingsRoute
@@ -145,6 +153,7 @@ export interface FileRoutesById {
   '/(cardfolio)/colophon': typeof cardfolioColophonRoute
   '/(cardfolio)/languages': typeof cardfolioLanguagesRoute
   '/(cardfolio)/nope': typeof cardfolioNopeRoute
+  '/(cardfolio)/questions': typeof cardfolioQuestionsRoute
   '/(cardfolio)/slashes': typeof cardfolioSlashesRoute
   '/(cardfolio)/yep': typeof cardfolioYepRoute
   '/apps/settings': typeof AppsSettingsRoute
@@ -164,6 +173,7 @@ export interface FileRouteTypes {
     | '/colophon'
     | '/languages'
     | '/nope'
+    | '/questions'
     | '/slashes'
     | '/yep'
     | '/apps/settings'
@@ -181,6 +191,7 @@ export interface FileRouteTypes {
     | '/colophon'
     | '/languages'
     | '/nope'
+    | '/questions'
     | '/slashes'
     | '/yep'
     | '/apps/settings'
@@ -198,6 +209,7 @@ export interface FileRouteTypes {
     | '/(cardfolio)/colophon'
     | '/(cardfolio)/languages'
     | '/(cardfolio)/nope'
+    | '/(cardfolio)/questions'
     | '/(cardfolio)/slashes'
     | '/(cardfolio)/yep'
     | '/apps/settings'
@@ -216,6 +228,7 @@ export interface RootRouteChildren {
   cardfolioColophonRoute: typeof cardfolioColophonRoute
   cardfolioLanguagesRoute: typeof cardfolioLanguagesRoute
   cardfolioNopeRoute: typeof cardfolioNopeRoute
+  cardfolioQuestionsRoute: typeof cardfolioQuestionsRoute
   cardfolioSlashesRoute: typeof cardfolioSlashesRoute
   cardfolioYepRoute: typeof cardfolioYepRoute
   AppsSettingsRoute: typeof AppsSettingsRoute
@@ -276,6 +289,13 @@ declare module '@tanstack/react-router' {
       path: '/nope'
       fullPath: '/nope'
       preLoaderRoute: typeof cardfolioNopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(cardfolio)/questions': {
+      id: '/(cardfolio)/questions'
+      path: '/questions'
+      fullPath: '/questions'
+      preLoaderRoute: typeof cardfolioQuestionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(cardfolio)/slashes': {
@@ -344,6 +364,7 @@ const rootRouteChildren: RootRouteChildren = {
   cardfolioColophonRoute: cardfolioColophonRoute,
   cardfolioLanguagesRoute: cardfolioLanguagesRoute,
   cardfolioNopeRoute: cardfolioNopeRoute,
+  cardfolioQuestionsRoute: cardfolioQuestionsRoute,
   cardfolioSlashesRoute: cardfolioSlashesRoute,
   cardfolioYepRoute: cardfolioYepRoute,
   AppsSettingsRoute: AppsSettingsRoute,

@@ -13,7 +13,7 @@ export const slashPages: SlashPage[] = [
   { slash: 'nope', title: 'نه' },
   // { slash: 'now', title: 'اکنون' },
   // { slash: 'pricing', title: 'قیمت‌گذاری' },
-  // { slash: 'questions', title: 'سوالات' },
+  { slash: 'questions', title: 'سوالات' },
   // { slash: 'since', title: 'سابقه' },
   { slash: 'slashes', title: 'صفحات اسلش' },
   // { slash: 'someday', title: 'روزی' },

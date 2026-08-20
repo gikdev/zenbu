@@ -1,6 +1,5 @@
 - SlashPages
   - `o` `/about`: Who you are, your story, and site purpose.
-  - `o` `/bookmarks`: Saved or recommended links.
   - `o` `/coffee`: Tip jar to support your work.
   - `o` `/hello`: Warm greeting and preferred contact methods.
   - `o` `/ideas`: Brainstormed projects and concepts.
@@ -20,6 +19,7 @@
   - `?` `/status` (needs backend)
   - `--------------------`
   - `x` `/blank`: Intentionally empty — placeholder or joke.
+  - `x` `/bookmarks`: Saved or recommended links.
   - `x` `/colophon`: Site tech stack, hosting, and design notes.
   - `x` `/languages`: Human languages you speak or learn.
   - `x` `/nope`: Things you dislike or refuse.
