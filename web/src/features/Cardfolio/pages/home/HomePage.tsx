@@ -1,17 +1,10 @@
-import { CaretCircleDownIcon } from '@phosphor-icons/react'
 import { Link } from '@tanstack/react-router'
-import { useState } from 'react'
-import { cn } from 'tailwind-variants'
-
-import { styleBtn } from '#/common/atoms/btn'
 
 import { CardPage } from '../../common/CardPage'
 import { HomeBtn } from './HomeBtn'
 import { usePinnedLinkItems } from './usePinnedLinkItems'
 
 export const HomePage = () => {
-  const [showMore, setShowMore] = useState(false)
-
   const pinnedLinkItems = usePinnedLinkItems(true)
   const unPinnedLinkItems = usePinnedLinkItems(false)
 
@@ -37,29 +30,17 @@ export const HomePage = () => {
         </p>
       </div>
 
-      <div className='flex w-full flex-wrap gap-2'>
+      <div className='flex w-full flex-wrap gap-0 overflow-clip rounded-xl'>
         {pinnedLinkItems.map(item => (
-          <HomeBtn key={item.id} item={item} />
+          <HomeBtn key={item.id} item={item} className='rounded-none' />
         ))}
       </div>
 
-      <div className='flex items-center justify-center gap-2' onClick={() => setShowMore(p => !p)}>
-        {showMore && <hr className='bg-border-muted/50 h-0.5 flex-1 rounded-full border-none' />}
-
-        <button type='button' className={styleBtn({ size: 'icon' })} title='مشاهده بیشتر'>
-          <CaretCircleDownIcon size={24} className={cn('transition-all', showMore ? 'rotate-180' : '')} />
-        </button>
-
-        {showMore && <hr className='bg-border-muted/50 h-0.5 flex-1 rounded-full border-none' />}
+      <div className='flex w-full flex-col gap-2'>
+        {unPinnedLinkItems.map(item => (
+          <HomeBtn key={item.id} item={item} />
+        ))}
       </div>
-
-      {showMore && (
-        <div className='flex w-full flex-col gap-2'>
-          {unPinnedLinkItems.map(item => (
-            <HomeBtn key={item.id} item={item} />
-          ))}
-        </div>
-      )}
     </CardPage>
   )
 }

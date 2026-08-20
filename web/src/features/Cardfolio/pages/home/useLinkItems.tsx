@@ -1,4 +1,4 @@
-import { BrowsersIcon, EnvelopeIcon, GithubLogoIcon, ReadCvLogoIcon } from '@phosphor-icons/react'
+import { BrowsersIcon, EnvelopeIcon, GithubLogoIcon, ReadCvLogoIcon, TranslateIcon } from '@phosphor-icons/react'
 import { useMemo } from 'react'
 
 import type { LinkItem } from './LinkItem'
@@ -64,6 +64,16 @@ export const useLinkItems = () =>
         icon: {
           type: 'icon',
           icon: BrowsersIcon,
+        },
+      },
+      {
+        id: 'languages',
+        title: 'زبان‌ها',
+        url: '/languages',
+        tags: [],
+        icon: {
+          type: 'icon',
+          icon: TranslateIcon,
         },
       },
     ],

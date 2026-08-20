@@ -6,6 +6,7 @@ import type { LinkItem } from './LinkItem'
 
 interface HomeBtnProps {
   item: LinkItem
+  className?: string
 }
 
 const styleBtnBase = tv({
@@ -18,37 +19,36 @@ const styleBtnBase = tv({
   `,
 })
 
-export const HomeBtn = ({ item }: HomeBtnProps) => {
+export const HomeBtn = (p: HomeBtnProps) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  const isDisabled = item.tags.includes('disabled')
-  const isNewTab = item.tags.includes('new-tab')
-  const isPinned = item.tags.includes('pinned')
+  const { icon, tags, title, url } = p.item
+  const isDisabled = tags.includes('disabled')
+  const isNewTab = tags.includes('new-tab')
+  const isPinned = tags.includes('pinned')
 
   if (isDisabled) return null
 
   return (
     <Link
-      to={item.url}
-      title={item.title}
-      className={styleBtnBase({ class: ['group', isPinned ? 'justify-center' : ''] })}
+      to={url}
+      title={title}
+      className={styleBtnBase({ class: ['group', isPinned ? 'justify-center' : '', p.className] })}
       target={isNewTab ? '_blank' : '_self'}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {!isPinned && <span className='me-auto flex items-center gap-3'>{item.title}</span>}
+      {!isPinned && <span className='me-auto flex items-center gap-3'>{title}</span>}
 
-      {item.icon.type === 'icon' && (
-        <item.icon.icon
+      {icon.type === 'icon' && (
+        <icon.icon
           size={24}
           weight={isHovered ? 'fill' : 'regular'}
           className='shrink-0 transition-all group-hover:rotate-10'
         />
       )}
 
-      {item.icon.type === 'node' && (
-        <span className='shrink-0 transition-all group-hover:rotate-10'>{item.icon.node}</span>
-      )}
+      {icon.type === 'node' && <span className='shrink-0 transition-all group-hover:rotate-10'>{icon.node}</span>}
     </Link>
   )
 }
