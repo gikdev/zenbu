@@ -9,13 +9,13 @@
   - `o` `/uses`: Daily tools, hardware, and software.
   - `o` `/wish`: Wishlist of items or experiences you'd love.
   - `--------------------`
-  - `?` `/animes`
   - `?` `/ask` (needs backend)
   - `?` `/books`
   - `?` `/faq`
   - `?` `/pricing`: Your rates or service fees.
   - `?` `/status` (needs backend)
   - `--------------------`
+  - `x` `/animes`
   - `x` `/blank`: Intentionally empty — placeholder or joke.
   - `x` `/bookmarks`: Saved or recommended links.
   - `x` `/colophon`: Site tech stack, hosting, and design notes.

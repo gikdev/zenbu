@@ -2,6 +2,7 @@ import type { SlashPage } from './SlashPage'
 
 export const slashPages: SlashPage[] = [
   // { slash: 'about', title: 'درباره' },
+  { slash: 'animes', title: 'انیمه‌ها' },
   { slash: 'blank', title: 'خالی' },
   { slash: 'bookmarks', title: 'نشانک‌ها' },
   // { slash: 'coffee', title: 'قهوه' },

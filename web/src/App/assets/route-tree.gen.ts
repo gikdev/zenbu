@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './../../routes/__root'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
 import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
+import { Route as cardfolioAnimesRouteImport } from './../../routes/(cardfolio)/animes'
 import { Route as cardfolioBlankRouteImport } from './../../routes/(cardfolio)/blank'
 import { Route as cardfolioBookmarksRouteImport } from './../../routes/(cardfolio)/bookmarks'
 import { Route as cardfolioColophonRouteImport } from './../../routes/(cardfolio)/colophon'
@@ -35,6 +36,11 @@ const WelcomeRoute = WelcomeRouteImport.update({
 const cardfolioIndexRoute = cardfolioIndexRouteImport.update({
   id: '/(cardfolio)/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const cardfolioAnimesRoute = cardfolioAnimesRouteImport.update({
+  id: '/(cardfolio)/animes',
+  path: '/animes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const cardfolioBlankRoute = cardfolioBlankRouteImport.update({
@@ -117,6 +123,7 @@ const AppslyricsStudioLyricsPlayerRoute =
 
 export interface FileRoutesByFullPath {
   '/welcome': typeof WelcomeRoute
+  '/animes': typeof cardfolioAnimesRoute
   '/blank': typeof cardfolioBlankRoute
   '/bookmarks': typeof cardfolioBookmarksRoute
   '/colophon': typeof cardfolioColophonRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/welcome': typeof WelcomeRoute
+  '/animes': typeof cardfolioAnimesRoute
   '/blank': typeof cardfolioBlankRoute
   '/bookmarks': typeof cardfolioBookmarksRoute
   '/colophon': typeof cardfolioColophonRoute
@@ -156,6 +164,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/welcome': typeof WelcomeRoute
+  '/(cardfolio)/animes': typeof cardfolioAnimesRoute
   '/(cardfolio)/blank': typeof cardfolioBlankRoute
   '/(cardfolio)/bookmarks': typeof cardfolioBookmarksRoute
   '/(cardfolio)/colophon': typeof cardfolioColophonRoute
@@ -177,6 +186,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/welcome'
+    | '/animes'
     | '/blank'
     | '/bookmarks'
     | '/colophon'
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/welcome'
+    | '/animes'
     | '/blank'
     | '/bookmarks'
     | '/colophon'
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/welcome'
+    | '/(cardfolio)/animes'
     | '/(cardfolio)/blank'
     | '/(cardfolio)/bookmarks'
     | '/(cardfolio)/colophon'
@@ -235,6 +247,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   WelcomeRoute: typeof WelcomeRoute
+  cardfolioAnimesRoute: typeof cardfolioAnimesRoute
   cardfolioBlankRoute: typeof cardfolioBlankRoute
   cardfolioBookmarksRoute: typeof cardfolioBookmarksRoute
   cardfolioColophonRoute: typeof cardfolioColophonRoute
@@ -267,6 +280,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof cardfolioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(cardfolio)/animes': {
+      id: '/(cardfolio)/animes'
+      path: '/animes'
+      fullPath: '/animes'
+      preLoaderRoute: typeof cardfolioAnimesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(cardfolio)/blank': {
@@ -379,6 +399,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   WelcomeRoute: WelcomeRoute,
+  cardfolioAnimesRoute: cardfolioAnimesRoute,
   cardfolioBlankRoute: cardfolioBlankRoute,
   cardfolioBookmarksRoute: cardfolioBookmarksRoute,
   cardfolioColophonRoute: cardfolioColophonRoute,
