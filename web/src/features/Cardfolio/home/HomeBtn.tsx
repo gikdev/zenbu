@@ -1,5 +1,4 @@
 import { Link } from '@tanstack/react-router'
-import { useState } from 'react'
 import { tv } from 'tailwind-variants'
 
 import type { LinkItem } from './LinkItem'
@@ -20,35 +19,19 @@ const styleBtnBase = tv({
 })
 
 export const HomeBtn = (p: HomeBtnProps) => {
-  const [isHovered, setIsHovered] = useState(false)
-
-  const { icon, tags, title, url } = p.item
-  const isDisabled = tags.includes('disabled')
+  const { icon: Icon, tags, title, url } = p.item
   const isNewTab = tags.includes('new-tab')
-  const isPinned = tags.includes('pinned')
-
-  if (isDisabled) return null
 
   return (
     <Link
       to={url}
       title={title}
-      className={styleBtnBase({ class: ['group', isPinned ? 'justify-center' : '', p.className] })}
+      className={styleBtnBase({ class: ['group', p.className] })}
       target={isNewTab ? '_blank' : '_self'}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      {!isPinned && <span className='me-auto flex items-center gap-3'>{title}</span>}
+      <span className='me-auto flex items-center gap-3'>{title}</span>
 
-      {icon.type === 'icon' && (
-        <icon.icon
-          size={24}
-          weight={isHovered ? 'fill' : 'regular'}
-          className='shrink-0 transition-all group-hover:rotate-10'
-        />
-      )}
-
-      {icon.type === 'node' && <span className='shrink-0 transition-all group-hover:rotate-10'>{icon.node}</span>}
+      <Icon size={24} className='shrink-0 transition-all group-hover:rotate-10' />
     </Link>
   )
 }
