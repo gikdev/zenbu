@@ -37,8 +37,8 @@ export const ProfileImage = () => {
       console.warn('Audio playback error:', err)
     })
 
-    toast.info(`🗣️ ${selected.phrase} (${selected.language})`, {
-      position: 'bottom-right',
+    toast.info(`🗣️ ${selected.phrase}`, {
+      position: 'top-center',
       autoClose: 3000,
       rtl: selected.language === 'fa',
       hideProgressBar: false,
