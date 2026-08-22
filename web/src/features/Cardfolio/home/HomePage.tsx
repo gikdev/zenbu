@@ -14,7 +14,7 @@ export const HomePage = () => (
       <p className='text-text-important text-center text-4xl font-bold'>
         <title>بهرامی</title>
         <span>بهرامی‌ام!</span>
-        <Link to='/welcome' className='cursor-pointer'>
+        <Link to='/apps' className='cursor-pointer'>
           👋🏻
         </Link>
       </p>

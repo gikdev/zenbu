@@ -37,7 +37,11 @@ export const ProfileImage = () => {
       console.warn('Audio playback error:', err)
     })
 
-    const content = <p className='use-lang-font' lang={selected.lang}>🗣️ {selected.phrase}</p>
+    const content = (
+      <p className='use-lang-font' lang={selected.lang}>
+        🗣️ {selected.phrase}
+      </p>
+    )
 
     toast.info(content, {
       className: `use-lang-font lang--${selected.lang}`,
