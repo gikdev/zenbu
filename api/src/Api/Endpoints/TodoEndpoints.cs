@@ -1,5 +1,6 @@
 using App.Api.Extensions;
 using App.Application.Abstractions.Messaging;
+using App.Application.Features.Jot.Jottings.Create;
 using App.Application.Features.Todos.Complete;
 using App.Application.Features.Todos.Create;
 using App.Application.Features.Todos.Delete;
