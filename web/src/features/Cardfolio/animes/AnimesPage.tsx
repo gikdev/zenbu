@@ -1,5 +1,5 @@
-import { CardHeader } from '../../common/CardHeader'
-import { CardPage } from '../../common/CardPage'
+import { CardHeader } from '../common/CardHeader'
+import { CardPage } from '../common/CardPage'
 import { AnimeCard } from './AnimeCard'
 import { animes } from './animes'
 

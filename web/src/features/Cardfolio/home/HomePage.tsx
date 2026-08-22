@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 
-import { CardPage } from '../../common/CardPage'
+import { CardPage } from '../common/CardPage'
 import { HomeBtn } from './HomeBtn'
 import { usePinnedLinkItems } from './usePinnedLinkItems'
 
