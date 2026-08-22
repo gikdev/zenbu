@@ -1,18 +1,18 @@
 - SlashPages
   - `o` `/about`: Who you are, your story, and site purpose.
-  - `o` `/coffee`: Tip jar to support your work.
   - `o` `/hello`: Warm greeting and preferred contact methods.
-  - `o` `/ideas`: Brainstormed projects and concepts.
   - `o` `/now`: Current focus, projects, and priorities.
   - `o` `/since`: Milestones and how long you've done things.
-  - `o` `/someday`: Goals and dreams for the future.
   - `o` `/uses`: Daily tools, hardware, and software.
   - `o` `/wish`: Wishlist of items or experiences you'd love.
   - `--------------------`
   - `?` `/ask` (needs backend)
-  - `?` `/books`
-  - `?` `/faq`
+  - `?` `/books`: List of books I'm reading
+  - `?` `/coffee`: Tip jar to support your work.
+  - `?` `/faq`: Answering Frequently Asked Questions (FAQ)
+  - `?` `/ideas`: Brainstormed projects and concepts.
   - `?` `/pricing`: Your rates or service fees.
+  - `?` `/someday`: Goals and dreams for the future.
   - `?` `/status` (needs backend)
   - `--------------------`
   - `x` `/animes`
