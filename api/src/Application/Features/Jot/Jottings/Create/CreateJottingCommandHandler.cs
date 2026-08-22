@@ -19,10 +19,6 @@ public sealed class CreateJottingCommandHandler(
         db.Jottings.Add(newJotting);
         await db.SaveChangesAsync(cancellationToken);
 
-        return new JottingResponse {
-            Id = newJotting.Id,
-            Title = newJotting.Title,
-            Content = newJotting.Content,
-        };
+        return JottingResponse.FromDomain(newJotting);
     }
 }
