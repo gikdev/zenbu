@@ -12,15 +12,7 @@ import { Route as rootRouteImport } from './../../routes/__root'
 import { Route as WelcomeRouteImport } from './../../routes/welcome'
 import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
 import { Route as cardfolioAnimesRouteImport } from './../../routes/(cardfolio)/animes'
-import { Route as cardfolioBlankRouteImport } from './../../routes/(cardfolio)/blank'
-import { Route as cardfolioBookmarksRouteImport } from './../../routes/(cardfolio)/bookmarks'
-import { Route as cardfolioColophonRouteImport } from './../../routes/(cardfolio)/colophon'
-import { Route as cardfolioInterestsRouteImport } from './../../routes/(cardfolio)/interests'
 import { Route as cardfolioLanguagesRouteImport } from './../../routes/(cardfolio)/languages'
-import { Route as cardfolioNopeRouteImport } from './../../routes/(cardfolio)/nope'
-import { Route as cardfolioQuestionsRouteImport } from './../../routes/(cardfolio)/questions'
-import { Route as cardfolioSlashesRouteImport } from './../../routes/(cardfolio)/slashes'
-import { Route as cardfolioYepRouteImport } from './../../routes/(cardfolio)/yep'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
 import { Route as AppsSucofRouteImport } from './../../routes/apps/sucof'
@@ -43,49 +35,9 @@ const cardfolioAnimesRoute = cardfolioAnimesRouteImport.update({
   path: '/animes',
   getParentRoute: () => rootRouteImport,
 } as any)
-const cardfolioBlankRoute = cardfolioBlankRouteImport.update({
-  id: '/(cardfolio)/blank',
-  path: '/blank',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const cardfolioBookmarksRoute = cardfolioBookmarksRouteImport.update({
-  id: '/(cardfolio)/bookmarks',
-  path: '/bookmarks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const cardfolioColophonRoute = cardfolioColophonRouteImport.update({
-  id: '/(cardfolio)/colophon',
-  path: '/colophon',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const cardfolioInterestsRoute = cardfolioInterestsRouteImport.update({
-  id: '/(cardfolio)/interests',
-  path: '/interests',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const cardfolioLanguagesRoute = cardfolioLanguagesRouteImport.update({
   id: '/(cardfolio)/languages',
   path: '/languages',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const cardfolioNopeRoute = cardfolioNopeRouteImport.update({
-  id: '/(cardfolio)/nope',
-  path: '/nope',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const cardfolioQuestionsRoute = cardfolioQuestionsRouteImport.update({
-  id: '/(cardfolio)/questions',
-  path: '/questions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const cardfolioSlashesRoute = cardfolioSlashesRouteImport.update({
-  id: '/(cardfolio)/slashes',
-  path: '/slashes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const cardfolioYepRoute = cardfolioYepRouteImport.update({
-  id: '/(cardfolio)/yep',
-  path: '/yep',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppsIndexRoute = AppsIndexRouteImport.update({
@@ -124,15 +76,7 @@ const AppslyricsStudioLyricsPlayerRoute =
 export interface FileRoutesByFullPath {
   '/welcome': typeof WelcomeRoute
   '/animes': typeof cardfolioAnimesRoute
-  '/blank': typeof cardfolioBlankRoute
-  '/bookmarks': typeof cardfolioBookmarksRoute
-  '/colophon': typeof cardfolioColophonRoute
-  '/interests': typeof cardfolioInterestsRoute
   '/languages': typeof cardfolioLanguagesRoute
-  '/nope': typeof cardfolioNopeRoute
-  '/questions': typeof cardfolioQuestionsRoute
-  '/slashes': typeof cardfolioSlashesRoute
-  '/yep': typeof cardfolioYepRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -144,15 +88,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/welcome': typeof WelcomeRoute
   '/animes': typeof cardfolioAnimesRoute
-  '/blank': typeof cardfolioBlankRoute
-  '/bookmarks': typeof cardfolioBookmarksRoute
-  '/colophon': typeof cardfolioColophonRoute
-  '/interests': typeof cardfolioInterestsRoute
   '/languages': typeof cardfolioLanguagesRoute
-  '/nope': typeof cardfolioNopeRoute
-  '/questions': typeof cardfolioQuestionsRoute
-  '/slashes': typeof cardfolioSlashesRoute
-  '/yep': typeof cardfolioYepRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -165,15 +101,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/welcome': typeof WelcomeRoute
   '/(cardfolio)/animes': typeof cardfolioAnimesRoute
-  '/(cardfolio)/blank': typeof cardfolioBlankRoute
-  '/(cardfolio)/bookmarks': typeof cardfolioBookmarksRoute
-  '/(cardfolio)/colophon': typeof cardfolioColophonRoute
-  '/(cardfolio)/interests': typeof cardfolioInterestsRoute
   '/(cardfolio)/languages': typeof cardfolioLanguagesRoute
-  '/(cardfolio)/nope': typeof cardfolioNopeRoute
-  '/(cardfolio)/questions': typeof cardfolioQuestionsRoute
-  '/(cardfolio)/slashes': typeof cardfolioSlashesRoute
-  '/(cardfolio)/yep': typeof cardfolioYepRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -187,15 +115,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/welcome'
     | '/animes'
-    | '/blank'
-    | '/bookmarks'
-    | '/colophon'
-    | '/interests'
     | '/languages'
-    | '/nope'
-    | '/questions'
-    | '/slashes'
-    | '/yep'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -207,15 +127,7 @@ export interface FileRouteTypes {
   to:
     | '/welcome'
     | '/animes'
-    | '/blank'
-    | '/bookmarks'
-    | '/colophon'
-    | '/interests'
     | '/languages'
-    | '/nope'
-    | '/questions'
-    | '/slashes'
-    | '/yep'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -227,15 +139,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/welcome'
     | '/(cardfolio)/animes'
-    | '/(cardfolio)/blank'
-    | '/(cardfolio)/bookmarks'
-    | '/(cardfolio)/colophon'
-    | '/(cardfolio)/interests'
     | '/(cardfolio)/languages'
-    | '/(cardfolio)/nope'
-    | '/(cardfolio)/questions'
-    | '/(cardfolio)/slashes'
-    | '/(cardfolio)/yep'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -248,15 +152,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   WelcomeRoute: typeof WelcomeRoute
   cardfolioAnimesRoute: typeof cardfolioAnimesRoute
-  cardfolioBlankRoute: typeof cardfolioBlankRoute
-  cardfolioBookmarksRoute: typeof cardfolioBookmarksRoute
-  cardfolioColophonRoute: typeof cardfolioColophonRoute
-  cardfolioInterestsRoute: typeof cardfolioInterestsRoute
   cardfolioLanguagesRoute: typeof cardfolioLanguagesRoute
-  cardfolioNopeRoute: typeof cardfolioNopeRoute
-  cardfolioQuestionsRoute: typeof cardfolioQuestionsRoute
-  cardfolioSlashesRoute: typeof cardfolioSlashesRoute
-  cardfolioYepRoute: typeof cardfolioYepRoute
   AppsSettingsRoute: typeof AppsSettingsRoute
   AppsSucofRoute: typeof AppsSucofRoute
   AppsWritingAreaRoute: typeof AppsWritingAreaRoute
@@ -289,67 +185,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof cardfolioAnimesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(cardfolio)/blank': {
-      id: '/(cardfolio)/blank'
-      path: '/blank'
-      fullPath: '/blank'
-      preLoaderRoute: typeof cardfolioBlankRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(cardfolio)/bookmarks': {
-      id: '/(cardfolio)/bookmarks'
-      path: '/bookmarks'
-      fullPath: '/bookmarks'
-      preLoaderRoute: typeof cardfolioBookmarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(cardfolio)/colophon': {
-      id: '/(cardfolio)/colophon'
-      path: '/colophon'
-      fullPath: '/colophon'
-      preLoaderRoute: typeof cardfolioColophonRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(cardfolio)/interests': {
-      id: '/(cardfolio)/interests'
-      path: '/interests'
-      fullPath: '/interests'
-      preLoaderRoute: typeof cardfolioInterestsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/(cardfolio)/languages': {
       id: '/(cardfolio)/languages'
       path: '/languages'
       fullPath: '/languages'
       preLoaderRoute: typeof cardfolioLanguagesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(cardfolio)/nope': {
-      id: '/(cardfolio)/nope'
-      path: '/nope'
-      fullPath: '/nope'
-      preLoaderRoute: typeof cardfolioNopeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(cardfolio)/questions': {
-      id: '/(cardfolio)/questions'
-      path: '/questions'
-      fullPath: '/questions'
-      preLoaderRoute: typeof cardfolioQuestionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(cardfolio)/slashes': {
-      id: '/(cardfolio)/slashes'
-      path: '/slashes'
-      fullPath: '/slashes'
-      preLoaderRoute: typeof cardfolioSlashesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(cardfolio)/yep': {
-      id: '/(cardfolio)/yep'
-      path: '/yep'
-      fullPath: '/yep'
-      preLoaderRoute: typeof cardfolioYepRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apps/': {
@@ -400,15 +240,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   WelcomeRoute: WelcomeRoute,
   cardfolioAnimesRoute: cardfolioAnimesRoute,
-  cardfolioBlankRoute: cardfolioBlankRoute,
-  cardfolioBookmarksRoute: cardfolioBookmarksRoute,
-  cardfolioColophonRoute: cardfolioColophonRoute,
-  cardfolioInterestsRoute: cardfolioInterestsRoute,
   cardfolioLanguagesRoute: cardfolioLanguagesRoute,
-  cardfolioNopeRoute: cardfolioNopeRoute,
-  cardfolioQuestionsRoute: cardfolioQuestionsRoute,
-  cardfolioSlashesRoute: cardfolioSlashesRoute,
-  cardfolioYepRoute: cardfolioYepRoute,
   AppsSettingsRoute: AppsSettingsRoute,
   AppsSucofRoute: AppsSucofRoute,
   AppsWritingAreaRoute: AppsWritingAreaRoute,
