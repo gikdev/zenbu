@@ -6,7 +6,7 @@ type ValidationProblem = {
 
 export function extractErrorMessage(error: any, fallback?: string): string {
   // Axios-style server response
-  const data: (ValidationProblem & { msg?: string }) | undefined = error?.response?.data
+  const data: (ValidationProblem & { msg?: string; detail?: string }) | undefined = error?.response?.data
 
   if (data) {
     // 1) If there is an "errors" dictionary, format it nicely
@@ -28,6 +28,7 @@ export function extractErrorMessage(error: any, fallback?: string): string {
     }
 
     // 2) Fallback to common fields like title
+    if (data.detail) return data.detail
     if (data.title) return data.title
     if (data.msg) return data.msg
   }

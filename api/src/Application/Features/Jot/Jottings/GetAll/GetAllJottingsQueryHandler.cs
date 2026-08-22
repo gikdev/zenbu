@@ -13,7 +13,6 @@ public sealed class GetAllJottingsQueryHandler(
     public async Task<Result<List<JottingResponse>>> HandleAsync(GetAllJottingsQuery query, CancellationToken cancellationToken = default) {
         var jottings = await db.Jottings
             .Where(j => j.OwnerId == user.UserIdGuid)
-            .OrderByDescending(j => j.UpdatedAt ?? j.CreatedAt)
             .Select(j => JottingResponse.FromDomain(j))
             .ToListAsync(cancellationToken);
 

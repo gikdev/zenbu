@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import z from 'zod'
 
+import { useAccessToken } from '../auth/store'
 import { useI18nContext } from '../i18n'
 import { client } from './client'
 
@@ -12,6 +13,7 @@ const baseURL = z
 
 export function useConfigApiClient() {
   const { locale } = useI18nContext()
+  const accessToken = useAccessToken()
 
   useEffect(() => {
     const newInstance = axios.create({
@@ -19,6 +21,7 @@ export function useConfigApiClient() {
       baseURL,
       headers: {
         'Accept-Language': locale,
+        Authorization: `Bearer ${accessToken}`,
       },
     })
 
@@ -26,5 +29,5 @@ export function useConfigApiClient() {
       baseURL,
       axios: newInstance,
     })
-  }, [locale])
+  }, [locale, accessToken])
 }

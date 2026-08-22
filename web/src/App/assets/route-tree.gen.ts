@@ -13,6 +13,7 @@ import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/i
 import { Route as cardfolioAnimesRouteImport } from './../../routes/(cardfolio)/animes'
 import { Route as cardfolioLanguagesRouteImport } from './../../routes/(cardfolio)/languages'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
+import { Route as AppsAccountManagerRouteImport } from './../../routes/apps/account-manager'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
 import { Route as AppsSucofRouteImport } from './../../routes/apps/sucof'
 import { Route as AppsWritingAreaRouteImport } from './../../routes/apps/writing-area'
@@ -37,6 +38,11 @@ const cardfolioLanguagesRoute = cardfolioLanguagesRouteImport.update({
 const AppsIndexRoute = AppsIndexRouteImport.update({
   id: '/apps/',
   path: '/apps/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsAccountManagerRoute = AppsAccountManagerRouteImport.update({
+  id: '/apps/account-manager',
+  path: '/apps/account-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppsSettingsRoute = AppsSettingsRouteImport.update({
@@ -70,6 +76,7 @@ const AppslyricsStudioLyricsPlayerRoute =
 export interface FileRoutesByFullPath {
   '/animes': typeof cardfolioAnimesRoute
   '/languages': typeof cardfolioLanguagesRoute
+  '/apps/account-manager': typeof AppsAccountManagerRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/animes': typeof cardfolioAnimesRoute
   '/languages': typeof cardfolioLanguagesRoute
+  '/apps/account-manager': typeof AppsAccountManagerRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/(cardfolio)/animes': typeof cardfolioAnimesRoute
   '/(cardfolio)/languages': typeof cardfolioLanguagesRoute
+  '/apps/account-manager': typeof AppsAccountManagerRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/animes'
     | '/languages'
+    | '/apps/account-manager'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
   to:
     | '/animes'
     | '/languages'
+    | '/apps/account-manager'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/(cardfolio)/animes'
     | '/(cardfolio)/languages'
+    | '/apps/account-manager'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -140,6 +152,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   cardfolioAnimesRoute: typeof cardfolioAnimesRoute
   cardfolioLanguagesRoute: typeof cardfolioLanguagesRoute
+  AppsAccountManagerRoute: typeof AppsAccountManagerRoute
   AppsSettingsRoute: typeof AppsSettingsRoute
   AppsSucofRoute: typeof AppsSucofRoute
   AppsWritingAreaRoute: typeof AppsWritingAreaRoute
@@ -177,6 +190,13 @@ declare module '@tanstack/react-router' {
       path: '/apps'
       fullPath: '/apps/'
       preLoaderRoute: typeof AppsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/account-manager': {
+      id: '/apps/account-manager'
+      path: '/apps/account-manager'
+      fullPath: '/apps/account-manager'
+      preLoaderRoute: typeof AppsAccountManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apps/settings': {
@@ -220,6 +240,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   cardfolioAnimesRoute: cardfolioAnimesRoute,
   cardfolioLanguagesRoute: cardfolioLanguagesRoute,
+  AppsAccountManagerRoute: AppsAccountManagerRoute,
   AppsSettingsRoute: AppsSettingsRoute,
   AppsSucofRoute: AppsSucofRoute,
   AppsWritingAreaRoute: AppsWritingAreaRoute,

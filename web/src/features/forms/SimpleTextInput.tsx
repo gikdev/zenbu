@@ -11,10 +11,11 @@ type TextInputChangeHandler = ChangeEventHandler<HTMLTextAreaElement, HTMLTextAr
 interface SimpleTextInputProps {
   title: string
   isMultiline?: boolean
+  isSecret?: boolean
   className?: string
 }
 
-export function SimpleTextInput({ title, isMultiline = false, className }: SimpleTextInputProps) {
+export function SimpleTextInput({ title, isSecret = false, isMultiline = false, className }: SimpleTextInputProps) {
   const field = useFieldContext<string | null>()
   const Tag = isMultiline ? 'textarea' : 'input'
   const value = field.state.value || ''
@@ -27,6 +28,7 @@ export function SimpleTextInput({ title, isMultiline = false, className }: Simpl
     <LabelContainer title={title} htmlFor={field.name}>
       <Tag
         dir='auto'
+        type={isSecret ? 'password' : 'text'}
         id={field.name}
         name={field.name}
         value={value}
