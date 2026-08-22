@@ -2,13 +2,14 @@ import { Link } from '@tanstack/react-router'
 
 import { CardPage } from '../common/CardPage'
 import { ContactMethods } from '../contact/ContactMethods'
+import { ProfileImage } from '../msg-easter-egg'
 import { HomeBtn } from './HomeBtn'
 import { linkItems } from './linkItems'
 
 export const HomePage = () => (
   <CardPage>
     <div className='flex flex-col items-center gap-4'>
-      <img className='size-32 rounded-4xl' src='/cardfolio/AnimeMe.png' alt='' />
+      <ProfileImage />
 
       <p className='text-text-important text-center text-4xl font-bold'>
         <title>بهرامی</title>
