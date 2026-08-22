@@ -35,10 +35,8 @@ public static class JottingEndpoints {
                 CreateJottingCommand command,
                 ICommandHandler<CreateJottingCommand, Result<JottingResponse>> handler,
                 CancellationToken cancellationToken
-            ) => EndpointUtils.AutoResolveCreatedAt(
-                await handler.HandleAsync(command, cancellationToken),
-                "-",
-                value => new { id = value.Id }
+            ) => EndpointUtils.AutoResolveOk(
+                await handler.HandleAsync(command, cancellationToken)
             )
         )
         .WithName("CreateJotting")

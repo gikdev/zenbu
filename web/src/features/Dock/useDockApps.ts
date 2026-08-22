@@ -74,9 +74,9 @@ export const useDockApps = (): DockApp[] => {
         id: 'jot',
         name: 'Jot',
         icon: NotePencilIcon,
-        url: linkOptions({ to: '.' }),
+        url: linkOptions({ to: '/apps/jot' }),
         description: 'Track small changing values like book pages, episodes, or counts.',
-        tags: [DockAppTag.Idea],
+        tags: [DockAppTag.Wip],
       },
       {
         id: 'nokhodi-crm',

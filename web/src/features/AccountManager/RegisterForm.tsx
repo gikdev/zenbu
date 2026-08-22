@@ -4,7 +4,7 @@ import { styleBtn } from '#/common/atoms/btn'
 import type { RegisterCommand } from '#/features/api/client'
 import { useAppForm } from '#/features/forms'
 
-export const RegisterForm = (p: { onSubmit: (data: RegisterCommand) => Promise<void> }) => {
+export const RegisterForm = (p: { onSubmit: (data: RegisterCommand, resetForm: () => void) => Promise<void> }) => {
   const form = useAppForm({
     defaultValues: {
       firstName: '',
@@ -13,7 +13,7 @@ export const RegisterForm = (p: { onSubmit: (data: RegisterCommand) => Promise<v
       password: '',
       confirmPassword: '',
     },
-    onSubmit: ({ value }) => p.onSubmit(value).then(() => form.reset()),
+    onSubmit: ({ value }) => p.onSubmit(value, () => form.reset()),
   })
 
   return (

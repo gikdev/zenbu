@@ -49,7 +49,7 @@ export const AccountManagerPage = () => {
     }
   }
 
-  const handleLogin = async (body: LoginCommand) => {
+  const handleLogin = async (body: LoginCommand, resetForm: () => void) => {
     try {
       const res = await toast.promise(Identity.login({ body, throwOnError: true }), {
         pending: 'Logging you in...',
@@ -57,18 +57,20 @@ export const AccountManagerPage = () => {
         error: 'Login failed.',
       })
       authStore.actions.logIn(res.data)
+      resetForm()
     } catch (err) {
       onError(err)
     }
   }
 
-  const handleRegister = async (body: RegisterCommand) => {
+  const handleRegister = async (body: RegisterCommand, resetForm: () => void) => {
     try {
       await toast.promise(Identity.register({ body, throwOnError: true }), {
         pending: 'Registration in progress...',
         success: 'Successfully registered. Please log in.',
         error: 'Registration failed.',
       })
+      resetForm()
     } catch (err) {
       onError(err)
     }

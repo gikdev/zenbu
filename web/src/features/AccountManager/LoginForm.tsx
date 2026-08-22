@@ -5,13 +5,13 @@ import { useAppForm } from '#/features/forms'
 
 import type { LoginCommand } from '../api/client'
 
-export const LoginForm = (p: { onSubmit: (data: LoginCommand) => Promise<void> }) => {
+export const LoginForm = (p: { onSubmit: (data: LoginCommand, resetForm: () => void) => Promise<void> }) => {
   const form = useAppForm({
     defaultValues: {
       email: '',
       password: '',
     },
-    onSubmit: ({ value }) => p.onSubmit(value).then(() => form.reset()),
+    onSubmit: ({ value }) => p.onSubmit(value, () => form.reset()),
   })
 
   return (
