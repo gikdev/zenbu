@@ -9,20 +9,20 @@ import { styleBtn } from '#/common/atoms/btn'
 interface Phrase {
   id: string
   phrase: string
-  language: 'en' | 'ja' | 'fa'
+  lang: 'en' | 'ja' | 'fa'
   audio: string
 }
 
 const phrases: Phrase[] = [
-  { id: v4(), phrase: 'صب بخیر!', language: 'fa', audio: '/cardfolio/sob-bekheyr.mp3' },
-  { id: v4(), phrase: 'چطوری؟', language: 'fa', audio: '/cardfolio/chetori.mp3' },
-  { id: v4(), phrase: 'خوش‌وقتم!', language: 'fa', audio: '/cardfolio/khoshvaghtam.mp3' },
-  { id: v4(), phrase: 'Morning!', language: 'en', audio: '/cardfolio/morning.mp3' },
-  { id: v4(), phrase: 'Sup?', language: 'en', audio: '/cardfolio/sup.mp3' },
-  { id: v4(), phrase: 'Nice to meet ya!', language: 'en', audio: '/cardfolio/nice-to-meet-ya.mp3' },
-  { id: v4(), phrase: '元気？', language: 'ja', audio: '/cardfolio/genki.mp3' },
-  { id: v4(), phrase: 'おはよう！', language: 'ja', audio: '/cardfolio/ohayou.mp3' },
-  { id: v4(), phrase: 'よろしくね！', language: 'ja', audio: '/cardfolio/yoroshiku-ne.mp3' },
+  { id: v4(), phrase: 'صب بخیر!', lang: 'fa', audio: '/cardfolio/sob-bekheyr.mp3' },
+  { id: v4(), phrase: 'چطوری؟', lang: 'fa', audio: '/cardfolio/chetori.mp3' },
+  { id: v4(), phrase: 'خوش‌وقتم!', lang: 'fa', audio: '/cardfolio/khoshvaghtam.mp3' },
+  { id: v4(), phrase: 'Morning!', lang: 'en', audio: '/cardfolio/morning.mp3' },
+  { id: v4(), phrase: 'Sup?', lang: 'en', audio: '/cardfolio/sup.mp3' },
+  { id: v4(), phrase: 'Nice to meet ya!', lang: 'en', audio: '/cardfolio/nice-to-meet-ya.mp3' },
+  { id: v4(), phrase: '元気？', lang: 'ja', audio: '/cardfolio/genki.mp3' },
+  { id: v4(), phrase: 'おはよう！', lang: 'ja', audio: '/cardfolio/ohayou.mp3' },
+  { id: v4(), phrase: 'よろしくね！', lang: 'ja', audio: '/cardfolio/yoroshiku-ne.mp3' },
 ]
 
 export const ProfileImage = () => {
@@ -37,10 +37,13 @@ export const ProfileImage = () => {
       console.warn('Audio playback error:', err)
     })
 
-    toast.info(`🗣️ ${selected.phrase}`, {
-      position: 'top-center',
+    const content = <p className='use-lang-font' lang={selected.lang}>🗣️ {selected.phrase}</p>
+
+    toast.info(content, {
+      className: `use-lang-font lang--${selected.lang}`,
+      position: 'bottom-center',
       autoClose: 3000,
-      rtl: selected.language === 'fa',
+      rtl: selected.lang === 'fa',
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

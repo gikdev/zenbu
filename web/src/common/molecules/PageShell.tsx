@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from 'motion/react'
 import { type ReactNode } from 'react'
 import { tv, type ClassProp, type VariantProps } from 'tailwind-variants'
 
@@ -24,4 +25,16 @@ const stylePageShell = tv({
 export const PageShell = (p: {
   variants?: VariantProps<typeof stylePageShell> & ClassProp<string>
   children: ReactNode
-}) => <div className={stylePageShell(p.variants)}>{p.children}</div>
+}) => (
+  <AnimatePresence mode='wait'>
+    <motion.div
+      key={window.location.pathname}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={stylePageShell(p.variants)}
+    >
+      {p.children}
+    </motion.div>
+  </AnimatePresence>
+)
