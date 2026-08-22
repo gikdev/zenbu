@@ -1,20 +1,22 @@
 - SlashPages
-  - `o` `/about`: Who you are, your story, and site purpose.
-  - `o` `/hello`: Warm greeting and preferred contact methods.
-  - `o` `/now`: Current focus, projects, and priorities.
-  - `o` `/since`: Milestones and how long you've done things.
-  - `o` `/uses`: Daily tools, hardware, and software.
-  - `o` `/wish`: Wishlist of items or experiences you'd love.
-  - `--------------------`
+  - `- o - To Do ---------`
+  - `- ? - Sure? ---------`
+  - `?` `/about`: Who you are, your story, and site purpose.
   - `?` `/ask` (needs backend)
   - `?` `/books`: List of books I'm reading
   - `?` `/coffee`: Tip jar to support your work.
   - `?` `/faq`: Answering Frequently Asked Questions (FAQ)
+  - `?` `/hello`: Warm greeting and preferred contact methods.
   - `?` `/ideas`: Brainstormed projects and concepts.
+  - `?` `/now`: Current focus, projects, and priorities.
   - `?` `/pricing`: Your rates or service fees.
+  - `?` `/since`: Milestones and how long you've done things.
   - `?` `/someday`: Goals and dreams for the future.
   - `?` `/status` (needs backend)
-  - `--------------------`
+  - `?` `/uses`: Daily tools, hardware, and software.
+  - `?` `/wish`: Wishlist of items or experiences you'd love.
+  - `- i - In Progress ---`
+  - `- x - Done ----------`
   - `x` `/animes`
   - `x` `/blank`: Intentionally empty — placeholder or joke.
   - `x` `/bookmarks`: Saved or recommended links.
