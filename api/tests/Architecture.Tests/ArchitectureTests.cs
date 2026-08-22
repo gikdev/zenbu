@@ -10,7 +10,7 @@ public sealed class ArchitectureTests {
     private const string ApplicationNamespace = "App.Application";
     private const string InfrastructureNamespace = "App.Infrastructure";
     private const string ApiNamespace = "App.Api";
-    private static readonly Assembly DomainAssembly = typeof(IEntity).Assembly;
+    private static readonly Assembly DomainAssembly = typeof(Entity).Assembly;
     private static readonly Assembly ApplicationAssembly = typeof(DependencyInjection).Assembly;
     private static readonly Assembly InfrastructureAssembly = typeof(Infrastructure.DependencyInjection).Assembly;
 

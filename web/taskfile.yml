@@ -1,7 +1,7 @@
 # https://taskfile.dev
 version: '3'
 
-dotenv: ['.env']
+# dotenv: ['.env']
 
 vars:
   OPENAPI_SPEC_URL: http://localhost:5200/openapi.yml
@@ -24,7 +24,10 @@ tasks:
       - task: install
       - task: i18n
 
-  build: vp build
+  build:
+    # dotenv: ['.env.production']
+    cmds:
+      - vp build
 
   repo:nuke:
     cmds:

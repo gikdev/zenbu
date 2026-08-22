@@ -9,8 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './../../routes/__root'
-import { Route as IndexRouteImport } from './../../routes/index'
-import { Route as WelcomeRouteImport } from './../../routes/welcome'
+import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
+import { Route as cardfolioAnimesRouteImport } from './../../routes/(cardfolio)/animes'
+import { Route as cardfolioLanguagesRouteImport } from './../../routes/(cardfolio)/languages'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
 import { Route as AppsSucofRouteImport } from './../../routes/apps/sucof'
@@ -18,14 +19,19 @@ import { Route as AppsWritingAreaRouteImport } from './../../routes/apps/writing
 import { Route as AppslyricsStudioLyricsEditorRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-editor'
 import { Route as AppslyricsStudioLyricsPlayerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-player'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
+const cardfolioIndexRoute = cardfolioIndexRouteImport.update({
+  id: '/(cardfolio)/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WelcomeRoute = WelcomeRouteImport.update({
-  id: '/welcome',
-  path: '/welcome',
+const cardfolioAnimesRoute = cardfolioAnimesRouteImport.update({
+  id: '/(cardfolio)/animes',
+  path: '/animes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const cardfolioLanguagesRoute = cardfolioLanguagesRouteImport.update({
+  id: '/(cardfolio)/languages',
+  path: '/languages',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppsIndexRoute = AppsIndexRouteImport.update({
@@ -62,32 +68,35 @@ const AppslyricsStudioLyricsPlayerRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/welcome': typeof WelcomeRoute
+  '/animes': typeof cardfolioAnimesRoute
+  '/languages': typeof cardfolioLanguagesRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
+  '/': typeof cardfolioIndexRoute
   '/apps/': typeof AppsIndexRoute
   '/apps/lyrics-editor': typeof AppslyricsStudioLyricsEditorRoute
   '/apps/lyrics-player': typeof AppslyricsStudioLyricsPlayerRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/welcome': typeof WelcomeRoute
+  '/animes': typeof cardfolioAnimesRoute
+  '/languages': typeof cardfolioLanguagesRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
+  '/': typeof cardfolioIndexRoute
   '/apps': typeof AppsIndexRoute
   '/apps/lyrics-editor': typeof AppslyricsStudioLyricsEditorRoute
   '/apps/lyrics-player': typeof AppslyricsStudioLyricsPlayerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/welcome': typeof WelcomeRoute
+  '/(cardfolio)/animes': typeof cardfolioAnimesRoute
+  '/(cardfolio)/languages': typeof cardfolioLanguagesRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
+  '/(cardfolio)/': typeof cardfolioIndexRoute
   '/apps/': typeof AppsIndexRoute
   '/apps/(lyrics-studio)/lyrics-editor': typeof AppslyricsStudioLyricsEditorRoute
   '/apps/(lyrics-studio)/lyrics-player': typeof AppslyricsStudioLyricsPlayerRoute
@@ -95,42 +104,46 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/welcome'
+    | '/animes'
+    | '/languages'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
+    | '/'
     | '/apps/'
     | '/apps/lyrics-editor'
     | '/apps/lyrics-player'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/welcome'
+    | '/animes'
+    | '/languages'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
+    | '/'
     | '/apps'
     | '/apps/lyrics-editor'
     | '/apps/lyrics-player'
   id:
     | '__root__'
-    | '/'
-    | '/welcome'
+    | '/(cardfolio)/animes'
+    | '/(cardfolio)/languages'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
+    | '/(cardfolio)/'
     | '/apps/'
     | '/apps/(lyrics-studio)/lyrics-editor'
     | '/apps/(lyrics-studio)/lyrics-player'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  WelcomeRoute: typeof WelcomeRoute
+  cardfolioAnimesRoute: typeof cardfolioAnimesRoute
+  cardfolioLanguagesRoute: typeof cardfolioLanguagesRoute
   AppsSettingsRoute: typeof AppsSettingsRoute
   AppsSucofRoute: typeof AppsSucofRoute
   AppsWritingAreaRoute: typeof AppsWritingAreaRoute
+  cardfolioIndexRoute: typeof cardfolioIndexRoute
   AppsIndexRoute: typeof AppsIndexRoute
   AppslyricsStudioLyricsEditorRoute: typeof AppslyricsStudioLyricsEditorRoute
   AppslyricsStudioLyricsPlayerRoute: typeof AppslyricsStudioLyricsPlayerRoute
@@ -138,18 +151,25 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/(cardfolio)/': {
+      id: '/(cardfolio)/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof cardfolioIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/welcome': {
-      id: '/welcome'
-      path: '/welcome'
-      fullPath: '/welcome'
-      preLoaderRoute: typeof WelcomeRouteImport
+    '/(cardfolio)/animes': {
+      id: '/(cardfolio)/animes'
+      path: '/animes'
+      fullPath: '/animes'
+      preLoaderRoute: typeof cardfolioAnimesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(cardfolio)/languages': {
+      id: '/(cardfolio)/languages'
+      path: '/languages'
+      fullPath: '/languages'
+      preLoaderRoute: typeof cardfolioLanguagesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apps/': {
@@ -198,11 +218,12 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  WelcomeRoute: WelcomeRoute,
+  cardfolioAnimesRoute: cardfolioAnimesRoute,
+  cardfolioLanguagesRoute: cardfolioLanguagesRoute,
   AppsSettingsRoute: AppsSettingsRoute,
   AppsSucofRoute: AppsSucofRoute,
   AppsWritingAreaRoute: AppsWritingAreaRoute,
+  cardfolioIndexRoute: cardfolioIndexRoute,
   AppsIndexRoute: AppsIndexRoute,
   AppslyricsStudioLyricsEditorRoute: AppslyricsStudioLyricsEditorRoute,
   AppslyricsStudioLyricsPlayerRoute: AppslyricsStudioLyricsPlayerRoute,

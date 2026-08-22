@@ -27,6 +27,14 @@ try {
         // options => options.ResourcesPath = "Resources"
     );
 
+    builder.Services.AddCors(options => {
+        options.AddPolicy("Frontend", policy => {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+    });
+
     builder.Services.Configure<RequestLocalizationOptions>(options => {
         string[] cultures = ["en", "fa", "ja"];
 
@@ -91,6 +99,8 @@ try {
 
     app.UseRequestLocalization();
 
+    app.UseCors("Frontend");
+
     app.MapOpenApi();
     app.MapOpenApi("openapi.yml");
     app.MapScalarApiReference(options => {
@@ -112,9 +122,9 @@ try {
     app.MapDefaultEndpoints();
 
     // Seed database in development
-    if (app.Environment.IsDevelopment()) {
-        await AppDbSeeder.SeedAsync(app.Services);
-    }
+    // if (app.Environment.IsDevelopment()) {
+    await AppDbSeeder.SeedAsync(app.Services);
+    // }
 
     await app.RunAsync();
 } catch (Exception ex) when (ex is not HostAbortedException) {

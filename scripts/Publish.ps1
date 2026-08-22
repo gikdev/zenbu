@@ -8,7 +8,7 @@ $wwwrootDest = Join-Path $outputPath "wwwroot"
 
 # --- 0. READ VERSION ---
 # Path to the version file inside the web project
-$versionFilePath = Join-Path $webPath "src\app\data\version.json"
+$versionFilePath = Join-Path $webPath "src\features\versioning\version.json"
 
 if (Test-Path $versionFilePath) {
     $versionData = Get-Content $versionFilePath | ConvertFrom-Json

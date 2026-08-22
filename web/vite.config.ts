@@ -46,15 +46,6 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5200',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
-  },
   plugins: lazyPlugins(() => [
     react(),
     tailwindcss(),
