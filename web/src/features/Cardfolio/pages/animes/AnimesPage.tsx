@@ -1,11 +1,11 @@
+import { CardHeader } from '../../common/CardHeader'
 import { CardPage } from '../../common/CardPage'
-import { SlashHeader } from '../../common/SlashHeader'
 import { AnimeCard } from './AnimeCard'
 import { animes } from './animes'
 
 export const AnimesPage = () => (
   <CardPage>
-    <SlashHeader slash='/animes' title='انیمه‌ها' />
+    <CardHeader title='انیمه‌ها' />
 
     <p className='text-text-important mb-6 font-bold'>انیمه‌هایی که دیدم و دوستشون داشتم (یا دارم می‌بینم).</p>
 
