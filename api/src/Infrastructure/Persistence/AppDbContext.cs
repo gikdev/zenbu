@@ -1,6 +1,7 @@
 using App.Application.Abstractions.Data;
 using App.Domain.Common;
 using App.Domain.Models;
+using App.Domain.Models.Jot;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ public sealed class AppDbContext(
     DbContextOptions<AppDbContext> options
 ) : IdentityDbContext<ApplicationUser>(options), IAppDbContext {
     public DbSet<TodoItem> Todos => Set<TodoItem>();
+    public DbSet<Jotting> Jottings => Set<Jotting>();
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) {
         UpdateAuditableEntities();

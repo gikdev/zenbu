@@ -1,7 +1,6 @@
 using App.Application.Abstractions.Data;
 using App.Application.Abstractions.Messaging;
 using App.Domain.Common;
-using App.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Application.Features.Todos.Complete;

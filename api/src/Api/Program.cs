@@ -1,4 +1,5 @@
 using App.Api.Endpoints;
+using App.Api.Endpoints.Jot;
 using App.Api.Extensions;
 using App.Application;
 using App.Infrastructure;
@@ -117,6 +118,7 @@ try {
     app.MapIdentityEndpoints();
     app.MapTodoEndpoints();
     app.MapWelcomeEndpoints();
+    app.MapJottingEndpoints();
 
     // Aspire default endpoints (health, alive)
     app.MapDefaultEndpoints();

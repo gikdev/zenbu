@@ -8,16 +8,18 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './../../routes/__root'
-import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
 import { Route as cardfolioAnimesRouteImport } from './../../routes/(cardfolio)/animes'
+import { Route as cardfolioIndexRouteImport } from './../../routes/(cardfolio)/index'
 import { Route as cardfolioLanguagesRouteImport } from './../../routes/(cardfolio)/languages'
+import { Route as rootRouteImport } from './../../routes/__root'
+import { Route as AppslyricsStudioLyricsEditorRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-editor'
+import { Route as AppslyricsStudioLyricsPlayerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-player'
+import { Route as AppsAccountManagerRouteImport } from './../../routes/apps/account-manager'
 import { Route as AppsIndexRouteImport } from './../../routes/apps/index'
+import { Route as AppsJotRouteImport } from './../../routes/apps/jot'
 import { Route as AppsSettingsRouteImport } from './../../routes/apps/settings'
 import { Route as AppsSucofRouteImport } from './../../routes/apps/sucof'
 import { Route as AppsWritingAreaRouteImport } from './../../routes/apps/writing-area'
-import { Route as AppslyricsStudioLyricsEditorRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-editor'
-import { Route as AppslyricsStudioLyricsPlayerRouteImport } from './../../routes/apps/(lyrics-studio)/lyrics-player'
 
 const cardfolioIndexRoute = cardfolioIndexRouteImport.update({
   id: '/(cardfolio)/',
@@ -39,6 +41,16 @@ const AppsIndexRoute = AppsIndexRouteImport.update({
   path: '/apps/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppsAccountManagerRoute = AppsAccountManagerRouteImport.update({
+  id: '/apps/account-manager',
+  path: '/apps/account-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsJotRoute = AppsJotRouteImport.update({
+  id: '/apps/jot',
+  path: '/apps/jot',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppsSettingsRoute = AppsSettingsRouteImport.update({
   id: '/apps/settings',
   path: '/apps/settings',
@@ -54,22 +66,22 @@ const AppsWritingAreaRoute = AppsWritingAreaRouteImport.update({
   path: '/apps/writing-area',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppslyricsStudioLyricsEditorRoute =
-  AppslyricsStudioLyricsEditorRouteImport.update({
-    id: '/apps/(lyrics-studio)/lyrics-editor',
-    path: '/apps/lyrics-editor',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const AppslyricsStudioLyricsPlayerRoute =
-  AppslyricsStudioLyricsPlayerRouteImport.update({
-    id: '/apps/(lyrics-studio)/lyrics-player',
-    path: '/apps/lyrics-player',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const AppslyricsStudioLyricsEditorRoute = AppslyricsStudioLyricsEditorRouteImport.update({
+  id: '/apps/(lyrics-studio)/lyrics-editor',
+  path: '/apps/lyrics-editor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppslyricsStudioLyricsPlayerRoute = AppslyricsStudioLyricsPlayerRouteImport.update({
+  id: '/apps/(lyrics-studio)/lyrics-player',
+  path: '/apps/lyrics-player',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/animes': typeof cardfolioAnimesRoute
   '/languages': typeof cardfolioLanguagesRoute
+  '/apps/account-manager': typeof AppsAccountManagerRoute
+  '/apps/jot': typeof AppsJotRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -81,6 +93,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/animes': typeof cardfolioAnimesRoute
   '/languages': typeof cardfolioLanguagesRoute
+  '/apps/account-manager': typeof AppsAccountManagerRoute
+  '/apps/jot': typeof AppsJotRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -93,6 +107,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/(cardfolio)/animes': typeof cardfolioAnimesRoute
   '/(cardfolio)/languages': typeof cardfolioLanguagesRoute
+  '/apps/account-manager': typeof AppsAccountManagerRoute
+  '/apps/jot': typeof AppsJotRoute
   '/apps/settings': typeof AppsSettingsRoute
   '/apps/sucof': typeof AppsSucofRoute
   '/apps/writing-area': typeof AppsWritingAreaRoute
@@ -106,6 +122,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/animes'
     | '/languages'
+    | '/apps/account-manager'
+    | '/apps/jot'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -117,6 +135,8 @@ export interface FileRouteTypes {
   to:
     | '/animes'
     | '/languages'
+    | '/apps/account-manager'
+    | '/apps/jot'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -128,6 +148,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/(cardfolio)/animes'
     | '/(cardfolio)/languages'
+    | '/apps/account-manager'
+    | '/apps/jot'
     | '/apps/settings'
     | '/apps/sucof'
     | '/apps/writing-area'
@@ -140,6 +162,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   cardfolioAnimesRoute: typeof cardfolioAnimesRoute
   cardfolioLanguagesRoute: typeof cardfolioLanguagesRoute
+  AppsAccountManagerRoute: typeof AppsAccountManagerRoute
+  AppsJotRoute: typeof AppsJotRoute
   AppsSettingsRoute: typeof AppsSettingsRoute
   AppsSucofRoute: typeof AppsSucofRoute
   AppsWritingAreaRoute: typeof AppsWritingAreaRoute
@@ -177,6 +201,20 @@ declare module '@tanstack/react-router' {
       path: '/apps'
       fullPath: '/apps/'
       preLoaderRoute: typeof AppsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/account-manager': {
+      id: '/apps/account-manager'
+      path: '/apps/account-manager'
+      fullPath: '/apps/account-manager'
+      preLoaderRoute: typeof AppsAccountManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/jot': {
+      id: '/apps/jot'
+      path: '/apps/jot'
+      fullPath: '/apps/jot'
+      preLoaderRoute: typeof AppsJotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apps/settings': {
@@ -220,6 +258,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   cardfolioAnimesRoute: cardfolioAnimesRoute,
   cardfolioLanguagesRoute: cardfolioLanguagesRoute,
+  AppsAccountManagerRoute: AppsAccountManagerRoute,
+  AppsJotRoute: AppsJotRoute,
   AppsSettingsRoute: AppsSettingsRoute,
   AppsSucofRoute: AppsSucofRoute,
   AppsWritingAreaRoute: AppsWritingAreaRoute,
@@ -228,6 +268,4 @@ const rootRouteChildren: RootRouteChildren = {
   AppslyricsStudioLyricsEditorRoute: AppslyricsStudioLyricsEditorRoute,
   AppslyricsStudioLyricsPlayerRoute: AppslyricsStudioLyricsPlayerRoute,
 }
-export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>()

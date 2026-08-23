@@ -243,8 +243,128 @@ paths:
           description: Not Found
         '401':
           description: Unauthorized
+  /api/jot/jottings:
+    get:
+      tags:
+        - Jottings
+      summary: Get all jottings
+      operationId: GetAllJottings
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JottingResponse'
+    post:
+      tags:
+        - Jottings
+      summary: Create a new jotting
+      operationId: CreateJotting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateJottingCommand'
+        required: true
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JottingResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+  '/api/jot/jottings/{id}':
+    put:
+      tags:
+        - Jottings
+      summary: Update an existing jotting
+      operationId: UpdateJotting
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateJottingRequest'
+        required: true
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - Jottings
+      summary: Delete a jotting
+      operationId: DeleteJotting
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '401':
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
 components:
   schemas:
+    CreateJottingCommand:
+      required:
+        - title
+        - content
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
     CreateTodoCommand:
       required:
         - title
@@ -305,6 +425,26 @@ components:
             type: array
             items:
               type: string
+    JottingResponse:
+      required:
+        - id
+        - title
+        - content
+        - updatedAt
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        content:
+          type: string
+        updatedAt:
+          type:
+            - 'null'
+            - string
+          format: date-time
     LoginCommand:
       required:
         - email
@@ -355,6 +495,32 @@ components:
           type: boolean
         hasPreviousPage:
           type: boolean
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+            - 'null'
+            - string
+        title:
+          type:
+            - 'null'
+            - string
+        status:
+          pattern: '^-?(?:0|[1-9]\d*)$'
+          type:
+            - 'null'
+            - integer
+            - string
+          format: int32
+        detail:
+          type:
+            - 'null'
+            - string
+        instance:
+          type:
+            - 'null'
+            - string
     RefreshTokenCommand:
       required:
         - accessToken
@@ -427,6 +593,16 @@ components:
         expiresAt:
           type: string
           format: date-time
+    UpdateJottingRequest:
+      required:
+        - title
+        - content
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
     UpdateTodoRequest:
       required:
         - title
@@ -458,3 +634,4 @@ tags:
   - name: Temp
   - name: Identity
   - name: Todos
+  - name: Jottings

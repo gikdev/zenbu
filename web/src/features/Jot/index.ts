@@ -1,0 +1,1 @@
+export { JotPage } from './JotPage'

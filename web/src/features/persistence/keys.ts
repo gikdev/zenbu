@@ -5,6 +5,7 @@ export const keys = {
   Theming: {
     CurrentTheme: 'Zenbu.Theming.CurrentTheme',
   },
+  Auth: 'Zenbu.Auth',
   Apps: {
     TimeLog: 'Zenbu.Apps.TimeLog',
     WritingArea: 'Zenbu.Apps.WritingArea',
