@@ -14,3 +14,9 @@ tasks:
     cmds:
       - cd web && task setup
       - cd api && task setup
+
+  repo:nuke:
+    aliases: [nuke]
+    desc: Nuke the whole repo
+    cmds:
+      - git clean -fdX
