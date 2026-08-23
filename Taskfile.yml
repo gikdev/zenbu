@@ -20,3 +20,9 @@ tasks:
     desc: Nuke the whole repo
     cmds:
       - git clean -fdX
+
+  repo:zip:
+    aliases: [zip]
+    desc: Zip the whole repo
+    cmds:
+      - git archive --format=zip --output=repo.zip HEAD
