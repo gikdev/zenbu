@@ -59,11 +59,11 @@ try {
     builder.Services.AddOpenApi(options => {
         options.AddDocumentTransformer((document, _, _) => {
             var info = document.Info ?? new OpenApiInfo();
-            info.Title = "App API";
-            info.Description = "A production-ready Clean Architecture template for .NET 10 by Mukesh Murugan";
+            info.Title = "Zenbu API";
+            info.Description = "The backend of the 'Zenbu' app.";
             info.Contact = new OpenApiContact {
-                Name = "Mukesh Murugan",
-                Url = new Uri("https://codewithmukesh.com")
+                Name = "Mohammad Mahdi Bahrami",
+                Url = new Uri("https://github.com/gikdev")
             };
             document.Info = info;
 
@@ -102,6 +102,16 @@ try {
 
     app.UseCors("Frontend");
 
+    // --------------------------------------------------------------
+    // Serve static files from wwwroot (React Vite SPA build output)
+    // --------------------------------------------------------------
+    app.UseDefaultFiles();            // serves index.html for root path
+    app.UseStaticFiles();             // serves all other static assets
+
+    // Enable endpoint routing (explicit, though often implicit)
+    app.UseRouting();
+
+    // OpenAPI & Scalar (can be placed before or after auth)
     app.MapOpenApi();
     app.MapOpenApi("openapi.yml");
     app.MapScalarApiReference(options => {
@@ -109,12 +119,13 @@ try {
         options.WithDefaultHttpClient(ScalarTarget.JavaScript, ScalarClient.Fetch);
     });
 
+    // Authentication & Authorization
     app.UseAuthentication();
     app.UseAuthorization();
 
     app.UseSerilogRequestLogging();
 
-    // Map endpoints
+    // Map API endpoints
     app.MapIdentityEndpoints();
     app.MapTodoEndpoints();
     app.MapWelcomeEndpoints();
@@ -122,6 +133,12 @@ try {
 
     // Aspire default endpoints (health, alive)
     app.MapDefaultEndpoints();
+
+    // --------------------------------------------------------------
+    // SPA fallback – any request not matching API or static file
+    // returns index.html to support client-side routing
+    // --------------------------------------------------------------
+    app.MapFallbackToFile("index.html");
 
     // Seed database in development
     // if (app.Environment.IsDevelopment()) {
